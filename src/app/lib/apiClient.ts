@@ -1,4 +1,4 @@
-import type { GuessResponse, MetaResponse, SearchResponse, StartResponse } from "./types";
+import type { CatalogResponse, GuessResponse, MetaResponse, SearchResponse, StartResponse } from "./types";
 
 async function requestJson<T>(url: string, init?: RequestInit): Promise<T> {
   const response = await fetch(url, init);
@@ -37,3 +37,6 @@ export async function submitGuess(payload: { puzzleId: string; guessId: string; 
   });
 }
 
+export async function fetchCatalog(): Promise<CatalogResponse> {
+  return requestJson<CatalogResponse>("/api/catalog");
+}

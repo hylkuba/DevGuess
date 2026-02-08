@@ -12,7 +12,6 @@ const attributeMeta = [
   { key: "ecosystemPath", label: "Ecosystem" },
   { key: "primaryLanguage", label: "Language" },
   { key: "licenseGroup", label: "License" },
-  { key: "stewardType", label: "Steward Type" },
   { key: "steward", label: "Steward" },
   { key: "initialReleaseYear", label: "Year" },
   { key: "openSource", label: "OSS" }
