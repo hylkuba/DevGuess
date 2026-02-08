@@ -1,0 +1,270 @@
+:root {
+  color-scheme: light;
+  --bg-0: #f5efe2;
+  --bg-1: #e7d8b6;
+  --bg-2: #1f2d3d;
+  --fg-0: #10161d;
+  --fg-1: #2f3c4a;
+  --accent: #e35d3f;
+  --ok: #1f8f5f;
+  --warn: #ce8b10;
+  --off: #5b6572;
+  --panel: rgba(255, 255, 255, 0.82);
+  --border: rgba(17, 22, 29, 0.18);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  background: radial-gradient(circle at 12% 10%, var(--bg-1) 0%, var(--bg-0) 35%, #f8f4eb 100%);
+  color: var(--fg-0);
+  font-family: "Space Grotesk", "Segoe UI", sans-serif;
+}
+
+.app-root {
+  min-height: 100vh;
+  padding: 1rem;
+}
+
+.page-shell {
+  margin: 0 auto;
+  max-width: 1100px;
+  display: grid;
+  gap: 1rem;
+}
+
+.page-header {
+  background: var(--panel);
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  padding: 1rem;
+  display: grid;
+  gap: 0.5rem;
+}
+
+.page-header h1 {
+  margin: 0;
+  font-size: 2rem;
+}
+
+.page-header p {
+  margin: 0.2rem 0 0;
+  color: var(--fg-1);
+}
+
+.ghost-btn,
+.share-btn,
+.guess-input-row button,
+.suggestion-item {
+  font-family: inherit;
+}
+
+.ghost-btn,
+.share-btn,
+.guess-input-row button {
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 0.65rem 1rem;
+  background: #fff;
+  color: var(--fg-0);
+  cursor: pointer;
+}
+
+.ghost-btn:hover,
+.share-btn:hover,
+.guess-input-row button:hover {
+  border-color: var(--accent);
+}
+
+.help-panel {
+  border-radius: 10px;
+  border: 1px solid var(--border);
+  background: rgba(231, 216, 182, 0.42);
+  padding: 0.8rem;
+}
+
+.guess-input-wrap {
+  position: relative;
+  background: var(--panel);
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  padding: 1rem;
+}
+
+.guess-input-row {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 0.5rem;
+}
+
+.guess-input-row input {
+  width: 100%;
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 0.75rem 0.9rem;
+  font-size: 1rem;
+}
+
+.hint {
+  color: var(--fg-1);
+  margin: 0.5rem 0 0;
+}
+
+.error-text {
+  color: #b32222;
+  margin: 0.5rem 0 0;
+}
+
+.suggestions {
+  list-style: none;
+  margin: 0.6rem 0 0;
+  padding: 0;
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.suggestion-item {
+  width: 100%;
+  background: #fff;
+  border: 0;
+  border-top: 1px solid var(--border);
+  display: flex;
+  justify-content: space-between;
+  padding: 0.7rem 0.8rem;
+  text-align: left;
+  cursor: pointer;
+}
+
+.suggestions li:first-child .suggestion-item {
+  border-top: 0;
+}
+
+.suggestion-item.active,
+.suggestion-item:hover {
+  background: #f8e6d7;
+}
+
+.suggestion-item small {
+  color: var(--fg-1);
+}
+
+.grid-wrap {
+  overflow-x: auto;
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  background: var(--panel);
+}
+
+.grid-table {
+  width: 100%;
+  border-collapse: collapse;
+  min-width: 980px;
+}
+
+.grid-table th,
+.grid-table td {
+  border: 1px solid var(--border);
+  text-align: center;
+  padding: 0.65rem 0.5rem;
+  min-width: 72px;
+  height: 56px;
+}
+
+.sticky-col {
+  position: sticky;
+  left: 0;
+  z-index: 1;
+  min-width: 180px;
+  text-align: left;
+  padding-left: 0.8rem;
+  background: #f9f4e8;
+}
+
+.cell {
+  font-weight: 700;
+  color: #fff;
+}
+
+.cell-green {
+  background: var(--ok);
+}
+
+.cell-yellow {
+  background: var(--warn);
+}
+
+.cell-gray {
+  background: var(--off);
+}
+
+.cell-empty {
+  color: var(--fg-1);
+  background: rgba(255, 255, 255, 0.6);
+}
+
+.cell-year {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+}
+
+.footer-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+.footer-row p {
+  margin: 0;
+}
+
+.error-banner {
+  margin: 0.8rem auto 0;
+  max-width: 1100px;
+  border: 1px solid #e68484;
+  border-radius: 10px;
+  padding: 0.75rem;
+  background: #fce7e7;
+  color: #802222;
+}
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  border: 0;
+}
+
+@media (max-width: 760px) {
+  .app-root {
+    padding: 0.65rem;
+  }
+
+  .page-header h1 {
+    font-size: 1.6rem;
+  }
+
+  .guess-input-row {
+    grid-template-columns: 1fr;
+  }
+
+  .footer-row {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .sticky-col {
+    min-width: 140px;
+  }
+}
+

@@ -1,0 +1,12 @@
+node_modules/
+dist/
+.wrangler/
+coverage/
+*.log
+
+# Local secret/env files (Cloudflare + general)
+.dev.vars
+.dev.vars.*
+.env
+.env.*
+!.env.example

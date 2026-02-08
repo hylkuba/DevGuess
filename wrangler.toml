@@ -1,0 +1,8 @@
+name = "devguess"
+compatibility_date = "2026-02-08"
+pages_build_output_dir = "dist"
+
+[vars]
+DATASET_VERSION = "v1"
+PUZZLE_EPOCH = "2025-01-01"
+
