@@ -32,17 +32,32 @@ export function Cell({ cell, value, attributeKey, attributeLabel, revealDelayMs 
   const yearArrowGlyph = yearArrow === "up" ? "\u2191" : yearArrow === "down" ? "\u2193" : "";
   const displayValue = value ?? "Unknown";
   const ariaHintPart = yearArrow ? `, year hint ${yearArrow === "up" ? "up arrow" : "down arrow"}` : "";
-  const style = revealDelayMs == null ? undefined : ({ animationDelay: `${revealDelayMs}ms` } as CSSProperties);
+  const revealStyle = revealDelayMs == null ? undefined : ({ animationDelay: `${revealDelayMs}ms` } as CSSProperties);
+  const finalSurfaceClass = `cell-surface cell-surface-${cell.status}`;
+
+  if (revealDelayMs != null) {
+    return (
+      <td className={`cell cell-${cell.status}`.trim()} aria-label={`${attributeLabel}: ${displayValue}, ${getStatusAria(cell.status)}${ariaHintPart}`}>
+        <div className="cell-flip-card cell-flip-reveal" style={revealStyle}>
+          <div className="cell-flip-face cell-flip-front" aria-hidden="true" />
+          <div className={`cell-flip-face cell-flip-back ${finalSurfaceClass}`.trim()}>
+            <div className="cell-content">
+              <span className="cell-value">{displayValue}</span>
+              {yearArrow ? <span className="cell-note">{yearArrowGlyph}</span> : null}
+            </div>
+          </div>
+        </div>
+      </td>
+    );
+  }
 
   return (
-    <td
-      className={`cell cell-${cell.status} ${revealDelayMs == null ? "" : "cell-reveal"}`.trim()}
-      style={style}
-      aria-label={`${attributeLabel}: ${displayValue}, ${getStatusAria(cell.status)}${ariaHintPart}`}
-    >
-      <div className="cell-content">
-        <span className="cell-value">{displayValue}</span>
-        {yearArrow ? <span className="cell-note">{yearArrowGlyph}</span> : null}
+    <td className={`cell cell-${cell.status}`.trim()} aria-label={`${attributeLabel}: ${displayValue}, ${getStatusAria(cell.status)}${ariaHintPart}`}>
+      <div className={finalSurfaceClass}>
+        <div className="cell-content">
+          <span className="cell-value">{displayValue}</span>
+          {yearArrow ? <span className="cell-note">{yearArrowGlyph}</span> : null}
+        </div>
       </div>
     </td>
   );

@@ -30,6 +30,9 @@ npm test
 npm run build
 ```
 
+`npm run dev` now runs the React app and local `/api/*` endpoints together via Vite middleware.  
+Use Wrangler only when you need Cloudflare runtime parity.
+
 ## API routes
 
 - `GET /api/meta`

@@ -116,7 +116,7 @@ export function App() {
     }
   }, [game, seenLimitToken]);
 
-  const busy = pending || !meta || !game;
+  const isInitializing = !meta || !game;
 
   const body = useMemo(() => {
     if (view === "reference") {
@@ -209,7 +209,7 @@ export function App() {
 
   return (
     <div className="app-root">
-      {busy && view === "game" ? <p className="hint">Loading puzzle...</p> : body}
+      {isInitializing && view === "game" ? <p className="hint">Loading puzzle...</p> : body}
       {error ? <p className="error-banner">{error}</p> : null}
     </div>
   );

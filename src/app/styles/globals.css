@@ -8,10 +8,11 @@
   --fg-soft: #506280;
   --accent: #2f65d9;
   --border: #b9c7de;
-  --guess-col: #c9d9f5;
-  --ok: #1f8a61;
-  --warn: #cb8d17;
-  --off: #5d6c83;
+  --grid-line: #7f98c2;
+  --guess-col: #cfdcf4;
+  --ok: #2c9f79;
+  --warn: #be933a;
+  --off: #6b7f9b;
   --shadow: 0 8px 24px rgba(26, 44, 76, 0.08);
   --name-col-bg: #d5e1f7;
   --name-col-head: #c4d5f3;
@@ -27,10 +28,11 @@
   --fg-soft: #b2c1e0;
   --accent: #82a9ff;
   --border: #334f85;
-  --guess-col: #274776;
-  --ok: #2ea876;
-  --warn: #d29d33;
-  --off: #61718d;
+  --grid-line: #4568a1;
+  --guess-col: #2a4974;
+  --ok: #33b287;
+  --warn: #c99c3f;
+  --off: #7085a5;
   --shadow: 0 10px 30px rgba(6, 10, 18, 0.4);
   --name-col-bg: #27416f;
   --name-col-head: #2f4d82;
@@ -50,7 +52,7 @@ body {
   background: var(--bg);
   color: var(--fg);
   font-family: "Space Grotesk", "Segoe UI", sans-serif;
-  font-weight: 540;
+  font-weight: 500;
   overflow-x: hidden;
 }
 
@@ -314,17 +316,18 @@ a {
 
 .grid-table th,
 .grid-table td {
-  border: 1px solid var(--border);
+  border: 1px solid var(--grid-line);
   text-align: center;
   vertical-align: middle;
   min-width: 0;
-  padding: 0.35rem;
+  padding: 0;
   height: 92px;
 }
 
 .grid-table thead th {
   background: var(--panel-2);
-  font-weight: 790;
+  font-weight: 700;
+  padding: 0.45rem 0.35rem;
 }
 
 .col-head {
@@ -354,25 +357,41 @@ a {
 }
 
 .guess-cell {
-  font-weight: 760;
+  font-weight: 680;
+}
+
+.guess-cell-content {
+  width: 100%;
+  height: 100%;
+  min-height: 92px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--guess-col);
+  color: var(--fg);
+  font-size: 0.96rem;
+  letter-spacing: 0.01em;
+  text-wrap: balance;
 }
 
 .cell {
   text-align: center;
   vertical-align: middle;
   color: #ffffff;
+  perspective: 1100px;
+  overflow: hidden;
 }
 
 .cell-green {
-  background: var(--ok);
+  background: transparent;
 }
 
 .cell-yellow {
-  background: var(--warn);
+  background: transparent;
 }
 
 .cell-gray {
-  background: var(--off);
+  background: transparent;
 }
 
 .cell-empty {
@@ -380,50 +399,103 @@ a {
   color: var(--fg-soft);
 }
 
+.cell-surface {
+  width: 100%;
+  height: 100%;
+  min-height: 92px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.1), inset 0 -1px 0 rgba(7, 12, 24, 0.16);
+}
+
+.cell-surface-green {
+  background: var(--ok);
+}
+
+.cell-surface-yellow {
+  background: var(--warn);
+}
+
+.cell-surface-gray {
+  background: var(--off);
+}
+
+.cell-surface-empty {
+  background: var(--panel-2);
+  color: var(--fg-soft);
+  font-weight: 700;
+}
+
 .cell-content {
-  min-height: 66px;
+  min-height: 92px;
+  padding: 0.45rem 0.5rem;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  gap: 0.2rem;
+  gap: 0.26rem;
 }
 
 .cell-value {
-  font-size: 0.75rem;
-  line-height: 1.18;
-  font-weight: 760;
+  font-size: 0.86rem;
+  line-height: 1.24;
+  font-weight: 640;
   word-break: break-word;
 }
 
 .cell-note {
-  font-size: 1rem;
+  font-size: 0.95rem;
   line-height: 1;
-  font-weight: 840;
+  font-weight: 720;
   opacity: 0.96;
 }
 
-@keyframes cellFlipReveal {
+@keyframes cellFlipInwardReveal {
   0% {
-    opacity: 0;
-    transform: perspective(900px) rotateY(-88deg);
+    transform: rotateX(0deg);
   }
 
-  58% {
-    opacity: 1;
-    transform: perspective(900px) rotateY(10deg);
+  22% {
+    transform: rotateX(90deg);
   }
 
   100% {
-    opacity: 1;
-    transform: perspective(900px) rotateY(0deg);
+    transform: rotateX(180deg);
   }
 }
 
-.cell-reveal {
-  transform-origin: center left;
+.cell-flip-card {
+  width: 100%;
+  height: 100%;
+  min-height: 92px;
+  position: relative;
+  transform-style: preserve-3d;
+  contain: paint;
+  transform: translateZ(0);
+}
+
+.cell-flip-face {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   backface-visibility: hidden;
-  animation: cellFlipReveal 0.56s cubic-bezier(0.19, 0.83, 0.33, 1) both;
+  -webkit-backface-visibility: hidden;
+}
+
+.cell-flip-front {
+  background: var(--panel-2);
+}
+
+.cell-flip-back {
+  transform: rotateX(180deg);
+}
+
+.cell-flip-reveal {
+  will-change: transform;
+  animation: cellFlipInwardReveal 0.9s cubic-bezier(0.18, 0.84, 0.3, 1) both;
 }
 
 .site-footer {
@@ -712,6 +784,8 @@ a {
 .guide-table-wrap {
   margin-top: 0.75rem;
   max-width: 100%;
+  position: relative;
+  isolation: isolate;
   overflow-x: auto;
   overflow-y: hidden;
   overscroll-behavior-x: contain;
@@ -723,7 +797,22 @@ a {
 }
 
 .terms-table {
+  border-collapse: separate;
+  border-spacing: 0;
+  table-layout: fixed;
   min-width: 2100px;
+}
+
+.terms-table th,
+.terms-table td {
+  border: 0;
+  border-right: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
+  min-width: 150px;
+}
+
+.terms-table thead tr:first-child th {
+  border-top: 1px solid var(--border);
 }
 
 .terms-table th:first-child,
@@ -732,23 +821,36 @@ a {
   left: 0;
   min-width: 190px;
   width: 190px;
+  max-width: 190px;
   background: var(--name-col-bg);
+  background-clip: padding-box;
+  contain: paint;
+  transform: translateZ(0);
+  backface-visibility: hidden;
+  box-shadow: inset -1px 0 0 var(--border), 7px 0 14px rgba(8, 12, 20, 0.16);
+}
+
+.terms-table th:first-child {
+  border-left: 1px solid var(--border);
+}
+
+.terms-table td:first-child {
+  border-left: 1px solid var(--border);
 }
 
 .terms-table thead tr:first-child th:first-child {
-  z-index: 7;
+  z-index: 9;
   background: var(--name-col-head);
 }
 
 .terms-table thead .terms-filter-cell:first-child {
-  z-index: 6;
+  z-index: 8;
   background: var(--name-col-bg);
 }
 
 .terms-table tbody td:first-child {
-  z-index: 2;
+  z-index: 4;
   background: var(--name-col-bg);
-  box-shadow: 1px 0 0 var(--border), 7px 0 14px rgba(8, 12, 20, 0.16);
 }
 
 .terms-filter-row th {
@@ -860,15 +962,26 @@ a {
   .grid-table th,
   .grid-table td {
     height: 84px;
-    padding: 0.28rem;
+    padding: 0;
+  }
+
+  .grid-table thead th {
+    padding: 0.36rem 0.28rem;
+  }
+
+  .guess-cell-content,
+  .cell-surface,
+  .cell-content,
+  .cell-flip-card {
+    min-height: 84px;
   }
 
   .cell-value {
-    font-size: 0.68rem;
+    font-size: 0.78rem;
   }
 
   .cell-note {
-    font-size: 0.94rem;
+    font-size: 0.88rem;
   }
 
   .terms-filter-input-row {
