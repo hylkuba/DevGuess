@@ -328,8 +328,18 @@ a {
   overflow: hidden;
 }
 
+.grid-scroll {
+  max-width: 100%;
+  overflow-x: auto;
+  overflow-y: hidden;
+  overscroll-behavior-x: contain;
+  -webkit-overflow-scrolling: touch;
+  touch-action: pan-x;
+}
+
 .grid-table {
   width: 100%;
+  min-width: max(100%, var(--grid-table-min-width, 0px));
   border-collapse: collapse;
   table-layout: fixed;
 }

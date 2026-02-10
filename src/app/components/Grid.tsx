@@ -1,10 +1,12 @@
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState, type CSSProperties } from "react";
 import { fetchCatalog } from "../lib/apiClient";
 import { getAttributeGuide } from "../lib/attributeGuide";
 import type { CatalogResponse, Cell as CellData, CellStatus, GridRow, PuzzleAttribute } from "../lib/types";
 import { Cell } from "./Cell";
 
 const REVEAL_STEP_MS = 160;
+const GUESS_COLUMN_MIN_WIDTH_PX = 132;
+const ATTRIBUTE_COLUMN_MIN_WIDTH_PX = 120;
 
 const tokenLabels: Record<string, string> = {
   "js-ts": "JS/TS",
@@ -546,92 +548,96 @@ export function Grid({ attributes, rows, pending }: Props) {
   }, [hoverPopup]);
 
   const displayRows = rows.slice().reverse();
+  const tableMinWidth = GUESS_COLUMN_MIN_WIDTH_PX + attributes.length * ATTRIBUTE_COLUMN_MIN_WIDTH_PX;
+  const tableStyle = { "--grid-table-min-width": `${tableMinWidth}px` } as CSSProperties;
 
   return (
     <div className="grid-wrap" role="region" aria-label="Guess grid">
-      <table className="grid-table">
-        <thead>
-          <tr>
-            <th className="guess-col">Guess</th>
-            {attributes.map((attribute) => {
-              const guide = getAttributeGuide(attribute.key);
-              return (
-                <th key={attribute.key}>
-                  <span className="col-head">
-                    <span>{attribute.label}</span>
-                    <span className="col-hint" title={`${guide.summary} ${guide.detail}`}>
-                      i
+      <div className="grid-scroll" aria-label="Scrollable guess grid">
+        <table className="grid-table" style={tableStyle}>
+          <thead>
+            <tr>
+              <th className="guess-col">Guess</th>
+              {attributes.map((attribute) => {
+                const guide = getAttributeGuide(attribute.key);
+                return (
+                  <th key={attribute.key}>
+                    <span className="col-head">
+                      <span>{attribute.label}</span>
+                      <span className="col-hint" title={`${guide.summary} ${guide.detail}`}>
+                        i
+                      </span>
                     </span>
-                  </span>
-                </th>
+                  </th>
+                );
+              })}
+            </tr>
+          </thead>
+          <tbody>
+            {pending ? (
+              <tr>
+                <th className="guess-col guess-cell">Checking...</th>
+                {attributes.map((attribute) => (
+                  <td key={`pending:${attribute.key}`} className="cell cell-empty">
+                    ...
+                  </td>
+                ))}
+              </tr>
+            ) : null}
+
+            {displayRows.map((row) => {
+              const rowKey = row.guess.id;
+              const isRevealingRow = rowKey === revealingRowKey;
+
+              return (
+                <tr key={rowKey}>
+                  <th className="guess-col guess-cell">
+                    <div className="guess-cell-content">{row.guess.name}</div>
+                  </th>
+                  {attributes.map((attribute, attributeIndex) => {
+                    const cell = row.cells[attribute.key];
+                    const value = row.values?.[attribute.key] ?? "Unknown";
+                    const cellHoverGuide = cell
+                      ? buildHoverGuide({
+                          attributeKey: attribute.key,
+                          attributeLabel: attribute.label,
+                          value,
+                          cell,
+                          hoverData
+                        })
+                      : null;
+
+                    return (
+                      <Cell
+                        key={`${rowKey}:${attribute.key}`}
+                        attributeKey={attribute.key}
+                        attributeLabel={attribute.label}
+                        cell={cell}
+                        value={value}
+                        isHoverable={cellHoverGuide != null}
+                        onGroupHover={
+                          cellHoverGuide
+                            ? (target) => {
+                                const position = getPopupPosition(target);
+                                setHoverPopup({
+                                  guide: cellHoverGuide,
+                                  top: position.top,
+                                  left: position.left
+                                });
+                              }
+                            : undefined
+                        }
+                        onGroupLeave={cellHoverGuide ? () => setHoverPopup(null) : undefined}
+                        revealDelayMs={isRevealingRow ? attributeIndex * REVEAL_STEP_MS : undefined}
+                      />
+                    );
+                  })}
+                </tr>
               );
             })}
-          </tr>
-        </thead>
-        <tbody>
-          {pending ? (
-            <tr>
-              <th className="guess-col guess-cell">Checking...</th>
-              {attributes.map((attribute) => (
-                <td key={`pending:${attribute.key}`} className="cell cell-empty">
-                  ...
-                </td>
-              ))}
-            </tr>
-          ) : null}
-
-          {displayRows.map((row) => {
-            const rowKey = row.guess.id;
-            const isRevealingRow = rowKey === revealingRowKey;
-
-            return (
-              <tr key={rowKey}>
-                <th className="guess-col guess-cell">
-                  <div className="guess-cell-content">{row.guess.name}</div>
-                </th>
-                {attributes.map((attribute, attributeIndex) => {
-                  const cell = row.cells[attribute.key];
-                  const value = row.values?.[attribute.key] ?? "Unknown";
-                  const cellHoverGuide = cell
-                    ? buildHoverGuide({
-                        attributeKey: attribute.key,
-                        attributeLabel: attribute.label,
-                        value,
-                        cell,
-                        hoverData
-                      })
-                    : null;
-
-                  return (
-                    <Cell
-                      key={`${rowKey}:${attribute.key}`}
-                      attributeKey={attribute.key}
-                      attributeLabel={attribute.label}
-                      cell={cell}
-                      value={value}
-                      isHoverable={cellHoverGuide != null}
-                      onGroupHover={
-                        cellHoverGuide
-                          ? (target) => {
-                              const position = getPopupPosition(target);
-                              setHoverPopup({
-                                guide: cellHoverGuide,
-                                top: position.top,
-                                left: position.left
-                              });
-                            }
-                          : undefined
-                      }
-                      onGroupLeave={cellHoverGuide ? () => setHoverPopup(null) : undefined}
-                      revealDelayMs={isRevealingRow ? attributeIndex * REVEAL_STEP_MS : undefined}
-                    />
-                  );
-                })}
-              </tr>
-            );
-          })}
-        </tbody>
-      </table>
+          </tbody>
+        </table>
+      </div>
       {hoverPopup ? (
         <aside
           className="grid-hover-guide grid-hover-popup"
