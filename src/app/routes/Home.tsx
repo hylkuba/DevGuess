@@ -29,6 +29,7 @@ type Props = {
 const GITHUB_REPO_URL = "https://github.com/hylkuba/DevGuess";
 const GITHUB_ISSUE_URL = "https://github.com/hylkuba/DevGuess/issues/new";
 const GITHUB_SPONSORS_URL = "https://github.com/sponsors/hylkuba";
+const DISCORD_INVITE_URL = "https://discord.gg/hjYzshAM";
 
 export function Home({
   meta,
@@ -103,6 +104,13 @@ export function Home({
         <div className="footer-row">
           <div className="footer-text-block">
             <p className="footer-lead">Keep guessing...</p>
+            <p className="footer-community">
+              Join the DevGuess community on{" "}
+              <a href={DISCORD_INVITE_URL} target="_blank" rel="noreferrer" aria-label="Join DevGuess Discord server">
+                Discord
+              </a>{" "}
+              to share results, ideas, and feature suggestions.
+            </p>
             <p className="footer-credit">
               This project has been made open source by @hylkuba. Feel free to contribute to the project, I&apos;ll appreciate your
               help.{" "}

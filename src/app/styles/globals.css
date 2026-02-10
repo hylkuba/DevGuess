@@ -718,6 +718,12 @@ a {
   color: var(--fg-soft);
 }
 
+.footer-community {
+  margin: 0.15rem 0 0;
+  font-size: 0.88rem;
+  color: var(--fg-soft);
+}
+
 .footer-support {
   margin: 0.3rem 0 0;
   font-size: 0.88rem;
@@ -797,6 +803,11 @@ a {
 .victory-modal-boost {
   font-weight: 700;
   color: color-mix(in srgb, var(--ok) 72%, var(--fg));
+}
+
+.victory-modal-community {
+  margin: 0.1rem 0 0;
+  color: var(--fg-soft);
 }
 
 .victory-preview-wrap {

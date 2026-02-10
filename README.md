@@ -57,7 +57,7 @@ See `CONTRIBUTING.md` for the full process.
 ## Security
 
 If you discover a security issue, do not open a public issue.
-Report vulnerabilities to `TODO`.
+Report vulnerabilities on Discord: `_clash_`.
 See `SECURITY.md` for reporting details.
 
 ## Sponsorship

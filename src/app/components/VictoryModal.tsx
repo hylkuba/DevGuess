@@ -54,6 +54,7 @@ const BOOST_LINES = [
 ];
 
 const CONFETTI_COLORS = ["#ffd166", "#06d6a0", "#4cc9f0", "#f72585", "#f9844a", "#90be6d", "#9b5de5", "#43aa8b"];
+const DISCORD_INVITE_URL = "https://discord.gg/hjYzshAM";
 
 function hashString(value: string): number {
   let hash = 2166136261;
@@ -194,6 +195,13 @@ export function VictoryModal({
             <p className="victory-modal-summary">{summary.line}</p>
             <p className="victory-modal-joke">{celebrationJoke}</p>
             <p className="victory-modal-boost">{boostLine}</p>
+            <p className="victory-modal-community">
+              Join our{" "}
+              <a href={DISCORD_INVITE_URL} target="_blank" rel="noreferrer" aria-label="Join DevGuess Discord server">
+                Discord community
+              </a>{" "}
+              and share your result with everyone.
+            </p>
           </div>
           <div className="share-preview-wrap victory-preview-wrap">
             {previewUrl ? (
