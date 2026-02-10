@@ -1,7 +1,6 @@
+import { getDataset } from "../_lib/dataset";
 import { MAX_GUESSES } from "../_lib/gameConfig";
-import { getPuzzleNo, getDateStrUTC } from "../_lib/selectAnswer";
 import { jsonCacheForDay, serverError } from "../_lib/http";
-import type { Env } from "../_lib/env";
 
 const attributeMeta = [
   { key: "kindPath", label: "Kind" },
@@ -17,13 +16,11 @@ const attributeMeta = [
   { key: "openSource", label: "OSS" }
 ];
 
-export const onRequestGet = async ({ env }: { env: Env }) => {
+export const onRequestGet = async () => {
   try {
-    const dateStr = getDateStrUTC();
-    const puzzleNo = getPuzzleNo(new Date(), env.PUZZLE_EPOCH ?? "2025-01-01");
     return jsonCacheForDay({
-      puzzleId: dateStr,
-      puzzleNo,
+      mode: "random",
+      keywordPoolSize: getDataset().length,
       maxGuesses: MAX_GUESSES,
       attributes: attributeMeta
     });

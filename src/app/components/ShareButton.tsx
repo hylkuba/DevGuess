@@ -5,7 +5,7 @@ type Props = {
   disabled: boolean;
   rows: GridRow[];
   attributes: PuzzleAttribute[];
-  puzzleNo: number;
+  roundId: string;
   theme: "light" | "dark";
 };
 
@@ -20,10 +20,20 @@ function trimValue(value: string, maxLen = 18): string {
   return `${value.slice(0, maxLen - 1)}...`;
 }
 
+function formatRoundLabel(roundId: string): string {
+  const shortId = roundId.slice(0, 8).toUpperCase();
+  return `Round ${shortId}`;
+}
+
+function formatRoundFilePart(roundId: string): string {
+  const shortId = roundId.slice(0, 8).toLowerCase();
+  return shortId || "round";
+}
+
 function createSnapshotCanvas(params: {
   rows: GridRow[];
   attributes: PuzzleAttribute[];
-  puzzleNo: number;
+  roundId: string;
   theme: "light" | "dark";
 }): HTMLCanvasElement | null {
   const guessWidth = 170;
@@ -55,7 +65,7 @@ function createSnapshotCanvas(params: {
   ctx.font = "700 30px 'Segoe UI', sans-serif";
   ctx.textAlign = "left";
   ctx.textBaseline = "alphabetic";
-  ctx.fillText(`DevGuess #${params.puzzleNo}`, padding, padding + 30);
+  ctx.fillText(`DevGuess ${formatRoundLabel(params.roundId)}`, padding, padding + 30);
 
   const tableX = padding;
   const tableY = padding + titleHeight;
@@ -198,14 +208,14 @@ function downloadBlob(blob: Blob, filename: string): void {
   window.setTimeout(() => URL.revokeObjectURL(url), 200);
 }
 
-export function ShareButton({ disabled, rows, attributes, puzzleNo, theme }: Props) {
+export function ShareButton({ disabled, rows, attributes, roundId, theme }: Props) {
   const [open, setOpen] = useState(false);
   const [pdfError, setPdfError] = useState<string | null>(null);
 
   const snapshotCanvas = useMemo(() => {
     if (!open || rows.length === 0) return null;
-    return createSnapshotCanvas({ rows, attributes, puzzleNo, theme });
-  }, [open, rows, attributes, puzzleNo, theme]);
+    return createSnapshotCanvas({ rows, attributes, roundId, theme });
+  }, [open, rows, attributes, roundId, theme]);
 
   const previewUrl = useMemo(() => {
     if (!snapshotCanvas) return "";
@@ -216,7 +226,7 @@ export function ShareButton({ disabled, rows, attributes, puzzleNo, theme }: Pro
     if (!previewUrl) return;
     const link = document.createElement("a");
     link.href = previewUrl;
-    link.download = `devguess-${puzzleNo}.png`;
+    link.download = `devguess-${formatRoundFilePart(roundId)}.png`;
     link.click();
   }
 
@@ -232,7 +242,7 @@ export function ShareButton({ disabled, rows, attributes, puzzleNo, theme }: Pro
         imageWidth: snapshotCanvas.width,
         imageHeight: snapshotCanvas.height
       });
-      downloadBlob(blob, `devguess-${puzzleNo}.pdf`);
+      downloadBlob(blob, `devguess-${formatRoundFilePart(roundId)}.pdf`);
     } catch {
       setPdfError("Unable to generate PDF for this snapshot.");
     }

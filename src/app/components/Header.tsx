@@ -1,25 +1,18 @@
-﻿import { useMemo, useState } from "react";
-import { getDailyTip } from "../lib/attributeGuide";
+import { useState } from "react";
 
 type Props = {
-  puzzleId: string;
-  puzzleNo: number;
+  roundId: string;
+  keywordPoolSize: number;
+  pending: boolean;
   theme: "light" | "dark";
   onToggleTheme: () => void;
   onOpenReference: () => void;
+  onGenerateKeyword: () => void;
 };
 
-function formatPuzzleDate(puzzleId: string): string {
-  const date = new Date(`${puzzleId}T00:00:00Z`);
-  if (Number.isNaN(date.getTime())) return "Daily Puzzle";
-
-  return date.toLocaleDateString(undefined, {
-    weekday: "short",
-    year: "numeric",
-    month: "short",
-    day: "numeric",
-    timeZone: "UTC"
-  });
+function formatRoundLabel(roundId: string): string {
+  const shortId = roundId.slice(0, 8).toUpperCase();
+  return `Round ${shortId}`;
 }
 
 function ThemeSunIcon() {
@@ -39,21 +32,21 @@ function ThemeMoonIcon() {
   );
 }
 
-export function Header({ puzzleId, puzzleNo, theme, onToggleTheme, onOpenReference }: Props) {
+export function Header({ roundId, keywordPoolSize, pending, theme, onToggleTheme, onOpenReference, onGenerateKeyword }: Props) {
   const [showGuide, setShowGuide] = useState(false);
-  const [showTip, setShowTip] = useState(false);
-  const dailyTip = useMemo(() => getDailyTip(puzzleNo), [puzzleNo]);
 
   return (
     <header className="page-header">
       <div className="header-top">
         <div>
           <h1>DevGuess</h1>
-          <p>{formatPuzzleDate(puzzleId)}</p>
+          <p>
+            {formatRoundLabel(roundId)} | {keywordPoolSize} registered keywords
+          </p>
         </div>
         <div className="header-actions">
-          <button type="button" className="ghost-btn" onClick={() => setShowTip((value) => !value)} aria-expanded={showTip}>
-            Daily Tip
+          <button type="button" className="ghost-btn" onClick={onGenerateKeyword} disabled={pending}>
+            Generate New Keyword
           </button>
           <button type="button" className="ghost-btn" onClick={() => setShowGuide((value) => !value)} aria-expanded={showGuide}>
             Guide
@@ -68,29 +61,20 @@ export function Header({ puzzleId, puzzleNo, theme, onToggleTheme, onOpenReferen
             aria-label={theme === "dark" ? "Switch to light theme" : "Switch to dark theme"}
             title={theme === "dark" ? "Light theme" : "Dark theme"}
           >
-            <span className={theme === "dark" ? "theme-sun" : "theme-moon"}>
-              {theme === "dark" ? <ThemeSunIcon /> : <ThemeMoonIcon />}
-            </span>
+            <span className={theme === "dark" ? "theme-sun" : "theme-moon"}>{theme === "dark" ? <ThemeSunIcon /> : <ThemeMoonIcon />}</span>
           </button>
         </div>
       </div>
-
-      {showTip ? (
-        <section className="tip-panel" aria-label="Daily tip">
-          <h2>Daily Tip</h2>
-          <p>{dailyTip}</p>
-        </section>
-      ) : null}
 
       {showGuide ? (
         <section className="help-panel" aria-label="How DevGuess works">
           <h2>How DevGuess Works</h2>
           <ol>
-            <li>Find today&apos;s hidden technology.</li>
+            <li>Find the current hidden technology keyword.</li>
             <li>Each cell shows your guessed value for that category.</li>
             <li>Cell colors indicate match strength between your guess and the hidden answer.</li>
             <li>Year hints only show direction with an arrow.</li>
-            <li>Use Reference DB for the full category taxonomy and all implemented items with filters.</li>
+            <li>Use the Hint button near Guess for a clue, and Reference DB for full taxonomy.</li>
           </ol>
         </section>
       ) : null}

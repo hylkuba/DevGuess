@@ -245,6 +245,12 @@ a {
   gap: 0.45rem;
 }
 
+.guess-input-actions {
+  display: flex;
+  align-items: stretch;
+  gap: 0.45rem;
+}
+
 .guess-input-row input {
   width: 100%;
   border: 1px solid var(--border);
@@ -254,6 +260,20 @@ a {
   font-weight: 620;
   color: var(--fg);
   background: var(--bg-soft);
+}
+
+.hint-toggle-btn-active {
+  border-color: var(--accent);
+  background: rgba(47, 101, 217, 0.2);
+}
+
+.keyword-hint-text {
+  margin: 0.55rem 0 0;
+  border: 1px dashed var(--border);
+  border-radius: 10px;
+  padding: 0.58rem 0.72rem;
+  color: var(--fg-soft);
+  background: var(--panel-2);
 }
 
 .hint {
@@ -575,9 +595,30 @@ a {
   display: flex;
   align-items: center;
   gap: 0.5rem;
+  position: relative;
+  top: 2px;
 }
 
-.footer-row p,
+.footer-row p {
+  margin: 0;
+  min-height: 40px;
+  display: flex;
+  align-items: center;
+  line-height: 1.1;
+}
+
+.footer-actions .ghost-btn,
+.footer-actions .share-btn {
+  min-height: 40px;
+  min-width: 120px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  line-height: 1;
+  text-decoration: none;
+  font-weight: 620;
+}
+
 .footer-credit {
   margin: 0;
 }
@@ -847,6 +888,14 @@ a {
   overflow-x: auto;
   overflow-y: hidden;
   overscroll-behavior-x: contain;
+  touch-action: pan-x;
+  cursor: grab;
+}
+
+.guide-table-wrap-dragging {
+  cursor: grabbing;
+  user-select: none;
+  -webkit-user-select: none;
 }
 
 .guide-table {
@@ -1015,6 +1064,12 @@ a {
 
   .guess-input-row {
     grid-template-columns: 1fr;
+  }
+
+  .guess-input-actions {
+    width: 100%;
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 
   .grid-table th,

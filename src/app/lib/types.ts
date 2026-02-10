@@ -23,8 +23,8 @@ export type PuzzleAttribute = {
 };
 
 export type MetaResponse = {
-  puzzleId: string;
-  puzzleNo: number;
+  mode: "random";
+  keywordPoolSize: number;
   maxGuesses: number;
   attributes: PuzzleAttribute[];
 };
@@ -40,8 +40,10 @@ export type SearchResponse = {
 };
 
 export type StartResponse = {
+  roundId: string;
   token: string;
   maxGuesses: number;
+  hint: string;
 };
 
 export type GuessResponse = {
@@ -55,7 +57,8 @@ export type GuessResponse = {
 };
 
 export type StoredGame = {
-  puzzleId: string;
+  roundId: string;
+  hint: string;
   token: string;
   rows: GridRow[];
   state: {
@@ -97,4 +100,3 @@ export type CatalogResponse = {
   };
   items: CatalogItem[];
 };
-

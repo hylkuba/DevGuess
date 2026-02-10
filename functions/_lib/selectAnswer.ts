@@ -15,7 +15,7 @@ export function getPuzzleNo(date = new Date(), epochDate = "2025-01-01"): number
 
 export async function selectAnswer(
   params: {
-    dateStr: string;
+    seed: string;
     datasetVersion: string;
     secretSalt: string;
   },
@@ -25,7 +25,7 @@ export async function selectAnswer(
     throw new Error("Dataset is empty.");
   }
 
-  const message = `${params.dateStr}:${params.datasetVersion}`;
+  const message = `${params.seed}:${params.datasetVersion}`;
   const digest = await hmacSha256(params.secretSalt, message);
   let n = 0n;
   for (let i = 0; i < 8; i += 1) {
@@ -35,4 +35,3 @@ export async function selectAnswer(
   const index = Number(n % BigInt(dataset.length));
   return dataset[index];
 }
-

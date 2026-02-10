@@ -6,6 +6,8 @@ import type { GridRow, MetaResponse, SearchResult } from "../lib/types";
 
 type Props = {
   meta: MetaResponse;
+  roundId: string;
+  keywordHint: string;
   rows: GridRow[];
   pending: boolean;
   isOver: boolean;
@@ -15,14 +17,17 @@ type Props = {
   onToggleTheme: () => void;
   onOpenReference: () => void;
   onGuess: (guess: SearchResult) => void;
-  onReset: () => void;
+  onGenerateKeyword: () => void;
   onDismissLimitNotice: () => void;
 };
 
 const GITHUB_REPO_URL = "https://github.com/hylkuba/DevGuess";
+const GITHUB_ISSUE_URL = "https://github.com/hylkuba/DevGuess/issues/new";
 
 export function Home({
   meta,
+  roundId,
+  keywordHint,
   rows,
   pending,
   isOver,
@@ -32,7 +37,7 @@ export function Home({
   onToggleTheme,
   onOpenReference,
   onGuess,
-  onReset,
+  onGenerateKeyword,
   onDismissLimitNotice
 }: Props) {
   const guessedIds = new Set(rows.map((row) => row.guess.id));
@@ -40,29 +45,45 @@ export function Home({
   return (
     <main className="page-shell">
       <Header
-        puzzleId={meta.puzzleId}
-        puzzleNo={meta.puzzleNo}
+        roundId={roundId}
+        keywordPoolSize={meta.keywordPoolSize}
+        pending={pending}
         theme={theme}
         onToggleTheme={onToggleTheme}
         onOpenReference={onOpenReference}
+        onGenerateKeyword={onGenerateKeyword}
       />
-      <GuessInput disabled={pending || isOver} guessedIds={guessedIds} onSubmit={onGuess} />
+      <GuessInput
+        disabled={pending || isOver}
+        guessedIds={guessedIds}
+        hintText={keywordHint}
+        hintKey={roundId}
+        onSubmit={onGuess}
+      />
       <Grid attributes={meta.attributes} rows={rows} pending={pending} />
 
       <footer className="site-footer">
         <div className="footer-row">
-          <p>{isOver ? (isSolved ? "Solved." : "Round over.") : "Keep guessing."}</p>
+          <p>Keep guessing...</p>
           <div className="footer-actions">
-            <button type="button" className="ghost-btn" onClick={onReset} disabled={pending}>
-              Reset
+            <button
+              type="button"
+              className="share-btn"
+              aria-label="Report an issue on GitHub"
+              onClick={() => {
+                window.open(GITHUB_ISSUE_URL, "_blank", "noopener,noreferrer");
+              }}
+            >
+              Report Issue
             </button>
-            <ShareButton disabled={rows.length === 0} rows={rows} attributes={meta.attributes} puzzleNo={meta.puzzleNo} theme={theme} />
+            <ShareButton disabled={false} rows={rows} attributes={meta.attributes} roundId={roundId} theme={theme} />
           </div>
         </div>
         <p className="footer-credit">
-          Open source project by hylkuba.{" "}
+          This project has been made open source by @hylkuba. Feel free to contribute to the project, I&apos;ll appreciate your
+          help.{" "}
           <a href={GITHUB_REPO_URL} target="_blank" rel="noreferrer" aria-label="Open GitHub repository">
-            GitHub
+            GitHub Repository
           </a>
         </p>
       </footer>
@@ -73,8 +94,8 @@ export function Home({
             <h3>You&apos;ve reached your limit.</h3>
             <p>Start a fresh round to try again.</p>
             <div className="limit-modal-actions">
-              <button type="button" className="ghost-btn" onClick={onReset}>
-                Reset
+              <button type="button" className="ghost-btn" onClick={onGenerateKeyword}>
+                New Keyword
               </button>
               <button type="button" className="ghost-btn" onClick={onDismissLimitNotice}>
                 Close

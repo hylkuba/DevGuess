@@ -1,6 +1,6 @@
 # DevGuess
 
-Daily Wordle-style guessing game for developer technologies, built with React + Cloudflare Pages Functions.
+Wordle-style guessing game for developer technologies, built with React + Cloudflare Pages Functions.
 
 ## Stack
 
@@ -13,12 +13,11 @@ Daily Wordle-style guessing game for developer technologies, built with React + 
 
 Required server secret:
 
-- `SECRET_SALT`: used for daily answer selection and progress token signing
+- `SECRET_SALT`: used for round answer selection and progress token signing
 
 Optional:
 
 - `DATASET_VERSION` (default `v1`)
-- `PUZZLE_EPOCH` (default `2025-01-01`)
 - `RATE_LIMIT_KV` binding for persistent rate limits (falls back to in-memory for local dev)
 
 ## Local commands

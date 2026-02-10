@@ -5,15 +5,22 @@ import type { SearchResult } from "../lib/types";
 type Props = {
   disabled: boolean;
   guessedIds: Set<string>;
+  hintText: string;
+  hintKey: string;
   onSubmit: (guess: SearchResult) => void;
 };
 
-export function GuessInput({ disabled, guessedIds, onSubmit }: Props) {
+export function GuessInput({ disabled, guessedIds, hintText, hintKey, onSubmit }: Props) {
   const [query, setQuery] = useState("");
   const [results, setResults] = useState<SearchResult[]>([]);
   const [activeIndex, setActiveIndex] = useState(0);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
+  const [showHint, setShowHint] = useState(false);
+
+  useEffect(() => {
+    setShowHint(false);
+  }, [hintKey]);
 
   useEffect(() => {
     if (!query.trim()) {
@@ -45,6 +52,7 @@ export function GuessInput({ disabled, guessedIds, onSubmit }: Props) {
   }, [activeIndex, results]);
 
   const submit = (guess: SearchResult | null) => {
+    if (disabled) return;
     if (!guess) {
       setError("Select a technology from the suggestions.");
       return;
@@ -88,10 +96,22 @@ export function GuessInput({ disabled, guessedIds, onSubmit }: Props) {
           }}
           placeholder="Type a tech name..."
         />
-        <button type="button" disabled={disabled || loading} onClick={() => submit(selectedResult)}>
-          Guess
-        </button>
+        <div className="guess-input-actions">
+          <button type="button" disabled={disabled || loading} onClick={() => submit(selectedResult)}>
+            Guess
+          </button>
+          <button
+            type="button"
+            className={`ghost-btn hint-toggle-btn ${showHint ? "hint-toggle-btn-active" : ""}`.trim()}
+            onClick={() => setShowHint((value) => !value)}
+            aria-pressed={showHint}
+            disabled={!hintText}
+          >
+            Hint
+          </button>
+        </div>
       </div>
+      {showHint ? <p className="keyword-hint-text">{hintText}</p> : null}
       {loading ? <p className="hint">Searching...</p> : null}
       {error ? <p className="error-text">{error}</p> : null}
       {results.length > 0 ? (
@@ -114,4 +134,3 @@ export function GuessInput({ disabled, guessedIds, onSubmit }: Props) {
     </div>
   );
 }
-

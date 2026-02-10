@@ -120,6 +120,13 @@ export function ReferenceGuide({ onBack }: Props) {
   const [filters, setFilters] = useState<Record<FilterKey, string[]>>(buildEmptyFilters);
   const [taxonomyColumnCount, setTaxonomyColumnCount] = useState(1);
   const taxonomyGridRef = useRef<HTMLDivElement | null>(null);
+  const termsTableWrapRef = useRef<HTMLDivElement | null>(null);
+  const termsDragStateRef = useRef({
+    active: false,
+    pointerId: -1,
+    startX: 0,
+    startScrollLeft: 0
+  });
 
   useEffect(() => {
     window.scrollTo({ left: 0, top: 0, behavior: "auto" });
@@ -389,6 +396,67 @@ export function ReferenceGuide({ onBack }: Props) {
     setDrafts(buildEmptyDrafts());
   }
 
+  function endTermsDrag(pointerId?: number): void {
+    const node = termsTableWrapRef.current;
+    if (!node) return;
+
+    if (typeof pointerId === "number" && node.hasPointerCapture(pointerId)) {
+      node.releasePointerCapture(pointerId);
+    }
+
+    node.classList.remove("guide-table-wrap-dragging");
+    termsDragStateRef.current = {
+      active: false,
+      pointerId: -1,
+      startX: 0,
+      startScrollLeft: 0
+    };
+  }
+
+  function handleTermsPointerDown(event: React.PointerEvent<HTMLDivElement>): void {
+    if (event.pointerType !== "mouse" || event.button !== 0) return;
+
+    const target = event.target;
+    if (target instanceof HTMLElement && target.closest("input, button, select, textarea, a, label")) {
+      return;
+    }
+
+    const node = termsTableWrapRef.current;
+    if (!node) return;
+
+    termsDragStateRef.current = {
+      active: true,
+      pointerId: event.pointerId,
+      startX: event.clientX,
+      startScrollLeft: node.scrollLeft
+    };
+    node.classList.add("guide-table-wrap-dragging");
+    node.setPointerCapture(event.pointerId);
+    event.preventDefault();
+  }
+
+  function handleTermsPointerMove(event: React.PointerEvent<HTMLDivElement>): void {
+    const state = termsDragStateRef.current;
+    if (!state.active || state.pointerId !== event.pointerId) return;
+
+    const node = termsTableWrapRef.current;
+    if (!node) return;
+
+    const deltaX = event.clientX - state.startX;
+    node.scrollLeft = state.startScrollLeft - deltaX;
+    event.preventDefault();
+  }
+
+  function handleTermsPointerUp(event: React.PointerEvent<HTMLDivElement>): void {
+    if (!termsDragStateRef.current.active || termsDragStateRef.current.pointerId !== event.pointerId) return;
+    endTermsDrag(event.pointerId);
+  }
+
+  function handleTermsPointerCancel(event: React.PointerEvent<HTMLDivElement>): void {
+    if (!termsDragStateRef.current.active || termsDragStateRef.current.pointerId !== event.pointerId) return;
+    endTermsDrag(event.pointerId);
+  }
+
   return (
     <main className="guide-shell">
       <header className="guide-header">
@@ -434,7 +502,14 @@ export function ReferenceGuide({ onBack }: Props) {
               </button>
             </div>
 
-            <div className="guide-table-wrap">
+            <div
+              className="guide-table-wrap"
+              ref={termsTableWrapRef}
+              onPointerDown={handleTermsPointerDown}
+              onPointerMove={handleTermsPointerMove}
+              onPointerUp={handleTermsPointerUp}
+              onPointerCancel={handleTermsPointerCancel}
+            >
               <table className="guide-table terms-table">
                 <thead>
                   <tr>

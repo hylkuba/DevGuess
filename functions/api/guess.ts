@@ -28,10 +28,6 @@ export const onRequestPost = async ({ env, request }: { env: Env; request: Reque
     });
     if (!rate.allowed) return tooManyRequests();
 
-    if (result.data.puzzleId !== dateStr) {
-      return badRequest(`Invalid puzzleId. Expected ${dateStr}.`);
-    }
-
     let payload;
     try {
       payload = await verifyProgressToken(result.data.token, env.SECRET_SALT);
@@ -39,8 +35,8 @@ export const onRequestPost = async ({ env, request }: { env: Env; request: Reque
       return unauthorized("Invalid token.");
     }
 
-    if (payload.puzzleId !== result.data.puzzleId) {
-      return badRequest("Token puzzle mismatch.");
+    if (payload.roundId !== result.data.roundId) {
+      return badRequest("Token round mismatch.");
     }
     if (payload.remaining <= 0) {
       return badRequest("No guesses remaining.");
@@ -56,7 +52,7 @@ export const onRequestPost = async ({ env, request }: { env: Env; request: Reque
 
     const answer = await selectAnswer(
       {
-        dateStr,
+        seed: payload.roundId,
         datasetVersion: env.DATASET_VERSION ?? "v1",
         secretSalt: env.SECRET_SALT
       },
@@ -70,7 +66,7 @@ export const onRequestPost = async ({ env, request }: { env: Env; request: Reque
 
     const token = await signProgressToken(
       {
-        puzzleId: payload.puzzleId,
+        roundId: payload.roundId,
         remaining,
         guessed: [...payload.guessed, guess.id],
         issuedAt: payload.issuedAt

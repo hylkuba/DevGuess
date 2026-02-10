@@ -1,13 +1,15 @@
-﻿import { useEffect, useMemo, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import { fetchMeta, startPuzzle, submitGuess } from "./lib/apiClient";
 import { clearStoredGame, loadStoredGame, saveStoredGame } from "./lib/storage";
-import type { GridRow, MetaResponse, SearchResult, StoredGame } from "./lib/types";
+import type { GridRow, MetaResponse, SearchResult, StartResponse, StoredGame } from "./lib/types";
 import { Home } from "./routes/Home";
 import { ReferenceGuide } from "./routes/ReferenceGuide";
 
 const THEME_STORAGE_KEY = "devguess.theme.v1";
 
 type RuntimeGame = {
+  roundId: string;
+  hint: string;
   token: string;
   rows: GridRow[];
   state: {
@@ -31,16 +33,18 @@ function getInitialTheme(): "light" | "dark" {
   return "light";
 }
 
-function createFreshRuntimeGame(token: string, maxGuesses: number): RuntimeGame {
+function createFreshRuntimeGame(start: StartResponse): RuntimeGame {
   return {
-    token,
+    roundId: start.roundId,
+    hint: start.hint,
+    token: start.token,
     rows: [],
     state: {
-      remaining: maxGuesses,
+      remaining: start.maxGuesses,
       isSolved: false,
       isOver: false
     },
-    maxGuesses
+    maxGuesses: start.maxGuesses
   };
 }
 
@@ -77,9 +81,12 @@ export function App() {
         const stored = loadStoredGame();
         const hasMissingValues = stored?.rows.some((row) => !row.values);
         const hasDifferentGuessCap = stored?.maxGuesses !== metaResponse.maxGuesses;
+        const hasMissingRoundContext = !stored?.roundId || !stored?.hint || !stored?.token;
 
-        if (stored && stored.puzzleId === metaResponse.puzzleId && !hasMissingValues && !hasDifferentGuessCap) {
+        if (stored && !hasMissingValues && !hasDifferentGuessCap && !hasMissingRoundContext) {
           setGame({
+            roundId: stored.roundId,
+            hint: stored.hint,
             token: stored.token,
             rows: stored.rows,
             state: stored.state,
@@ -89,12 +96,12 @@ export function App() {
         }
 
         clearStoredGame();
-        const start = await startPuzzle(metaResponse.puzzleId);
+        const start = await startPuzzle();
         if (!mounted) return;
 
-        const freshState = createFreshRuntimeGame(start.token, start.maxGuesses);
+        const freshState = createFreshRuntimeGame(start);
         setGame(freshState);
-        persistGame(metaResponse.puzzleId, freshState);
+        persistGame(freshState);
       } catch (err) {
         setError((err as Error).message);
       } finally {
@@ -127,6 +134,8 @@ export function App() {
     return (
       <Home
         meta={meta}
+        roundId={game.roundId}
+        keywordHint={game.hint}
         rows={game.rows}
         pending={pending}
         isOver={game.state.isOver}
@@ -138,8 +147,8 @@ export function App() {
         onGuess={(guess) => {
           void handleGuess(guess);
         }}
-        onReset={() => {
-          void handleReset();
+        onGenerateKeyword={() => {
+          void handleGenerateKeyword();
         }}
         onDismissLimitNotice={() => setShowLimitNotice(false)}
       />
@@ -157,19 +166,21 @@ export function App() {
       setPending(true);
       setError(null);
       const response = await submitGuess({
-        puzzleId: meta.puzzleId,
+        roundId: game.roundId,
         guessId: guess.id,
         token: game.token
       });
 
       const nextGame: RuntimeGame = {
+        roundId: game.roundId,
+        hint: game.hint,
         token: response.token,
         rows: [...game.rows, response.row],
         state: response.state,
         maxGuesses: game.maxGuesses
       };
       setGame(nextGame);
-      persistGame(meta.puzzleId, nextGame);
+      persistGame(nextGame);
     } catch (err) {
       setError((err as Error).message);
     } finally {
@@ -177,16 +188,16 @@ export function App() {
     }
   }
 
-  async function handleReset(): Promise<void> {
-    if (!meta || !game || pending) return;
+  async function handleGenerateKeyword(): Promise<void> {
+    if (!meta || pending) return;
 
     try {
       setPending(true);
       setError(null);
-      const start = await startPuzzle(meta.puzzleId);
-      const freshState = createFreshRuntimeGame(start.token, start.maxGuesses);
+      const start = await startPuzzle();
+      const freshState = createFreshRuntimeGame(start);
       setGame(freshState);
-      persistGame(meta.puzzleId, freshState);
+      persistGame(freshState);
       setShowLimitNotice(false);
       setSeenLimitToken(null);
     } catch (err) {
@@ -196,9 +207,10 @@ export function App() {
     }
   }
 
-  function persistGame(puzzleId: string, currentGame: RuntimeGame): void {
+  function persistGame(currentGame: RuntimeGame): void {
     const record: StoredGame = {
-      puzzleId,
+      roundId: currentGame.roundId,
+      hint: currentGame.hint,
       token: currentGame.token,
       rows: currentGame.rows,
       state: currentGame.state,
