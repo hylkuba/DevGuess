@@ -1,4 +1,4 @@
-﻿import type { CSSProperties } from "react";
+﻿import type { CSSProperties, FocusEvent, MouseEvent } from "react";
 import type { Cell as CellData } from "../lib/types";
 
 type Props = {
@@ -7,7 +7,7 @@ type Props = {
   attributeKey: string;
   attributeLabel: string;
   isHoverable?: boolean;
-  onGroupHover?: () => void;
+  onGroupHover?: (target: HTMLElement) => void;
   onGroupLeave?: () => void;
   revealDelayMs?: number;
 };
@@ -21,8 +21,8 @@ function getStatusAria(status: CellData["status"]): string {
 function getYearArrow(cell: CellData): "up" | "down" | null {
   const rawArrow = String(cell.hint?.arrow ?? "").trim().toLowerCase();
   if (!rawArrow) return null;
-  if (rawArrow === "^" || rawArrow === "↑" || rawArrow === "â†‘" || rawArrow === "up") return "up";
-  if (rawArrow === "v" || rawArrow === "↓" || rawArrow === "â†“" || rawArrow === "ˇ" || rawArrow === "down") return "down";
+  if (rawArrow === "^" || rawArrow === "\u2191" || rawArrow === "â†‘" || rawArrow === "up") return "up";
+  if (rawArrow === "v" || rawArrow === "\u2193" || rawArrow === "â†“" || rawArrow === "\u02c7" || rawArrow === "down") return "down";
   return null;
 }
 
@@ -40,9 +40,9 @@ export function Cell({ cell, value, attributeKey, attributeLabel, isHoverable, o
   const hasHoverGuide = Boolean(isHoverable);
   const contentProps = hasHoverGuide
     ? {
-        onMouseEnter: onGroupHover,
+        onMouseEnter: (event: MouseEvent<HTMLDivElement>) => onGroupHover?.(event.currentTarget),
         onMouseLeave: onGroupLeave,
-        onFocus: onGroupHover,
+        onFocus: (event: FocusEvent<HTMLDivElement>) => onGroupHover?.(event.currentTarget),
         onBlur: onGroupLeave,
         tabIndex: 0
       }

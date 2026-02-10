@@ -41,6 +41,7 @@ export function Home({
   onDismissLimitNotice
 }: Props) {
   const guessedIds = new Set(rows.map((row) => row.guess.id));
+  const showWelcomeBlock = rows.length === 0 && !pending;
 
   return (
     <main className="page-shell">
@@ -61,6 +62,31 @@ export function Home({
         onSubmit={onGuess}
       />
       <Grid attributes={meta.attributes} rows={rows} pending={pending} />
+      {showWelcomeBlock ? (
+        <section className="welcome-inline-slot" aria-label="Welcome to DevGuess">
+          <div className="welcome-inline">
+            <h2>Welcome to DevGuess</h2>
+            <p>Find the hidden technology keyword. Start guessing to reveal matches and narrow down the answer.</p>
+            <ul>
+              <li>Green means exact match for that column.</li>
+              <li>
+                Yellow for <code className="welcome-code">Kind</code>, <code className="welcome-code">Ecosystem</code>, and{" "}
+                <code className="welcome-code">License</code> means same parent group.
+              </li>
+              <li>
+                Yellow for <code className="welcome-code">Use</code>, <code className="welcome-code">Platform</code>, and{" "}
+                <code className="welcome-code">Runtime</code> means at least one overlap.
+              </li>
+              <li>
+                Yellow for <code className="welcome-code">Year</code> means within 5 years, with arrow direction.
+              </li>
+              <li>Gray means no useful match.</li>
+              <li>Hover green and yellow cells for extra context and tips.</li>
+              <li>Use Guide for rules and Reference DB for the full taxonomy.</li>
+            </ul>
+          </div>
+        </section>
+      ) : null}
 
       <footer className="site-footer">
         <div className="footer-row">
@@ -104,6 +130,7 @@ export function Home({
           </div>
         </div>
       ) : null}
+
     </main>
   );
 }

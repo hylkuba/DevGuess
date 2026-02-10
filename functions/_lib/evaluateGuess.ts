@@ -35,9 +35,11 @@ function formatPath(values: string[]): string {
 }
 
 export function evaluateGuess(guess: TechItem, answer: TechItem): GridRow {
+  const domainMatch = matchSet(guess.domains, answer.domains, { jaccardYellow: 0.34 });
+
   const cells = {
     kindPath: matchHierarchy(guess.kindPath, answer.kindPath, { yellowLevel: 1 }),
-    domains: matchSet(guess.domains, answer.domains, { jaccardYellow: 0.34 }),
+    domains: domainMatch.status === "yellow" ? { status: "gray" } : domainMatch,
     primaryUse: matchSet(guess.primaryUse, answer.primaryUse, { jaccardYellow: 0.34 }),
     platformTargets: matchSet(guess.platformTargets, answer.platformTargets, { jaccardYellow: 0.34 }),
     runtimes: matchSet(guess.runtimes, answer.runtimes, { jaccardYellow: 0.34 }),

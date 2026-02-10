@@ -20,7 +20,7 @@ const guideByKey: Record<string, GuideEntry> = {
   },
   domains: {
     summary: "Primary problem spaces where the technology is commonly used.",
-    detail: "This is a set comparison. Partial overlap gives a near-match signal.",
+    detail: "This is a flat set comparison (no subgroups). Green requires an exact set match; non-exact sets are gray.",
     example: "frontend, backend, cloud."
   },
   primaryUse: {
@@ -84,7 +84,7 @@ export function getDailyTip(puzzleNo: number): string {
     "Start broad: Kind and Language usually eliminate the most options first.",
     "Use Year direction as a compass before spending guesses on minor differences.",
     "When two guesses look similar, compare Steward and License to separate them.",
-    "If Domain overlaps but Runtime does not, pivot to a different ecosystem branch.",
+    "If Domains stay gray, use Kind plus Runtime to pivot to a different ecosystem branch.",
     "Framework guesses become stronger when Platform and Runtime both align."
   ];
   return tips[Math.abs(puzzleNo) % tips.length];

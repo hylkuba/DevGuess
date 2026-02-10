@@ -262,6 +262,7 @@ export function ReferenceGuide({ onBack }: Props) {
       .map(([topLevel, children]) => `${topLevel}: ${children.join(", ")}`)
       .join(" ");
     const domainsText = catalog.taxonomy.domains.map((value) => formatToken(value)).join(", ");
+    const domainsGuideText = `${domainsText} none flat taxonomy exact set no partial domain yellow`;
     const useText = catalog.taxonomy.primaryUse.map((value) => formatToken(value)).join(", ");
     const platformText = catalog.taxonomy.platformTargets.map((value) => formatToken(value)).join(", ");
     const runtimeText = catalog.taxonomy.runtimes.map((value) => formatToken(value)).join(", ");
@@ -298,9 +299,21 @@ export function ReferenceGuide({ onBack }: Props) {
       {
         key: "domains",
         title: "Domains",
-        description: "Problem spaces where this technology is commonly used.",
-        content: <p>{domainsText}</p>,
-        weight: estimateCardWeight(domainsText)
+        description: "Problem spaces where this technology is commonly used. Domains are flat values (no subgroups).",
+        content: (
+          <ul>
+            <li>
+              <strong>Values:</strong> {domainsText}
+            </li>
+            <li>
+              <strong>Subgroups:</strong> None (flat taxonomy)
+            </li>
+            <li>
+              <strong>Guessing:</strong> Green = exact domain set, gray = anything else.
+            </li>
+          </ul>
+        ),
+        weight: estimateCardWeight(domainsGuideText)
       },
       {
         key: "use",

@@ -18,9 +18,9 @@ const tokenLabels: Record<string, string> = {
   csharp: "C#"
 };
 
-type GroupGuideMap = Record<string, string[]>;
 type KindFamilyMap = Record<string, string[]>;
 type LicenseFamilyMap = Record<string, string[]>;
+type EcosystemFamilyMap = Record<string, string[]>;
 
 type HoverGuideSection = {
   title: string;
@@ -35,14 +35,20 @@ type HoverGuide = {
   sections: HoverGuideSection[];
 };
 
+type HoverPopup = {
+  guide: HoverGuide;
+  top: number;
+  left: number;
+};
+
 type HoverGuideData = {
-  groups: GroupGuideMap;
   kindFamilies: KindFamilyMap;
   licenseFamilies: LicenseFamilyMap;
   licenseToFamily: Record<string, string>;
+  ecosystemFamilies: EcosystemFamilyMap;
 };
 
-const YELLOW_CANDIDATE_ATTRIBUTES = new Set(["domains", "primaryUse", "platformTargets", "runtimes"]);
+const SET_OVERLAP_ATTRIBUTES = new Set(["domains", "primaryUse", "platformTargets", "runtimes"]);
 const LICENSE_FAMILY_TEMPLATE: Array<{ family: string; values: string[] }> = [
   { family: "Permissive", values: ["MIT", "Apache-2.0", "BSD"] },
   { family: "Copyleft", values: ["MPL", "GPL", "AGPL"] },
@@ -94,6 +100,31 @@ function splitSetValue(value: string): string[] {
   return deduped;
 }
 
+function getYearDirection(cell: CellData): "up" | "down" | null {
+  const rawArrow = String(cell.hint?.arrow ?? "").trim().toLowerCase();
+  if (!rawArrow) return null;
+  if (rawArrow === "^" || rawArrow === "\u2191" || rawArrow === "â†‘" || rawArrow === "up") return "up";
+  if (rawArrow === "v" || rawArrow === "\u2193" || rawArrow === "â†“" || rawArrow === "\u02c7" || rawArrow === "down") return "down";
+  return null;
+}
+
+function getPopupPosition(anchor: HTMLElement): { top: number; left: number } {
+  const rect = anchor.getBoundingClientRect();
+  const viewportWidth = window.innerWidth;
+  const viewportHeight = window.innerHeight;
+  const margin = 12;
+  const estimatedWidth = Math.min(560, Math.max(280, viewportWidth - margin * 2));
+  const estimatedHeight = 260;
+
+  const preferredLeft = rect.left + rect.width / 2 - estimatedWidth / 2;
+  const left = Math.min(viewportWidth - estimatedWidth - margin, Math.max(margin, preferredLeft));
+  const belowTop = rect.bottom + 10;
+  const aboveTop = rect.top - estimatedHeight - 10;
+  const top = belowTop + estimatedHeight <= viewportHeight - margin ? belowTop : Math.max(margin, aboveTop);
+
+  return { top, left };
+}
+
 function buildLicenseFamilyData(licenses: string[]): {
   licenseFamilies: LicenseFamilyMap;
   licenseToFamily: Record<string, string>;
@@ -124,6 +155,30 @@ function buildLicenseFamilyData(licenses: string[]): {
   return { licenseFamilies, licenseToFamily };
 }
 
+function buildEcosystemFamilyData(items: CatalogResponse["items"]): EcosystemFamilyMap {
+  const grouped = new Map<string, Set<string>>();
+
+  for (const item of items) {
+    const normalized = item.ecosystemPath.map((value) => formatToken(value)).filter(Boolean);
+    if (normalized.length === 0) continue;
+
+    const [parent] = normalized;
+    const fullPath = normalized.join(" > ");
+    const existing = grouped.get(parent) ?? new Set<string>();
+    existing.add(fullPath);
+    grouped.set(parent, existing);
+  }
+
+  return Object.fromEntries(
+    Array.from(grouped.entries())
+      .sort(([left], [right]) => left.localeCompare(right, undefined, { sensitivity: "base", numeric: true }))
+      .map(([parent, members]) => [
+        parent,
+        Array.from(members).sort((left, right) => left.localeCompare(right, undefined, { sensitivity: "base", numeric: true }))
+      ])
+  );
+}
+
 function buildHoverGuideData(catalog: CatalogResponse): HoverGuideData {
   const kindFamilies = Object.fromEntries(
     Object.entries(catalog.taxonomy.kindTree).map(([topLevel, children]) => [
@@ -133,32 +188,68 @@ function buildHoverGuideData(catalog: CatalogResponse): HoverGuideData {
   ) as KindFamilyMap;
   const sortedLicenses = sortedUnique(catalog.taxonomy.licenses);
   const { licenseFamilies, licenseToFamily } = buildLicenseFamilyData(sortedLicenses);
-
-  const ecosystemPaths = sortedUnique(catalog.items.map((item) => formatPath(item.ecosystemPath)));
+  const ecosystemFamilies = buildEcosystemFamilyData(catalog.items);
 
   return {
-    groups: {
-      domains: sortedUnique(catalog.taxonomy.domains.map((value) => formatToken(value))),
-      primaryUse: sortedUnique(catalog.taxonomy.primaryUse.map((value) => formatToken(value))),
-      platformTargets: sortedUnique(catalog.taxonomy.platformTargets.map((value) => formatToken(value))),
-      runtimes: sortedUnique(catalog.taxonomy.runtimes.map((value) => formatToken(value))),
-      ecosystemPath: ecosystemPaths,
-      primaryLanguage: sortedUnique(catalog.taxonomy.primaryLanguage.map((value) => formatToken(value))),
-      licenseGroup: sortedLicenses,
-      license: sortedLicenses,
-      stewardType: sortedUnique(catalog.taxonomy.stewardType.map((value) => formatToken(value))),
-      steward: sortedUnique(catalog.taxonomy.stewards),
-      openSource: ["Open Source", "Closed Source"]
-    },
     kindFamilies,
     licenseFamilies,
-    licenseToFamily
+    licenseToFamily,
+    ecosystemFamilies
   };
 }
 
-function getExactMatchMessage(status: CellStatus): string | undefined {
-  if (status !== "green") return undefined;
-  return "This is the target value.";
+function buildGreenHoverGuide(attributeLabel: string, value: string, sections: HoverGuideSection[] = []): HoverGuide {
+  return {
+    attributeLabel,
+    value,
+    message: "Correct pick.",
+    sections
+  };
+}
+
+function buildGroupedHoverGuide(params: {
+  attributeLabel: string;
+  value: string;
+  status: CellStatus;
+  parentGroup: string | null;
+  options: string[];
+}): HoverGuide | null {
+  const { attributeLabel, value, status, parentGroup, options } = params;
+  if (status === "gray") return null;
+
+  if (status === "green") {
+    const sections: HoverGuideSection[] = parentGroup
+      ? [
+          {
+            title: "Parent group",
+            items: [parentGroup]
+          }
+        ]
+      : [];
+    return buildGreenHoverGuide(attributeLabel, value, sections);
+  }
+
+  const sections: HoverGuideSection[] = [];
+  if (parentGroup) {
+    sections.push({
+      title: "Parent group",
+      items: [parentGroup]
+    });
+  }
+  if (options.length > 0) {
+    sections.push({
+      title: "Possible options",
+      items: options,
+      tone: "candidate"
+    });
+  }
+
+  return {
+    attributeLabel,
+    value,
+    message: "It is not this chosen item, however it belongs to the correct group.",
+    sections
+  };
 }
 
 function buildKindHoverGuide(params: {
@@ -168,55 +259,56 @@ function buildKindHoverGuide(params: {
   kindFamilies: KindFamilyMap;
 }): HoverGuide | null {
   const { attributeLabel, value, status, kindFamilies } = params;
-  const [groupLabel] = splitPathValue(value);
+  if (status === "gray") return null;
 
-  if (!groupLabel) {
-    const message = getExactMatchMessage(status);
-    if (!message) return null;
-    return {
-      attributeLabel,
-      value,
-      message,
-      sections: []
-    };
-  }
+  const [groupLabel, childLabel] = splitPathValue(value);
+  if (!groupLabel) return buildGreenHoverGuide(attributeLabel, value);
 
   const matchedGroup =
     Object.keys(kindFamilies).find((group) => group.localeCompare(groupLabel, undefined, { sensitivity: "base" }) === 0) ?? groupLabel;
   const groupItems = kindFamilies[matchedGroup] ?? [];
-  const message = getExactMatchMessage(status);
+  const normalizedChild = childLabel?.trim().toLowerCase();
+  const options =
+    status === "yellow"
+      ? groupItems
+          .filter((item) => item.toLowerCase() !== normalizedChild)
+          .map((item) => `${matchedGroup} > ${item}`)
+      : [];
 
-  if (groupItems.length === 0 && !message) return null;
-
-  const sections: HoverGuideSection[] = [{ title: "Belongs to group", items: [matchedGroup] }];
-  if (groupItems.length > 0) {
-    sections.push({
-      title: `${matchedGroup} items`,
-      items: groupItems
-    });
-  }
-
-  return {
+  return buildGroupedHoverGuide({
     attributeLabel,
     value,
-    message,
-    sections
-  };
+    status,
+    parentGroup: matchedGroup,
+    options
+  });
 }
 
-function buildYearHoverGuide(params: { attributeLabel: string; value: string; status: CellStatus }): HoverGuide | null {
-  const { attributeLabel, value, status } = params;
+function buildYearHoverGuide(params: {
+  attributeLabel: string;
+  value: string;
+  status: CellStatus;
+  cell: CellData;
+}): HoverGuide | null {
+  const { attributeLabel, value, status, cell } = params;
+  if (status === "gray") return null;
+
+  if (status === "green") return buildGreenHoverGuide(attributeLabel, value);
+
   const year = Number.parseInt(value, 10);
   if (!Number.isFinite(year)) return null;
 
-  const intervalStart = year - 5;
-  const intervalEnd = year + 5;
-  const message =
-    status === "green"
-      ? "This is the target year."
-      : status === "yellow"
-        ? "The answer year belongs to this interval."
-        : "The answer year does not belong to this interval.";
+  const direction = getYearDirection(cell);
+  const isNewer = direction === "up";
+  const isOlder = direction === "down";
+  const intervalStart = isOlder ? year - 5 : isNewer ? year : year - 5;
+  const intervalEnd = isNewer ? year + 5 : isOlder ? year : year + 5;
+  const message = isNewer
+    ? "Not the exact year. The answer is newer and within 5 years."
+    : isOlder
+      ? "Not the exact year. The answer is older and within 5 years."
+      : "Not the exact year, but it is within 5 years.";
+  const intervalLabel = `${Math.min(intervalStart, intervalEnd)} to ${Math.max(intervalStart, intervalEnd)}`;
 
   return {
     attributeLabel,
@@ -224,8 +316,8 @@ function buildYearHoverGuide(params: { attributeLabel: string; value: string; st
     message,
     sections: [
       {
-        title: "Checked interval",
-        items: [`${intervalStart} - ${intervalEnd}`]
+        title: "Likely interval",
+        items: [intervalLabel]
       }
     ]
   };
@@ -249,46 +341,75 @@ function buildLicenseHoverGuide(params: {
   licenseToFamily: Record<string, string>;
 }): HoverGuide | null {
   const { attributeLabel, value, status, licenseFamilies, licenseToFamily } = params;
+  if (status === "gray") return null;
+
   const family = findLicenseFamily(value, licenseToFamily);
   const familyMembers = family ? licenseFamilies[family] ?? [] : [];
-
   const normalizedValue = value.trim().toLowerCase();
-  const candidateLicenses =
-    status === "yellow" ? familyMembers.filter((member) => member.toLowerCase() !== normalizedValue) : [];
-  const message =
-    status === "green"
-      ? "This is the target license."
-      : status === "yellow"
-        ? "Same license group. At least one of these is correct."
-        : undefined;
+  const options = status === "yellow" ? familyMembers.filter((member) => member.toLowerCase() !== normalizedValue) : [];
 
-  const sections: HoverGuideSection[] = [];
-  if (family) {
-    sections.push({
-      title: "Belongs to group",
-      items: [family]
-    });
-  }
-  if (candidateLicenses.length > 0) {
-    sections.push({
-      title: "Potential correct licenses",
-      items: candidateLicenses,
-      tone: "candidate"
-    });
-  }
-  if (familyMembers.length > 0) {
-    sections.push({
-      title: `${family ?? "License"} group items`,
-      items: familyMembers
-    });
-  }
+  return buildGroupedHoverGuide({
+    attributeLabel,
+    value,
+    status,
+    parentGroup: family,
+    options
+  });
+}
 
-  if (sections.length === 0 && !message) return null;
+function buildEcosystemHoverGuide(params: {
+  attributeLabel: string;
+  value: string;
+  status: CellStatus;
+  ecosystemFamilies: EcosystemFamilyMap;
+}): HoverGuide | null {
+  const { attributeLabel, value, status, ecosystemFamilies } = params;
+  if (status === "gray") return null;
+
+  const [groupLabel] = splitPathValue(value);
+  if (!groupLabel) return buildGreenHoverGuide(attributeLabel, value);
+
+  const matchedGroup =
+    Object.keys(ecosystemFamilies).find((group) => group.localeCompare(groupLabel, undefined, { sensitivity: "base" }) === 0) ??
+    groupLabel;
+  const groupItems = ecosystemFamilies[matchedGroup] ?? [];
+  const normalizedValue = value.trim().toLowerCase();
+  const options = status === "yellow" ? groupItems.filter((item) => item.toLowerCase() !== normalizedValue) : [];
+
+  return buildGroupedHoverGuide({
+    attributeLabel,
+    value,
+    status,
+    parentGroup: matchedGroup,
+    options
+  });
+}
+
+function buildSetOverlapHoverGuide(params: {
+  attributeLabel: string;
+  value: string;
+  status: CellStatus;
+}): HoverGuide | null {
+  const { attributeLabel, value, status } = params;
+  if (status === "gray") return null;
+  if (status === "green") return buildGreenHoverGuide(attributeLabel, value);
+
+  const chosenValues = splitSetValue(value);
+  const sections: HoverGuideSection[] =
+    chosenValues.length > 0
+      ? [
+          {
+            title: "Chosen values",
+            items: chosenValues,
+            tone: "candidate"
+          }
+        ]
+      : [];
 
   return {
     attributeLabel,
     value,
-    message,
+    message: "At least one of the chosen ones is correct.",
     sections
   };
 }
@@ -301,6 +422,7 @@ function buildHoverGuide(params: {
   hoverData: HoverGuideData;
 }): HoverGuide | null {
   const { attributeKey, attributeLabel, value, cell, hoverData } = params;
+  if (cell.status === "gray") return null;
 
   if (attributeKey === "kindPath") {
     return buildKindHoverGuide({
@@ -311,11 +433,12 @@ function buildHoverGuide(params: {
     });
   }
 
-  if (attributeKey === "initialReleaseYear") {
-    return buildYearHoverGuide({
+  if (attributeKey === "ecosystemPath") {
+    return buildEcosystemHoverGuide({
       attributeLabel,
       value,
-      status: cell.status
+      status: cell.status,
+      ecosystemFamilies: hoverData.ecosystemFamilies
     });
   }
 
@@ -329,35 +452,29 @@ function buildHoverGuide(params: {
     });
   }
 
-  const items = hoverData.groups[attributeKey] ?? [];
-  const yellowCandidates =
-    cell.status === "yellow" && YELLOW_CANDIDATE_ATTRIBUTES.has(attributeKey) ? splitSetValue(value) : [];
-  const message =
-    yellowCandidates.length > 0
-      ? "At least one of these is correct."
-      : getExactMatchMessage(cell.status);
-
-  const sections: HoverGuideSection[] = [];
-  if (yellowCandidates.length > 0) {
-    sections.push({
-      title: "Potential correct picks from your guess",
-      items: yellowCandidates,
-      tone: "candidate"
+  if (attributeKey === "initialReleaseYear") {
+    return buildYearHoverGuide({
+      attributeLabel,
+      value,
+      status: cell.status,
+      cell
     });
   }
-  if (items.length > 0) {
-    sections.push({
-      title: "Possible values",
-      items
+
+  if (SET_OVERLAP_ATTRIBUTES.has(attributeKey)) {
+    return buildSetOverlapHoverGuide({
+      attributeLabel,
+      value,
+      status: cell.status
     });
   }
-  if (sections.length === 0 && !message) return null;
 
+  if (cell.status === "green") return buildGreenHoverGuide(attributeLabel, value);
   return {
     attributeLabel,
     value,
-    message,
-    sections
+    message: "At least one of the chosen ones is correct.",
+    sections: []
   };
 }
 
@@ -370,12 +487,12 @@ type Props = {
 export function Grid({ attributes, rows, pending }: Props) {
   const [revealingRowKey, setRevealingRowKey] = useState<string | null>(null);
   const [hoverData, setHoverData] = useState<HoverGuideData>({
-    groups: {},
     kindFamilies: {},
     licenseFamilies: {},
-    licenseToFamily: {}
+    licenseToFamily: {},
+    ecosystemFamilies: {}
   });
-  const [hoverGuide, setHoverGuide] = useState<HoverGuide | null>(null);
+  const [hoverPopup, setHoverPopup] = useState<HoverPopup | null>(null);
   const prevCountRef = useRef(rows.length);
 
   useEffect(() => {
@@ -390,6 +507,8 @@ export function Grid({ attributes, rows, pending }: Props) {
       setRevealingRowKey(null);
     }
 
+    setHoverPopup(null);
+
     prevCountRef.current = rows.length;
   }, [rows]);
 
@@ -403,7 +522,7 @@ export function Grid({ attributes, rows, pending }: Props) {
         setHoverData(buildHoverGuideData(catalog));
       } catch {
         if (!mounted) return;
-        setHoverData({ groups: {}, kindFamilies: {}, licenseFamilies: {}, licenseToFamily: {} });
+        setHoverData({ kindFamilies: {}, licenseFamilies: {}, licenseToFamily: {}, ecosystemFamilies: {} });
       }
     };
 
@@ -412,6 +531,19 @@ export function Grid({ attributes, rows, pending }: Props) {
       mounted = false;
     };
   }, []);
+
+  useEffect(() => {
+    if (!hoverPopup) return;
+
+    const hide = () => setHoverPopup(null);
+    window.addEventListener("scroll", hide, true);
+    window.addEventListener("resize", hide);
+
+    return () => {
+      window.removeEventListener("scroll", hide, true);
+      window.removeEventListener("resize", hide);
+    };
+  }, [hoverPopup]);
 
   const displayRows = rows.slice().reverse();
 
@@ -480,12 +612,17 @@ export function Grid({ attributes, rows, pending }: Props) {
                       isHoverable={cellHoverGuide != null}
                       onGroupHover={
                         cellHoverGuide
-                          ? () => {
-                              setHoverGuide(cellHoverGuide);
+                          ? (target) => {
+                              const position = getPopupPosition(target);
+                              setHoverPopup({
+                                guide: cellHoverGuide,
+                                top: position.top,
+                                left: position.left
+                              });
                             }
                           : undefined
                       }
-                      onGroupLeave={cellHoverGuide ? () => setHoverGuide(null) : undefined}
+                      onGroupLeave={cellHoverGuide ? () => setHoverPopup(null) : undefined}
                       revealDelayMs={isRevealingRow ? attributeIndex * REVEAL_STEP_MS : undefined}
                     />
                   );
@@ -495,20 +632,24 @@ export function Grid({ attributes, rows, pending }: Props) {
           })}
         </tbody>
       </table>
-      {hoverGuide ? (
-        <aside className="grid-hover-guide" aria-live="polite">
+      {hoverPopup ? (
+        <aside
+          className="grid-hover-guide grid-hover-popup"
+          aria-live="polite"
+          style={{ top: `${hoverPopup.top}px`, left: `${hoverPopup.left}px` }}
+        >
           <p className="grid-hover-guide-title">
-            <strong>{hoverGuide.attributeLabel}</strong> details
+            <strong>{hoverPopup.guide.attributeLabel}</strong> details
           </p>
-          <p className="grid-hover-guide-subtitle">for {hoverGuide.value}</p>
-          {hoverGuide.message ? <p className="grid-hover-guide-message">{hoverGuide.message}</p> : null}
-          {hoverGuide.sections.map((section) => (
-            <section key={`${hoverGuide.attributeLabel}:${section.title}`} className="grid-hover-guide-section">
+          <p className="grid-hover-guide-subtitle">for {hoverPopup.guide.value}</p>
+          {hoverPopup.guide.message ? <p className="grid-hover-guide-message">{hoverPopup.guide.message}</p> : null}
+          {hoverPopup.guide.sections.map((section) => (
+            <section key={`${hoverPopup.guide.attributeLabel}:${section.title}`} className="grid-hover-guide-section">
               <p className="grid-hover-guide-section-title">{section.title}</p>
               <div className="grid-hover-guide-items">
                 {section.items.map((item) => (
                   <span
-                    key={`${hoverGuide.attributeLabel}:${section.title}:${item}`}
+                    key={`${hoverPopup.guide.attributeLabel}:${section.title}:${item}`}
                     className={`grid-hover-guide-chip ${section.tone === "candidate" ? "grid-hover-guide-chip-candidate" : ""}`.trim()}
                   >
                     {item}

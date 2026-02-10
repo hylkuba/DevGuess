@@ -540,6 +540,16 @@ a {
   background: var(--panel-2);
 }
 
+.grid-hover-popup {
+  position: fixed;
+  margin: 0;
+  width: min(560px, calc(100vw - 24px));
+  max-width: calc(100vw - 24px);
+  z-index: 70;
+  box-shadow: var(--shadow);
+  pointer-events: none;
+}
+
 .grid-hover-guide-title,
 .grid-hover-guide-subtitle {
   margin: 0;
@@ -579,9 +589,9 @@ a {
   align-items: flex-start;
   flex-wrap: wrap;
   gap: 0.34rem;
-  max-height: 118px;
-  overflow: auto;
-  padding-right: 0.2rem;
+  max-height: none;
+  overflow: visible;
+  padding-right: 0;
 }
 
 .grid-hover-guide-section .grid-hover-guide-items {
@@ -673,6 +683,58 @@ a {
 
 .limit-modal-backdrop {
   z-index: 50;
+}
+
+.welcome-inline {
+  width: min(100%, 860px);
+  margin: 0;
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  background: var(--panel);
+  box-shadow: var(--shadow);
+  padding: 1rem 1.05rem;
+}
+
+.welcome-inline-slot {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 34vh;
+}
+
+.welcome-inline h2 {
+  margin: 0;
+  font-size: 1.45rem;
+  font-weight: 790;
+  text-align: center;
+}
+
+.welcome-inline p {
+  margin: 0.5rem 0 0;
+  color: var(--fg-soft);
+  text-align: center;
+}
+
+.welcome-inline ul {
+  margin: 0.7rem 0 0;
+  padding-left: 1.15rem;
+  display: grid;
+  gap: 0.34rem;
+  color: var(--fg);
+}
+
+.welcome-code {
+  display: inline-block;
+  padding: 0.08rem 0.34rem;
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  background: color-mix(in srgb, var(--accent) 16%, var(--panel-2));
+  font-family: "JetBrains Mono", "Consolas", "Fira Code", monospace;
+  font-size: 0.92em;
+  line-height: 1.15;
+  font-weight: 700;
+  color: var(--fg);
 }
 
 .share-modal {
