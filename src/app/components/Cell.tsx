@@ -6,6 +6,9 @@ type Props = {
   value?: string;
   attributeKey: string;
   attributeLabel: string;
+  groupItems?: string[];
+  onGroupHover?: () => void;
+  onGroupLeave?: () => void;
   revealDelayMs?: number;
 };
 
@@ -23,7 +26,7 @@ function getYearArrow(cell: CellData): "up" | "down" | null {
   return null;
 }
 
-export function Cell({ cell, value, attributeKey, attributeLabel, revealDelayMs }: Props) {
+export function Cell({ cell, value, attributeKey, attributeLabel, groupItems, onGroupHover, onGroupLeave, revealDelayMs }: Props) {
   if (!cell) {
     return <td className="cell cell-empty">-</td>;
   }
@@ -34,6 +37,16 @@ export function Cell({ cell, value, attributeKey, attributeLabel, revealDelayMs 
   const ariaHintPart = yearArrow ? `, year hint ${yearArrow === "up" ? "up arrow" : "down arrow"}` : "";
   const revealStyle = revealDelayMs == null ? undefined : ({ animationDelay: `${revealDelayMs}ms` } as CSSProperties);
   const finalSurfaceClass = `cell-surface cell-surface-${cell.status}`;
+  const hasGroupGuide = (groupItems?.length ?? 0) > 0;
+  const contentProps = hasGroupGuide
+    ? {
+        onMouseEnter: onGroupHover,
+        onMouseLeave: onGroupLeave,
+        onFocus: onGroupHover,
+        onBlur: onGroupLeave,
+        tabIndex: 0
+      }
+    : undefined;
 
   if (revealDelayMs != null) {
     return (
@@ -41,7 +54,7 @@ export function Cell({ cell, value, attributeKey, attributeLabel, revealDelayMs 
         <div className="cell-flip-card cell-flip-reveal" style={revealStyle}>
           <div className="cell-flip-face cell-flip-front" aria-hidden="true" />
           <div className={`cell-flip-face cell-flip-back ${finalSurfaceClass}`.trim()}>
-            <div className="cell-content">
+            <div className={`cell-content ${hasGroupGuide ? "cell-content-hoverable" : ""}`.trim()} {...contentProps}>
               <span className="cell-value">{displayValue}</span>
               {yearArrow ? <span className="cell-note">{yearArrowGlyph}</span> : null}
             </div>
@@ -54,7 +67,7 @@ export function Cell({ cell, value, attributeKey, attributeLabel, revealDelayMs 
   return (
     <td className={`cell cell-${cell.status}`.trim()} aria-label={`${attributeLabel}: ${displayValue}, ${getStatusAria(cell.status)}${ariaHintPart}`}>
       <div className={finalSurfaceClass}>
-        <div className="cell-content">
+        <div className={`cell-content ${hasGroupGuide ? "cell-content-hoverable" : ""}`.trim()} {...contentProps}>
           <span className="cell-value">{displayValue}</span>
           {yearArrow ? <span className="cell-note">{yearArrowGlyph}</span> : null}
         </div>
