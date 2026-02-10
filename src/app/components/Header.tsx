@@ -72,8 +72,11 @@ export function Header({ roundId, keywordPoolSize, pending, theme, onToggleTheme
           <ol>
             <li>Find the current hidden technology keyword.</li>
             <li>Each cell shows your guessed value for that category.</li>
-            <li>Cell colors indicate match strength between your guess and the hidden answer.</li>
-            <li>Year hints only show direction with an arrow.</li>
+            <li>Green means an exact match for that column.</li>
+            <li>Yellow for Kind, Ecosystem, and License means same parent family (not exact leaf).</li>
+            <li>Yellow for Domains, Use, Platform, and Runtime means at least one shared value.</li>
+            <li>Yellow for Year means your guess is within 5 years; arrow shows newer (up) or older (down).</li>
+            <li>Gray means no meaningful match for that column.</li>
             <li>Use the Hint button near Guess for a clue, and Reference DB for full taxonomy.</li>
           </ol>
         </section>

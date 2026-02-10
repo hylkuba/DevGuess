@@ -35,7 +35,7 @@ const filterColumns = [
 ] as const;
 
 type FilterKey = (typeof filterColumns)[number]["key"];
-type TaxonomyCard = { key: string; title: string; content: ReactNode; weight: number };
+type TaxonomyCard = { key: string; title: string; description: string; content: ReactNode; weight: number };
 
 const filterKeys = filterColumns.map((column) => column.key) as FilterKey[];
 
@@ -218,6 +218,7 @@ export function ReferenceGuide({ onBack }: Props) {
       {
         key: "kind",
         title: "Kind",
+        description: "Technology family and subtype classification.",
         content: (
           <ul>
             {Object.entries(catalog.taxonomy.kindTree).map(([topLevel, children]) => (
@@ -232,66 +233,77 @@ export function ReferenceGuide({ onBack }: Props) {
       {
         key: "domains",
         title: "Domains",
+        description: "Problem spaces where this technology is commonly used.",
         content: <p>{domainsText}</p>,
         weight: estimateCardWeight(domainsText)
       },
       {
         key: "use",
         title: "Use",
+        description: "Main tasks this technology is designed to handle.",
         content: <p>{useText}</p>,
         weight: estimateCardWeight(useText)
       },
       {
         key: "platform",
         title: "Platform",
+        description: "Where this technology is typically deployed or shipped.",
         content: <p>{platformText}</p>,
         weight: estimateCardWeight(platformText)
       },
       {
         key: "runtime",
         title: "Runtime",
+        description: "Execution environments required to run the technology.",
         content: <p>{runtimeText}</p>,
         weight: estimateCardWeight(runtimeText)
       },
       {
         key: "ecosystem",
         title: "Ecosystem",
+        description: "Language and stack lineage this technology belongs to.",
         content: <p>{ecosystemText}</p>,
         weight: estimateCardWeight(ecosystemText)
       },
       {
         key: "language",
         title: "Language",
+        description: "Primary language associated with the technology.",
         content: <p>{languageText}</p>,
         weight: estimateCardWeight(languageText)
       },
       {
         key: "license",
         title: "License",
+        description: "Software license family and terms.",
         content: <p>{licenseText}</p>,
         weight: estimateCardWeight(licenseText)
       },
       {
         key: "stewardType",
         title: "Steward Type",
+        description: "Type of organization responsible for maintenance.",
         content: <p>{stewardTypeText}</p>,
         weight: estimateCardWeight(stewardTypeText)
       },
       {
         key: "steward",
         title: "Steward",
+        description: "Primary organization or community maintaining it.",
         content: <p>{stewardText}</p>,
         weight: estimateCardWeight(stewardText)
       },
       {
         key: "year",
         title: "Year",
+        description: "Initial release-year range in this catalog.",
         content: <p>{yearText}</p>,
         weight: estimateCardWeight(yearText)
       },
       {
         key: "oss",
         title: "OSS",
+        description: "Whether the technology is open source or closed source.",
         content: <p>{ossText}</p>,
         weight: estimateCardWeight(ossText)
       }
@@ -486,6 +498,7 @@ export function ReferenceGuide({ onBack }: Props) {
                   {columnCards.map((card) => (
                     <article key={card.key} className="taxonomy-callout">
                       <h3>{card.title}</h3>
+                      <p className="taxonomy-callout-summary">{card.description}</p>
                       {card.content}
                     </article>
                   ))}
