@@ -50,7 +50,7 @@ const guideByKey: Record<string, GuideEntry> = {
   },
   licenseGroup: {
     summary: "License family and specific license.",
-    detail: "Useful when two technologies are otherwise close, especially open-source alternatives.",
+    detail: "Yellow means same license family (for example MIT/Apache/BSD). Green means exact same license.",
     example: "MIT, Apache-2.0, GPL, Proprietary."
   },
   stewardType: {
@@ -96,4 +96,3 @@ export function withGuide(attributes: PuzzleAttribute[]): Array<PuzzleAttribute 
     ...getAttributeGuide(attribute.key)
   }));
 }
-
