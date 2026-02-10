@@ -3,7 +3,7 @@
 ## Reporting a vulnerability
 
 If you discover a security issue, do not open a public issue.
-Report it privately at `security@devguess.io`.
+Report it privately at discord `@_clash_`.
 
 Please include:
 
