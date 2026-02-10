@@ -2,12 +2,32 @@
   {
     "id": "javascript",
     "name": "JavaScript",
-    "kindPath": ["Language", "General-purpose"],
-    "domains": ["frontend", "backend", "mobile"],
-    "primaryUse": ["ui", "api", "data-processing"],
-    "platformTargets": ["web", "server", "multi"],
-    "runtimes": ["browser", "node"],
-    "ecosystemPath": ["JavaScript"],
+    "kindPath": [
+      "Language",
+      "General-purpose"
+    ],
+    "domains": [
+      "frontend",
+      "backend",
+      "mobile"
+    ],
+    "primaryUse": [
+      "ui",
+      "api",
+      "data-processing"
+    ],
+    "platformTargets": [
+      "web",
+      "server",
+      "multi"
+    ],
+    "runtimes": [
+      "browser",
+      "node"
+    ],
+    "ecosystemPath": [
+      "JavaScript"
+    ],
     "primaryLanguage": "js-ts",
     "license": "Other",
     "stewardType": "standards-body",
@@ -18,12 +38,33 @@
   {
     "id": "typescript",
     "name": "TypeScript",
-    "kindPath": ["Language", "General-purpose"],
-    "domains": ["frontend", "backend", "mobile"],
-    "primaryUse": ["ui", "api", "data-processing"],
-    "platformTargets": ["web", "server", "multi"],
-    "runtimes": ["browser", "node"],
-    "ecosystemPath": ["JavaScript", "Node"],
+    "kindPath": [
+      "Language",
+      "General-purpose"
+    ],
+    "domains": [
+      "frontend",
+      "backend",
+      "mobile"
+    ],
+    "primaryUse": [
+      "ui",
+      "api",
+      "data-processing"
+    ],
+    "platformTargets": [
+      "web",
+      "server",
+      "multi"
+    ],
+    "runtimes": [
+      "browser",
+      "node"
+    ],
+    "ecosystemPath": [
+      "JavaScript",
+      "Node"
+    ],
     "primaryLanguage": "js-ts",
     "license": "Apache-2.0",
     "stewardType": "company",
@@ -34,12 +75,31 @@
   {
     "id": "python",
     "name": "Python",
-    "kindPath": ["Language", "General-purpose"],
-    "domains": ["backend", "data", "security"],
-    "primaryUse": ["api", "data-processing", "auth"],
-    "platformTargets": ["server", "desktop", "multi"],
-    "runtimes": ["python"],
-    "ecosystemPath": ["Python"],
+    "kindPath": [
+      "Language",
+      "General-purpose"
+    ],
+    "domains": [
+      "backend",
+      "data",
+      "security"
+    ],
+    "primaryUse": [
+      "api",
+      "data-processing",
+      "auth"
+    ],
+    "platformTargets": [
+      "server",
+      "desktop",
+      "multi"
+    ],
+    "runtimes": [
+      "python"
+    ],
+    "ecosystemPath": [
+      "Python"
+    ],
     "primaryLanguage": "python",
     "license": "Other",
     "stewardType": "community",
@@ -50,12 +110,33 @@
   {
     "id": "rust",
     "name": "Rust",
-    "kindPath": ["Language", "Systems"],
-    "domains": ["backend", "embedded", "devops"],
-    "primaryUse": ["networking", "data-processing", "build"],
-    "platformTargets": ["server", "embedded", "multi"],
-    "runtimes": ["native", "wasm"],
-    "ecosystemPath": ["Systems", "Rust"],
+    "kindPath": [
+      "Language",
+      "Systems"
+    ],
+    "domains": [
+      "backend",
+      "embedded",
+      "devops"
+    ],
+    "primaryUse": [
+      "networking",
+      "data-processing",
+      "build"
+    ],
+    "platformTargets": [
+      "server",
+      "embedded",
+      "multi"
+    ],
+    "runtimes": [
+      "native",
+      "wasm"
+    ],
+    "ecosystemPath": [
+      "Systems",
+      "Rust"
+    ],
     "primaryLanguage": "rust",
     "license": "MIT",
     "stewardType": "foundation",
@@ -66,12 +147,31 @@
   {
     "id": "sql",
     "name": "SQL",
-    "kindPath": ["Language", "Query/DSL"],
-    "domains": ["data", "backend"],
-    "primaryUse": ["storage", "data-processing"],
-    "platformTargets": ["server", "cloud", "multi"],
-    "runtimes": ["native", "managed-cloud"],
-    "ecosystemPath": ["Data", "SQL"],
+    "kindPath": [
+      "Language",
+      "Query/DSL"
+    ],
+    "domains": [
+      "data",
+      "backend"
+    ],
+    "primaryUse": [
+      "storage",
+      "data-processing"
+    ],
+    "platformTargets": [
+      "server",
+      "cloud",
+      "multi"
+    ],
+    "runtimes": [
+      "native",
+      "managed-cloud"
+    ],
+    "ecosystemPath": [
+      "Data",
+      "SQL"
+    ],
     "primaryLanguage": "sql",
     "license": "Other",
     "stewardType": "standards-body",
@@ -82,12 +182,28 @@
   {
     "id": "react",
     "name": "React",
-    "kindPath": ["Framework", "Frontend"],
-    "domains": ["frontend"],
-    "primaryUse": ["ui"],
-    "platformTargets": ["web", "multi"],
-    "runtimes": ["browser", "node"],
-    "ecosystemPath": ["JavaScript", "Node"],
+    "kindPath": [
+      "Framework",
+      "Frontend"
+    ],
+    "domains": [
+      "frontend"
+    ],
+    "primaryUse": [
+      "ui"
+    ],
+    "platformTargets": [
+      "web",
+      "multi"
+    ],
+    "runtimes": [
+      "browser",
+      "node"
+    ],
+    "ecosystemPath": [
+      "JavaScript",
+      "Node"
+    ],
     "primaryLanguage": "js-ts",
     "license": "MIT",
     "stewardType": "company",
@@ -98,12 +214,33 @@
   {
     "id": "nextjs",
     "name": "Next.js",
-    "kindPath": ["Framework", "Full-stack"],
-    "domains": ["frontend", "backend", "cloud"],
-    "primaryUse": ["ui", "api", "build"],
-    "platformTargets": ["web", "server", "cloud"],
-    "runtimes": ["node", "browser"],
-    "ecosystemPath": ["JavaScript", "Node"],
+    "kindPath": [
+      "Framework",
+      "Full-stack"
+    ],
+    "domains": [
+      "frontend",
+      "backend",
+      "cloud"
+    ],
+    "primaryUse": [
+      "ui",
+      "api",
+      "build"
+    ],
+    "platformTargets": [
+      "web",
+      "server",
+      "cloud"
+    ],
+    "runtimes": [
+      "node",
+      "browser"
+    ],
+    "ecosystemPath": [
+      "JavaScript",
+      "Node"
+    ],
     "primaryLanguage": "js-ts",
     "license": "MIT",
     "stewardType": "company",
@@ -114,12 +251,28 @@
   {
     "id": "express",
     "name": "Express",
-    "kindPath": ["Framework", "Backend"],
-    "domains": ["backend"],
-    "primaryUse": ["api", "networking"],
-    "platformTargets": ["server", "cloud"],
-    "runtimes": ["node"],
-    "ecosystemPath": ["JavaScript", "Node"],
+    "kindPath": [
+      "Framework",
+      "Backend"
+    ],
+    "domains": [
+      "backend"
+    ],
+    "primaryUse": [
+      "api",
+      "networking"
+    ],
+    "platformTargets": [
+      "server",
+      "cloud"
+    ],
+    "runtimes": [
+      "node"
+    ],
+    "ecosystemPath": [
+      "JavaScript",
+      "Node"
+    ],
     "primaryLanguage": "js-ts",
     "license": "MIT",
     "stewardType": "community",
@@ -130,12 +283,32 @@
   {
     "id": "flutter",
     "name": "Flutter",
-    "kindPath": ["Framework", "Mobile"],
-    "domains": ["mobile", "frontend"],
-    "primaryUse": ["ui", "build"],
-    "platformTargets": ["mobile", "desktop", "web", "multi"],
-    "runtimes": ["native", "wasm"],
-    "ecosystemPath": ["Mobile", "Dart"],
+    "kindPath": [
+      "Framework",
+      "Mobile"
+    ],
+    "domains": [
+      "mobile",
+      "frontend"
+    ],
+    "primaryUse": [
+      "ui",
+      "build"
+    ],
+    "platformTargets": [
+      "mobile",
+      "desktop",
+      "web",
+      "multi"
+    ],
+    "runtimes": [
+      "native",
+      "wasm"
+    ],
+    "ecosystemPath": [
+      "Mobile",
+      "Dart"
+    ],
     "primaryLanguage": "other",
     "license": "BSD",
     "stewardType": "company",
@@ -146,12 +319,28 @@
   {
     "id": "tailwindcss",
     "name": "Tailwind CSS",
-    "kindPath": ["Library", "UI"],
-    "domains": ["frontend"],
-    "primaryUse": ["ui", "build"],
-    "platformTargets": ["web"],
-    "runtimes": ["node", "browser"],
-    "ecosystemPath": ["JavaScript", "Node"],
+    "kindPath": [
+      "Library",
+      "UI"
+    ],
+    "domains": [
+      "frontend"
+    ],
+    "primaryUse": [
+      "ui",
+      "build"
+    ],
+    "platformTargets": [
+      "web"
+    ],
+    "runtimes": [
+      "node",
+      "browser"
+    ],
+    "ecosystemPath": [
+      "JavaScript",
+      "Node"
+    ],
     "primaryLanguage": "js-ts",
     "license": "MIT",
     "stewardType": "company",
@@ -162,12 +351,30 @@
   {
     "id": "axios",
     "name": "Axios",
-    "kindPath": ["Library", "Networking"],
-    "domains": ["frontend", "backend"],
-    "primaryUse": ["networking", "api"],
-    "platformTargets": ["web", "server"],
-    "runtimes": ["browser", "node"],
-    "ecosystemPath": ["JavaScript", "Node"],
+    "kindPath": [
+      "Library",
+      "Networking"
+    ],
+    "domains": [
+      "frontend",
+      "backend"
+    ],
+    "primaryUse": [
+      "networking",
+      "api"
+    ],
+    "platformTargets": [
+      "web",
+      "server"
+    ],
+    "runtimes": [
+      "browser",
+      "node"
+    ],
+    "ecosystemPath": [
+      "JavaScript",
+      "Node"
+    ],
     "primaryLanguage": "js-ts",
     "license": "MIT",
     "stewardType": "community",
@@ -178,12 +385,28 @@
   {
     "id": "jest",
     "name": "Jest",
-    "kindPath": ["Library", "Testing"],
-    "domains": ["frontend", "backend"],
-    "primaryUse": ["testing"],
-    "platformTargets": ["web", "server"],
-    "runtimes": ["node"],
-    "ecosystemPath": ["JavaScript", "Node"],
+    "kindPath": [
+      "Library",
+      "Testing"
+    ],
+    "domains": [
+      "frontend",
+      "backend"
+    ],
+    "primaryUse": [
+      "testing"
+    ],
+    "platformTargets": [
+      "web",
+      "server"
+    ],
+    "runtimes": [
+      "node"
+    ],
+    "ecosystemPath": [
+      "JavaScript",
+      "Node"
+    ],
     "primaryLanguage": "js-ts",
     "license": "MIT",
     "stewardType": "company",
@@ -194,12 +417,28 @@
   {
     "id": "pandas",
     "name": "Pandas",
-    "kindPath": ["Library", "Data"],
-    "domains": ["data"],
-    "primaryUse": ["data-processing", "storage"],
-    "platformTargets": ["server", "desktop", "multi"],
-    "runtimes": ["python"],
-    "ecosystemPath": ["Python"],
+    "kindPath": [
+      "Library",
+      "Data"
+    ],
+    "domains": [
+      "data"
+    ],
+    "primaryUse": [
+      "data-processing",
+      "storage"
+    ],
+    "platformTargets": [
+      "server",
+      "desktop",
+      "multi"
+    ],
+    "runtimes": [
+      "python"
+    ],
+    "ecosystemPath": [
+      "Python"
+    ],
     "primaryLanguage": "python",
     "license": "BSD",
     "stewardType": "community",
@@ -210,12 +449,30 @@
   {
     "id": "postgresql",
     "name": "PostgreSQL",
-    "kindPath": ["Database", "Relational"],
-    "domains": ["data", "backend"],
-    "primaryUse": ["storage", "api"],
-    "platformTargets": ["server", "cloud"],
-    "runtimes": ["native", "managed-cloud"],
-    "ecosystemPath": ["Data", "SQL"],
+    "kindPath": [
+      "Database",
+      "Relational"
+    ],
+    "domains": [
+      "data",
+      "backend"
+    ],
+    "primaryUse": [
+      "storage",
+      "api"
+    ],
+    "platformTargets": [
+      "server",
+      "cloud"
+    ],
+    "runtimes": [
+      "native",
+      "managed-cloud"
+    ],
+    "ecosystemPath": [
+      "Data",
+      "SQL"
+    ],
     "primaryLanguage": "sql",
     "license": "BSD",
     "stewardType": "community",
@@ -226,12 +483,30 @@
   {
     "id": "mongodb",
     "name": "MongoDB",
-    "kindPath": ["Database", "Document"],
-    "domains": ["data", "backend"],
-    "primaryUse": ["storage", "api"],
-    "platformTargets": ["server", "cloud"],
-    "runtimes": ["native", "managed-cloud"],
-    "ecosystemPath": ["Data", "NoSQL"],
+    "kindPath": [
+      "Database",
+      "Document"
+    ],
+    "domains": [
+      "data",
+      "backend"
+    ],
+    "primaryUse": [
+      "storage",
+      "api"
+    ],
+    "platformTargets": [
+      "server",
+      "cloud"
+    ],
+    "runtimes": [
+      "native",
+      "managed-cloud"
+    ],
+    "ecosystemPath": [
+      "Data",
+      "NoSQL"
+    ],
     "primaryLanguage": "other",
     "license": "Other",
     "stewardType": "company",
@@ -242,12 +517,31 @@
   {
     "id": "redis",
     "name": "Redis",
-    "kindPath": ["Database", "Key-value"],
-    "domains": ["data", "backend", "cloud"],
-    "primaryUse": ["storage", "messaging"],
-    "platformTargets": ["server", "cloud"],
-    "runtimes": ["native", "managed-cloud"],
-    "ecosystemPath": ["Data", "NoSQL"],
+    "kindPath": [
+      "Database",
+      "Key-value"
+    ],
+    "domains": [
+      "data",
+      "backend",
+      "cloud"
+    ],
+    "primaryUse": [
+      "storage",
+      "messaging"
+    ],
+    "platformTargets": [
+      "server",
+      "cloud"
+    ],
+    "runtimes": [
+      "native",
+      "managed-cloud"
+    ],
+    "ecosystemPath": [
+      "Data",
+      "NoSQL"
+    ],
     "primaryLanguage": "c",
     "license": "Other",
     "stewardType": "company",
@@ -258,12 +552,30 @@
   {
     "id": "cassandra",
     "name": "Apache Cassandra",
-    "kindPath": ["Database", "Key-value"],
-    "domains": ["data", "backend", "cloud"],
-    "primaryUse": ["storage", "messaging"],
-    "platformTargets": ["server", "cloud"],
-    "runtimes": ["jvm"],
-    "ecosystemPath": ["Data", "NoSQL"],
+    "kindPath": [
+      "Database",
+      "Key-value"
+    ],
+    "domains": [
+      "data",
+      "backend",
+      "cloud"
+    ],
+    "primaryUse": [
+      "storage",
+      "messaging"
+    ],
+    "platformTargets": [
+      "server",
+      "cloud"
+    ],
+    "runtimes": [
+      "jvm"
+    ],
+    "ecosystemPath": [
+      "Data",
+      "NoSQL"
+    ],
     "primaryLanguage": "java",
     "license": "Apache-2.0",
     "stewardType": "foundation",
@@ -274,12 +586,28 @@
   {
     "id": "vite",
     "name": "Vite",
-    "kindPath": ["Tool", "Build"],
-    "domains": ["frontend"],
-    "primaryUse": ["build", "testing"],
-    "platformTargets": ["web", "server"],
-    "runtimes": ["node"],
-    "ecosystemPath": ["JavaScript", "Node"],
+    "kindPath": [
+      "Tool",
+      "Build"
+    ],
+    "domains": [
+      "frontend"
+    ],
+    "primaryUse": [
+      "build",
+      "testing"
+    ],
+    "platformTargets": [
+      "web",
+      "server"
+    ],
+    "runtimes": [
+      "node"
+    ],
+    "ecosystemPath": [
+      "JavaScript",
+      "Node"
+    ],
     "primaryLanguage": "js-ts",
     "license": "MIT",
     "stewardType": "community",
@@ -290,12 +618,28 @@
   {
     "id": "pnpm",
     "name": "pnpm",
-    "kindPath": ["Tool", "Package manager"],
-    "domains": ["frontend", "backend"],
-    "primaryUse": ["build"],
-    "platformTargets": ["web", "server"],
-    "runtimes": ["node"],
-    "ecosystemPath": ["JavaScript", "Node"],
+    "kindPath": [
+      "Tool",
+      "Package manager"
+    ],
+    "domains": [
+      "frontend",
+      "backend"
+    ],
+    "primaryUse": [
+      "build"
+    ],
+    "platformTargets": [
+      "web",
+      "server"
+    ],
+    "runtimes": [
+      "node"
+    ],
+    "ecosystemPath": [
+      "JavaScript",
+      "Node"
+    ],
     "primaryLanguage": "js-ts",
     "license": "MIT",
     "stewardType": "community",
@@ -306,12 +650,28 @@
   {
     "id": "github-actions",
     "name": "GitHub Actions",
-    "kindPath": ["Tool", "CI/CD"],
-    "domains": ["devops", "cloud"],
-    "primaryUse": ["ci-cd", "testing", "build"],
-    "platformTargets": ["cloud"],
-    "runtimes": ["managed-cloud"],
-    "ecosystemPath": ["GitHub"],
+    "kindPath": [
+      "Tool",
+      "CI/CD"
+    ],
+    "domains": [
+      "devops",
+      "cloud"
+    ],
+    "primaryUse": [
+      "ci-cd",
+      "testing",
+      "build"
+    ],
+    "platformTargets": [
+      "cloud"
+    ],
+    "runtimes": [
+      "managed-cloud"
+    ],
+    "ecosystemPath": [
+      "GitHub"
+    ],
     "primaryLanguage": "none",
     "license": "Proprietary",
     "stewardType": "company",
@@ -322,12 +682,28 @@
   {
     "id": "terraform",
     "name": "Terraform",
-    "kindPath": ["Tool", "IaC"],
-    "domains": ["devops", "cloud"],
-    "primaryUse": ["iac"],
-    "platformTargets": ["cloud", "server"],
-    "runtimes": ["native"],
-    "ecosystemPath": ["Cloud-native", "Terraform"],
+    "kindPath": [
+      "Tool",
+      "IaC"
+    ],
+    "domains": [
+      "devops",
+      "cloud"
+    ],
+    "primaryUse": [
+      "iac"
+    ],
+    "platformTargets": [
+      "cloud",
+      "server"
+    ],
+    "runtimes": [
+      "native"
+    ],
+    "ecosystemPath": [
+      "Cloud-native",
+      "Terraform"
+    ],
     "primaryLanguage": "go",
     "license": "MPL",
     "stewardType": "company",
@@ -338,12 +714,28 @@
   {
     "id": "prometheus",
     "name": "Prometheus",
-    "kindPath": ["Tool", "Observability"],
-    "domains": ["observability", "devops"],
-    "primaryUse": ["monitoring"],
-    "platformTargets": ["server", "cloud"],
-    "runtimes": ["native"],
-    "ecosystemPath": ["Cloud-native", "Kubernetes"],
+    "kindPath": [
+      "Tool",
+      "Observability"
+    ],
+    "domains": [
+      "observability",
+      "devops"
+    ],
+    "primaryUse": [
+      "monitoring"
+    ],
+    "platformTargets": [
+      "server",
+      "cloud"
+    ],
+    "runtimes": [
+      "native"
+    ],
+    "ecosystemPath": [
+      "Cloud-native",
+      "Kubernetes"
+    ],
     "primaryLanguage": "go",
     "license": "Apache-2.0",
     "stewardType": "foundation",
@@ -354,12 +746,29 @@
   {
     "id": "git",
     "name": "Git",
-    "kindPath": ["Tool", "VCS"],
-    "domains": ["devops", "backend"],
-    "primaryUse": ["build", "ci-cd"],
-    "platformTargets": ["server", "desktop"],
-    "runtimes": ["native"],
-    "ecosystemPath": ["Developer Tools", "Git"],
+    "kindPath": [
+      "Tool",
+      "VCS"
+    ],
+    "domains": [
+      "devops",
+      "backend"
+    ],
+    "primaryUse": [
+      "build",
+      "ci-cd"
+    ],
+    "platformTargets": [
+      "server",
+      "desktop"
+    ],
+    "runtimes": [
+      "native"
+    ],
+    "ecosystemPath": [
+      "Developer Tools",
+      "Git"
+    ],
     "primaryLanguage": "c",
     "license": "GPL",
     "stewardType": "community",
@@ -370,12 +779,30 @@
   {
     "id": "docker",
     "name": "Docker",
-    "kindPath": ["Tool", "Container"],
-    "domains": ["devops", "cloud"],
-    "primaryUse": ["build", "networking"],
-    "platformTargets": ["server", "cloud", "desktop"],
-    "runtimes": ["native"],
-    "ecosystemPath": ["Cloud-native", "Container"],
+    "kindPath": [
+      "Tool",
+      "Container"
+    ],
+    "domains": [
+      "devops",
+      "cloud"
+    ],
+    "primaryUse": [
+      "build",
+      "networking"
+    ],
+    "platformTargets": [
+      "server",
+      "cloud",
+      "desktop"
+    ],
+    "runtimes": [
+      "native"
+    ],
+    "ecosystemPath": [
+      "Cloud-native",
+      "Container"
+    ],
     "primaryLanguage": "go",
     "license": "Apache-2.0",
     "stewardType": "company",
@@ -386,12 +813,31 @@
   {
     "id": "aws",
     "name": "Amazon Web Services",
-    "kindPath": ["Platform/Runtime", "Cloud platform"],
-    "domains": ["cloud", "devops", "backend"],
-    "primaryUse": ["api", "storage", "messaging", "monitoring"],
-    "platformTargets": ["cloud"],
-    "runtimes": ["managed-cloud"],
-    "ecosystemPath": ["Cloud-native", "AWS"],
+    "kindPath": [
+      "Platform/Runtime",
+      "Cloud platform"
+    ],
+    "domains": [
+      "cloud",
+      "devops",
+      "backend"
+    ],
+    "primaryUse": [
+      "api",
+      "storage",
+      "messaging",
+      "monitoring"
+    ],
+    "platformTargets": [
+      "cloud"
+    ],
+    "runtimes": [
+      "managed-cloud"
+    ],
+    "ecosystemPath": [
+      "Cloud-native",
+      "AWS"
+    ],
     "primaryLanguage": "none",
     "license": "Proprietary",
     "stewardType": "company",
@@ -402,12 +848,31 @@
   {
     "id": "cloudflare-workers",
     "name": "Cloudflare Workers",
-    "kindPath": ["Platform/Runtime", "Serverless runtime"],
-    "domains": ["cloud", "backend", "observability"],
-    "primaryUse": ["api", "networking", "monitoring"],
-    "platformTargets": ["cloud"],
-    "runtimes": ["managed-cloud", "wasm"],
-    "ecosystemPath": ["Cloud-native", "Edge"],
+    "kindPath": [
+      "Platform/Runtime",
+      "Serverless runtime"
+    ],
+    "domains": [
+      "cloud",
+      "backend",
+      "observability"
+    ],
+    "primaryUse": [
+      "api",
+      "networking",
+      "monitoring"
+    ],
+    "platformTargets": [
+      "cloud"
+    ],
+    "runtimes": [
+      "managed-cloud",
+      "wasm"
+    ],
+    "ecosystemPath": [
+      "Cloud-native",
+      "Edge"
+    ],
     "primaryLanguage": "none",
     "license": "Proprietary",
     "stewardType": "company",
@@ -418,12 +883,30 @@
   {
     "id": "http",
     "name": "HTTP",
-    "kindPath": ["Protocol/Standard", "Network protocol"],
-    "domains": ["frontend", "backend", "cloud"],
-    "primaryUse": ["networking", "api"],
-    "platformTargets": ["multi"],
-    "runtimes": ["native", "managed-cloud"],
-    "ecosystemPath": ["Network", "HTTP"],
+    "kindPath": [
+      "Protocol/Standard",
+      "Network protocol"
+    ],
+    "domains": [
+      "frontend",
+      "backend",
+      "cloud"
+    ],
+    "primaryUse": [
+      "networking",
+      "api"
+    ],
+    "platformTargets": [
+      "multi"
+    ],
+    "runtimes": [
+      "native",
+      "managed-cloud"
+    ],
+    "ecosystemPath": [
+      "Network",
+      "HTTP"
+    ],
     "primaryLanguage": "none",
     "license": "Other",
     "stewardType": "standards-body",
@@ -434,12 +917,32 @@
   {
     "id": "webassembly",
     "name": "WebAssembly",
-    "kindPath": ["Protocol/Standard", "Web standard"],
-    "domains": ["frontend", "embedded", "backend"],
-    "primaryUse": ["data-processing", "build"],
-    "platformTargets": ["web", "server", "embedded", "multi"],
-    "runtimes": ["wasm"],
-    "ecosystemPath": ["Web", "WASM"],
+    "kindPath": [
+      "Protocol/Standard",
+      "Web standard"
+    ],
+    "domains": [
+      "frontend",
+      "embedded",
+      "backend"
+    ],
+    "primaryUse": [
+      "data-processing",
+      "build"
+    ],
+    "platformTargets": [
+      "web",
+      "server",
+      "embedded",
+      "multi"
+    ],
+    "runtimes": [
+      "wasm"
+    ],
+    "ecosystemPath": [
+      "Web",
+      "WASM"
+    ],
     "primaryLanguage": "none",
     "license": "Other",
     "stewardType": "standards-body",
@@ -450,17 +953,5124 @@
   {
     "id": "oauth2",
     "name": "OAuth 2.0",
-    "kindPath": ["Protocol/Standard", "Network protocol"],
-    "domains": ["security", "backend", "cloud"],
-    "primaryUse": ["auth", "networking", "api"],
-    "platformTargets": ["web", "server", "cloud", "multi"],
-    "runtimes": ["native", "managed-cloud"],
-    "ecosystemPath": ["Security", "Auth"],
+    "kindPath": [
+      "Protocol/Standard",
+      "Network protocol"
+    ],
+    "domains": [
+      "security",
+      "backend",
+      "cloud"
+    ],
+    "primaryUse": [
+      "auth",
+      "networking",
+      "api"
+    ],
+    "platformTargets": [
+      "web",
+      "server",
+      "cloud",
+      "multi"
+    ],
+    "runtimes": [
+      "native",
+      "managed-cloud"
+    ],
+    "ecosystemPath": [
+      "Security",
+      "Auth"
+    ],
     "primaryLanguage": "none",
     "license": "Other",
     "stewardType": "standards-body",
     "steward": "IETF",
     "initialReleaseYear": 2012,
     "openSource": false
+  },
+  {
+    "id": "java-lang",
+    "name": "Java",
+    "kindPath": [
+      "Language",
+      "General-purpose"
+    ],
+    "domains": [
+      "backend",
+      "data"
+    ],
+    "primaryUse": [
+      "api",
+      "data-processing",
+      "build"
+    ],
+    "platformTargets": [
+      "server",
+      "desktop",
+      "multi"
+    ],
+    "runtimes": [
+      "jvm"
+    ],
+    "ecosystemPath": [
+      "Java"
+    ],
+    "primaryLanguage": "java",
+    "license": "Other",
+    "stewardType": "company",
+    "steward": "Other",
+    "initialReleaseYear": 1995,
+    "openSource": false
+  },
+  {
+    "id": "c-language",
+    "name": "C",
+    "kindPath": [
+      "Language",
+      "Systems"
+    ],
+    "domains": [
+      "backend",
+      "embedded"
+    ],
+    "primaryUse": [
+      "build",
+      "data-processing",
+      "networking"
+    ],
+    "platformTargets": [
+      "server",
+      "embedded",
+      "multi"
+    ],
+    "runtimes": [
+      "native"
+    ],
+    "ecosystemPath": [
+      "Systems",
+      "C"
+    ],
+    "primaryLanguage": "c",
+    "license": "Other",
+    "stewardType": "standards-body",
+    "steward": "Other",
+    "initialReleaseYear": 1972,
+    "openSource": false
+  },
+  {
+    "id": "cpp-language",
+    "name": "C++",
+    "kindPath": [
+      "Language",
+      "Systems"
+    ],
+    "domains": [
+      "backend",
+      "embedded",
+      "gamedev"
+    ],
+    "primaryUse": [
+      "build",
+      "data-processing",
+      "networking"
+    ],
+    "platformTargets": [
+      "server",
+      "embedded",
+      "multi"
+    ],
+    "runtimes": [
+      "native"
+    ],
+    "ecosystemPath": [
+      "Systems",
+      "C++"
+    ],
+    "primaryLanguage": "cpp",
+    "license": "Other",
+    "stewardType": "standards-body",
+    "steward": "Other",
+    "initialReleaseYear": 1985,
+    "openSource": false
+  },
+  {
+    "id": "csharp-language",
+    "name": "C#",
+    "kindPath": [
+      "Language",
+      "General-purpose"
+    ],
+    "domains": [
+      "backend",
+      "mobile",
+      "data"
+    ],
+    "primaryUse": [
+      "api",
+      "data-processing",
+      "build"
+    ],
+    "platformTargets": [
+      "server",
+      "desktop",
+      "multi"
+    ],
+    "runtimes": [
+      "dotnet"
+    ],
+    "ecosystemPath": [
+      "DotNet",
+      "C#"
+    ],
+    "primaryLanguage": "csharp",
+    "license": "Other",
+    "stewardType": "company",
+    "steward": "Microsoft",
+    "initialReleaseYear": 2000,
+    "openSource": false
+  },
+  {
+    "id": "go-language",
+    "name": "Go",
+    "kindPath": [
+      "Language",
+      "Systems"
+    ],
+    "domains": [
+      "backend",
+      "cloud",
+      "devops"
+    ],
+    "primaryUse": [
+      "networking",
+      "api",
+      "build"
+    ],
+    "platformTargets": [
+      "server",
+      "cloud",
+      "multi"
+    ],
+    "runtimes": [
+      "native"
+    ],
+    "ecosystemPath": [
+      "Go"
+    ],
+    "primaryLanguage": "go",
+    "license": "BSD",
+    "stewardType": "company",
+    "steward": "Google",
+    "initialReleaseYear": 2009,
+    "openSource": true
+  },
+  {
+    "id": "ruby-language",
+    "name": "Ruby",
+    "kindPath": [
+      "Language",
+      "Scripting"
+    ],
+    "domains": [
+      "backend"
+    ],
+    "primaryUse": [
+      "api",
+      "data-processing",
+      "build"
+    ],
+    "platformTargets": [
+      "server",
+      "desktop",
+      "multi"
+    ],
+    "runtimes": [
+      "native"
+    ],
+    "ecosystemPath": [
+      "Ruby"
+    ],
+    "primaryLanguage": "ruby",
+    "license": "Other",
+    "stewardType": "community",
+    "steward": "Community",
+    "initialReleaseYear": 1995,
+    "openSource": true
+  },
+  {
+    "id": "php-language",
+    "name": "PHP",
+    "kindPath": [
+      "Language",
+      "Scripting"
+    ],
+    "domains": [
+      "backend"
+    ],
+    "primaryUse": [
+      "api",
+      "networking",
+      "data-processing"
+    ],
+    "platformTargets": [
+      "server",
+      "cloud",
+      "multi"
+    ],
+    "runtimes": [
+      "native"
+    ],
+    "ecosystemPath": [
+      "PHP"
+    ],
+    "primaryLanguage": "php",
+    "license": "Other",
+    "stewardType": "community",
+    "steward": "Community",
+    "initialReleaseYear": 1995,
+    "openSource": true
+  },
+  {
+    "id": "kotlin-language",
+    "name": "Kotlin",
+    "kindPath": [
+      "Language",
+      "General-purpose"
+    ],
+    "domains": [
+      "backend",
+      "mobile"
+    ],
+    "primaryUse": [
+      "api",
+      "data-processing",
+      "build"
+    ],
+    "platformTargets": [
+      "server",
+      "mobile",
+      "multi"
+    ],
+    "runtimes": [
+      "jvm",
+      "native"
+    ],
+    "ecosystemPath": [
+      "JVM",
+      "Kotlin"
+    ],
+    "primaryLanguage": "kotlin",
+    "license": "Apache-2.0",
+    "stewardType": "company",
+    "steward": "JetBrains",
+    "initialReleaseYear": 2011,
+    "openSource": true
+  },
+  {
+    "id": "swift-language",
+    "name": "Swift",
+    "kindPath": [
+      "Language",
+      "General-purpose"
+    ],
+    "domains": [
+      "mobile",
+      "frontend"
+    ],
+    "primaryUse": [
+      "ui",
+      "api",
+      "data-processing"
+    ],
+    "platformTargets": [
+      "mobile",
+      "desktop",
+      "multi"
+    ],
+    "runtimes": [
+      "native"
+    ],
+    "ecosystemPath": [
+      "Apple",
+      "Swift"
+    ],
+    "primaryLanguage": "swift",
+    "license": "Apache-2.0",
+    "stewardType": "company",
+    "steward": "Apple",
+    "initialReleaseYear": 2014,
+    "openSource": true
+  },
+  {
+    "id": "dart-language",
+    "name": "Dart",
+    "kindPath": [
+      "Language",
+      "General-purpose"
+    ],
+    "domains": [
+      "mobile",
+      "frontend"
+    ],
+    "primaryUse": [
+      "ui",
+      "api",
+      "build"
+    ],
+    "platformTargets": [
+      "mobile",
+      "web",
+      "desktop",
+      "multi"
+    ],
+    "runtimes": [
+      "native",
+      "wasm"
+    ],
+    "ecosystemPath": [
+      "Mobile",
+      "Dart"
+    ],
+    "primaryLanguage": "other",
+    "license": "BSD",
+    "stewardType": "company",
+    "steward": "Google",
+    "initialReleaseYear": 2011,
+    "openSource": true
+  },
+  {
+    "id": "r-language",
+    "name": "R",
+    "kindPath": [
+      "Language",
+      "Scripting"
+    ],
+    "domains": [
+      "data"
+    ],
+    "primaryUse": [
+      "data-processing"
+    ],
+    "platformTargets": [
+      "desktop",
+      "server",
+      "multi"
+    ],
+    "runtimes": [
+      "native"
+    ],
+    "ecosystemPath": [
+      "Data",
+      "R"
+    ],
+    "primaryLanguage": "other",
+    "license": "GPL",
+    "stewardType": "community",
+    "steward": "Community",
+    "initialReleaseYear": 1993,
+    "openSource": true
+  },
+  {
+    "id": "scala-language",
+    "name": "Scala",
+    "kindPath": [
+      "Language",
+      "General-purpose"
+    ],
+    "domains": [
+      "backend",
+      "data"
+    ],
+    "primaryUse": [
+      "api",
+      "data-processing",
+      "build"
+    ],
+    "platformTargets": [
+      "server",
+      "desktop",
+      "multi"
+    ],
+    "runtimes": [
+      "jvm"
+    ],
+    "ecosystemPath": [
+      "JVM",
+      "Scala"
+    ],
+    "primaryLanguage": "other",
+    "license": "BSD",
+    "stewardType": "community",
+    "steward": "Community",
+    "initialReleaseYear": 2004,
+    "openSource": true
+  },
+  {
+    "id": "haskell-language",
+    "name": "Haskell",
+    "kindPath": [
+      "Language",
+      "General-purpose"
+    ],
+    "domains": [
+      "backend",
+      "data"
+    ],
+    "primaryUse": [
+      "api",
+      "data-processing",
+      "build"
+    ],
+    "platformTargets": [
+      "server",
+      "desktop",
+      "multi"
+    ],
+    "runtimes": [
+      "native"
+    ],
+    "ecosystemPath": [
+      "Functional",
+      "Haskell"
+    ],
+    "primaryLanguage": "other",
+    "license": "Other",
+    "stewardType": "community",
+    "steward": "Community",
+    "initialReleaseYear": 1990,
+    "openSource": true
+  },
+  {
+    "id": "lua-language",
+    "name": "Lua",
+    "kindPath": [
+      "Language",
+      "Scripting"
+    ],
+    "domains": [
+      "gamedev",
+      "embedded"
+    ],
+    "primaryUse": [
+      "data-processing",
+      "build"
+    ],
+    "platformTargets": [
+      "embedded",
+      "desktop",
+      "multi"
+    ],
+    "runtimes": [
+      "native"
+    ],
+    "ecosystemPath": [
+      "Scripting",
+      "Lua"
+    ],
+    "primaryLanguage": "other",
+    "license": "MIT",
+    "stewardType": "community",
+    "steward": "Community",
+    "initialReleaseYear": 1993,
+    "openSource": true
+  },
+  {
+    "id": "perl-language",
+    "name": "Perl",
+    "kindPath": [
+      "Language",
+      "Scripting"
+    ],
+    "domains": [
+      "backend",
+      "devops"
+    ],
+    "primaryUse": [
+      "networking",
+      "data-processing",
+      "build"
+    ],
+    "platformTargets": [
+      "server",
+      "desktop",
+      "multi"
+    ],
+    "runtimes": [
+      "native"
+    ],
+    "ecosystemPath": [
+      "Scripting",
+      "Perl"
+    ],
+    "primaryLanguage": "other",
+    "license": "GPL",
+    "stewardType": "community",
+    "steward": "Community",
+    "initialReleaseYear": 1987,
+    "openSource": true
+  },
+  {
+    "id": "elixir-language",
+    "name": "Elixir",
+    "kindPath": [
+      "Language",
+      "General-purpose"
+    ],
+    "domains": [
+      "backend",
+      "devops"
+    ],
+    "primaryUse": [
+      "api",
+      "messaging",
+      "data-processing"
+    ],
+    "platformTargets": [
+      "server",
+      "cloud",
+      "multi"
+    ],
+    "runtimes": [
+      "native"
+    ],
+    "ecosystemPath": [
+      "Erlang",
+      "BEAM"
+    ],
+    "primaryLanguage": "other",
+    "license": "Apache-2.0",
+    "stewardType": "community",
+    "steward": "Community",
+    "initialReleaseYear": 2011,
+    "openSource": true
+  },
+  {
+    "id": "clojure-language",
+    "name": "Clojure",
+    "kindPath": [
+      "Language",
+      "General-purpose"
+    ],
+    "domains": [
+      "backend",
+      "data"
+    ],
+    "primaryUse": [
+      "api",
+      "data-processing",
+      "build"
+    ],
+    "platformTargets": [
+      "server",
+      "desktop",
+      "multi"
+    ],
+    "runtimes": [
+      "jvm"
+    ],
+    "ecosystemPath": [
+      "JVM",
+      "Clojure"
+    ],
+    "primaryLanguage": "other",
+    "license": "Other",
+    "stewardType": "company",
+    "steward": "Other",
+    "initialReleaseYear": 2007,
+    "openSource": true
+  },
+  {
+    "id": "fsharp-language",
+    "name": "F#",
+    "kindPath": [
+      "Language",
+      "General-purpose"
+    ],
+    "domains": [
+      "backend",
+      "data"
+    ],
+    "primaryUse": [
+      "api",
+      "data-processing",
+      "build"
+    ],
+    "platformTargets": [
+      "server",
+      "desktop",
+      "multi"
+    ],
+    "runtimes": [
+      "dotnet"
+    ],
+    "ecosystemPath": [
+      "DotNet",
+      "F#"
+    ],
+    "primaryLanguage": "other",
+    "license": "Other",
+    "stewardType": "company",
+    "steward": "Microsoft",
+    "initialReleaseYear": 2005,
+    "openSource": true
+  },
+  {
+    "id": "objective-c-language",
+    "name": "Objective-C",
+    "kindPath": [
+      "Language",
+      "General-purpose"
+    ],
+    "domains": [
+      "mobile",
+      "frontend"
+    ],
+    "primaryUse": [
+      "ui",
+      "api",
+      "data-processing"
+    ],
+    "platformTargets": [
+      "mobile",
+      "desktop",
+      "multi"
+    ],
+    "runtimes": [
+      "native"
+    ],
+    "ecosystemPath": [
+      "Apple",
+      "Objective-C"
+    ],
+    "primaryLanguage": "other",
+    "license": "Other",
+    "stewardType": "company",
+    "steward": "Apple",
+    "initialReleaseYear": 1984,
+    "openSource": false
+  },
+  {
+    "id": "groovy-language",
+    "name": "Groovy",
+    "kindPath": [
+      "Language",
+      "Scripting"
+    ],
+    "domains": [
+      "backend",
+      "devops"
+    ],
+    "primaryUse": [
+      "build",
+      "api",
+      "data-processing"
+    ],
+    "platformTargets": [
+      "server",
+      "multi"
+    ],
+    "runtimes": [
+      "jvm"
+    ],
+    "ecosystemPath": [
+      "JVM",
+      "Groovy"
+    ],
+    "primaryLanguage": "other",
+    "license": "Apache-2.0",
+    "stewardType": "foundation",
+    "steward": "Apache",
+    "initialReleaseYear": 2003,
+    "openSource": true
+  },
+  {
+    "id": "julia-language",
+    "name": "Julia",
+    "kindPath": [
+      "Language",
+      "General-purpose"
+    ],
+    "domains": [
+      "data"
+    ],
+    "primaryUse": [
+      "data-processing",
+      "build"
+    ],
+    "platformTargets": [
+      "server",
+      "desktop",
+      "multi"
+    ],
+    "runtimes": [
+      "native"
+    ],
+    "ecosystemPath": [
+      "Data",
+      "Julia"
+    ],
+    "primaryLanguage": "other",
+    "license": "MIT",
+    "stewardType": "community",
+    "steward": "Community",
+    "initialReleaseYear": 2012,
+    "openSource": true
+  },
+  {
+    "id": "erlang-language",
+    "name": "Erlang",
+    "kindPath": [
+      "Language",
+      "General-purpose"
+    ],
+    "domains": [
+      "backend",
+      "devops"
+    ],
+    "primaryUse": [
+      "networking",
+      "messaging",
+      "api"
+    ],
+    "platformTargets": [
+      "server",
+      "cloud",
+      "multi"
+    ],
+    "runtimes": [
+      "native"
+    ],
+    "ecosystemPath": [
+      "Erlang"
+    ],
+    "primaryLanguage": "other",
+    "license": "Apache-2.0",
+    "stewardType": "company",
+    "steward": "Other",
+    "initialReleaseYear": 1986,
+    "openSource": true
+  },
+  {
+    "id": "ocaml-language",
+    "name": "OCaml",
+    "kindPath": [
+      "Language",
+      "General-purpose"
+    ],
+    "domains": [
+      "backend",
+      "data"
+    ],
+    "primaryUse": [
+      "data-processing",
+      "build",
+      "api"
+    ],
+    "platformTargets": [
+      "server",
+      "desktop",
+      "multi"
+    ],
+    "runtimes": [
+      "native"
+    ],
+    "ecosystemPath": [
+      "Functional",
+      "OCaml"
+    ],
+    "primaryLanguage": "other",
+    "license": "Other",
+    "stewardType": "community",
+    "steward": "Community",
+    "initialReleaseYear": 1996,
+    "openSource": true
+  },
+  {
+    "id": "fortran-language",
+    "name": "Fortran",
+    "kindPath": [
+      "Language",
+      "General-purpose"
+    ],
+    "domains": [
+      "data",
+      "embedded"
+    ],
+    "primaryUse": [
+      "data-processing"
+    ],
+    "platformTargets": [
+      "server",
+      "desktop",
+      "multi"
+    ],
+    "runtimes": [
+      "native"
+    ],
+    "ecosystemPath": [
+      "Scientific",
+      "Fortran"
+    ],
+    "primaryLanguage": "other",
+    "license": "Other",
+    "stewardType": "standards-body",
+    "steward": "Other",
+    "initialReleaseYear": 1957,
+    "openSource": false
+  },
+  {
+    "id": "cobol-language",
+    "name": "COBOL",
+    "kindPath": [
+      "Language",
+      "General-purpose"
+    ],
+    "domains": [
+      "backend",
+      "data"
+    ],
+    "primaryUse": [
+      "data-processing",
+      "api"
+    ],
+    "platformTargets": [
+      "server",
+      "multi"
+    ],
+    "runtimes": [
+      "native"
+    ],
+    "ecosystemPath": [
+      "Enterprise",
+      "COBOL"
+    ],
+    "primaryLanguage": "other",
+    "license": "Other",
+    "stewardType": "standards-body",
+    "steward": "Other",
+    "initialReleaseYear": 1959,
+    "openSource": false
+  },
+  {
+    "id": "zig-language",
+    "name": "Zig",
+    "kindPath": [
+      "Language",
+      "Systems"
+    ],
+    "domains": [
+      "backend",
+      "embedded"
+    ],
+    "primaryUse": [
+      "build",
+      "data-processing",
+      "networking"
+    ],
+    "platformTargets": [
+      "server",
+      "embedded",
+      "multi"
+    ],
+    "runtimes": [
+      "native"
+    ],
+    "ecosystemPath": [
+      "Systems",
+      "Zig"
+    ],
+    "primaryLanguage": "other",
+    "license": "MIT",
+    "stewardType": "community",
+    "steward": "Community",
+    "initialReleaseYear": 2016,
+    "openSource": true
+  },
+  {
+    "id": "nim-language",
+    "name": "Nim",
+    "kindPath": [
+      "Language",
+      "Systems"
+    ],
+    "domains": [
+      "backend",
+      "embedded"
+    ],
+    "primaryUse": [
+      "build",
+      "data-processing",
+      "api"
+    ],
+    "platformTargets": [
+      "server",
+      "embedded",
+      "multi"
+    ],
+    "runtimes": [
+      "native"
+    ],
+    "ecosystemPath": [
+      "Systems",
+      "Nim"
+    ],
+    "primaryLanguage": "other",
+    "license": "MIT",
+    "stewardType": "community",
+    "steward": "Community",
+    "initialReleaseYear": 2008,
+    "openSource": true
+  },
+  {
+    "id": "powershell-language",
+    "name": "PowerShell",
+    "kindPath": [
+      "Language",
+      "Scripting"
+    ],
+    "domains": [
+      "backend",
+      "devops"
+    ],
+    "primaryUse": [
+      "build",
+      "networking",
+      "iac"
+    ],
+    "platformTargets": [
+      "server",
+      "desktop",
+      "multi"
+    ],
+    "runtimes": [
+      "dotnet"
+    ],
+    "ecosystemPath": [
+      "DotNet",
+      "PowerShell"
+    ],
+    "primaryLanguage": "other",
+    "license": "MIT",
+    "stewardType": "company",
+    "steward": "Microsoft",
+    "initialReleaseYear": 2006,
+    "openSource": true
+  },
+  {
+    "id": "bash-language",
+    "name": "Bash",
+    "kindPath": [
+      "Language",
+      "Scripting"
+    ],
+    "domains": [
+      "backend",
+      "devops"
+    ],
+    "primaryUse": [
+      "build",
+      "networking",
+      "ci-cd"
+    ],
+    "platformTargets": [
+      "server",
+      "desktop",
+      "multi"
+    ],
+    "runtimes": [
+      "native"
+    ],
+    "ecosystemPath": [
+      "Unix",
+      "Shell"
+    ],
+    "primaryLanguage": "other",
+    "license": "GPL",
+    "stewardType": "community",
+    "steward": "Community",
+    "initialReleaseYear": 1989,
+    "openSource": true
+  },
+  {
+    "id": "visual-basic-language",
+    "name": "Visual Basic",
+    "kindPath": [
+      "Language",
+      "General-purpose"
+    ],
+    "domains": [
+      "backend",
+      "frontend"
+    ],
+    "primaryUse": [
+      "api",
+      "data-processing",
+      "build"
+    ],
+    "platformTargets": [
+      "server",
+      "desktop",
+      "multi"
+    ],
+    "runtimes": [
+      "dotnet"
+    ],
+    "ecosystemPath": [
+      "DotNet",
+      "Visual Basic"
+    ],
+    "primaryLanguage": "other",
+    "license": "Other",
+    "stewardType": "company",
+    "steward": "Microsoft",
+    "initialReleaseYear": 1991,
+    "openSource": false
+  },
+  {
+    "id": "angular",
+    "name": "Angular",
+    "kindPath": [
+      "Framework",
+      "Frontend"
+    ],
+    "domains": [
+      "frontend"
+    ],
+    "primaryUse": [
+      "ui"
+    ],
+    "platformTargets": [
+      "web",
+      "multi"
+    ],
+    "runtimes": [
+      "browser",
+      "node"
+    ],
+    "ecosystemPath": [
+      "JavaScript",
+      "Node"
+    ],
+    "primaryLanguage": "js-ts",
+    "license": "MIT",
+    "stewardType": "company",
+    "steward": "Google",
+    "initialReleaseYear": 2016,
+    "openSource": true
+  },
+  {
+    "id": "vuejs",
+    "name": "Vue.js",
+    "kindPath": [
+      "Framework",
+      "Frontend"
+    ],
+    "domains": [
+      "frontend"
+    ],
+    "primaryUse": [
+      "ui"
+    ],
+    "platformTargets": [
+      "web",
+      "multi"
+    ],
+    "runtimes": [
+      "browser",
+      "node"
+    ],
+    "ecosystemPath": [
+      "JavaScript",
+      "Node"
+    ],
+    "primaryLanguage": "js-ts",
+    "license": "MIT",
+    "stewardType": "community",
+    "steward": "Community",
+    "initialReleaseYear": 2014,
+    "openSource": true
+  },
+  {
+    "id": "svelte",
+    "name": "Svelte",
+    "kindPath": [
+      "Framework",
+      "Frontend"
+    ],
+    "domains": [
+      "frontend"
+    ],
+    "primaryUse": [
+      "ui",
+      "build"
+    ],
+    "platformTargets": [
+      "web",
+      "multi"
+    ],
+    "runtimes": [
+      "browser",
+      "node"
+    ],
+    "ecosystemPath": [
+      "JavaScript",
+      "Node"
+    ],
+    "primaryLanguage": "js-ts",
+    "license": "MIT",
+    "stewardType": "community",
+    "steward": "Community",
+    "initialReleaseYear": 2016,
+    "openSource": true
+  },
+  {
+    "id": "nuxt",
+    "name": "Nuxt",
+    "kindPath": [
+      "Framework",
+      "Full-stack"
+    ],
+    "domains": [
+      "frontend",
+      "backend",
+      "cloud"
+    ],
+    "primaryUse": [
+      "ui",
+      "api",
+      "build"
+    ],
+    "platformTargets": [
+      "web",
+      "server",
+      "cloud"
+    ],
+    "runtimes": [
+      "browser",
+      "node"
+    ],
+    "ecosystemPath": [
+      "JavaScript",
+      "Node"
+    ],
+    "primaryLanguage": "js-ts",
+    "license": "MIT",
+    "stewardType": "company",
+    "steward": "Other",
+    "initialReleaseYear": 2016,
+    "openSource": true
+  },
+  {
+    "id": "remix",
+    "name": "Remix",
+    "kindPath": [
+      "Framework",
+      "Full-stack"
+    ],
+    "domains": [
+      "frontend",
+      "backend",
+      "cloud"
+    ],
+    "primaryUse": [
+      "ui",
+      "api"
+    ],
+    "platformTargets": [
+      "web",
+      "server",
+      "cloud"
+    ],
+    "runtimes": [
+      "browser",
+      "node"
+    ],
+    "ecosystemPath": [
+      "JavaScript",
+      "Node"
+    ],
+    "primaryLanguage": "js-ts",
+    "license": "MIT",
+    "stewardType": "company",
+    "steward": "Other",
+    "initialReleaseYear": 2021,
+    "openSource": true
+  },
+  {
+    "id": "nestjs",
+    "name": "NestJS",
+    "kindPath": [
+      "Framework",
+      "Backend"
+    ],
+    "domains": [
+      "backend",
+      "cloud"
+    ],
+    "primaryUse": [
+      "api",
+      "networking"
+    ],
+    "platformTargets": [
+      "server",
+      "cloud"
+    ],
+    "runtimes": [
+      "browser",
+      "node"
+    ],
+    "ecosystemPath": [
+      "JavaScript",
+      "Node"
+    ],
+    "primaryLanguage": "js-ts",
+    "license": "MIT",
+    "stewardType": "community",
+    "steward": "Community",
+    "initialReleaseYear": 2017,
+    "openSource": true
+  },
+  {
+    "id": "django",
+    "name": "Django",
+    "kindPath": [
+      "Framework",
+      "Backend"
+    ],
+    "domains": [
+      "backend",
+      "data"
+    ],
+    "primaryUse": [
+      "api",
+      "auth"
+    ],
+    "platformTargets": [
+      "server",
+      "cloud"
+    ],
+    "runtimes": [
+      "python"
+    ],
+    "ecosystemPath": [
+      "Python"
+    ],
+    "primaryLanguage": "python",
+    "license": "BSD",
+    "stewardType": "foundation",
+    "steward": "Other",
+    "initialReleaseYear": 2005,
+    "openSource": true
+  },
+  {
+    "id": "flask",
+    "name": "Flask",
+    "kindPath": [
+      "Framework",
+      "Backend"
+    ],
+    "domains": [
+      "backend",
+      "cloud"
+    ],
+    "primaryUse": [
+      "api",
+      "networking"
+    ],
+    "platformTargets": [
+      "server",
+      "cloud"
+    ],
+    "runtimes": [
+      "python"
+    ],
+    "ecosystemPath": [
+      "Python"
+    ],
+    "primaryLanguage": "python",
+    "license": "BSD",
+    "stewardType": "community",
+    "steward": "Community",
+    "initialReleaseYear": 2010,
+    "openSource": true
+  },
+  {
+    "id": "fastapi",
+    "name": "FastAPI",
+    "kindPath": [
+      "Framework",
+      "Backend"
+    ],
+    "domains": [
+      "backend",
+      "data"
+    ],
+    "primaryUse": [
+      "api",
+      "auth"
+    ],
+    "platformTargets": [
+      "server",
+      "cloud"
+    ],
+    "runtimes": [
+      "python"
+    ],
+    "ecosystemPath": [
+      "Python"
+    ],
+    "primaryLanguage": "python",
+    "license": "MIT",
+    "stewardType": "community",
+    "steward": "Community",
+    "initialReleaseYear": 2018,
+    "openSource": true
+  },
+  {
+    "id": "spring-framework",
+    "name": "Spring",
+    "kindPath": [
+      "Framework",
+      "Backend"
+    ],
+    "domains": [
+      "backend",
+      "cloud"
+    ],
+    "primaryUse": [
+      "api",
+      "auth",
+      "networking"
+    ],
+    "platformTargets": [
+      "server",
+      "cloud"
+    ],
+    "runtimes": [
+      "jvm"
+    ],
+    "ecosystemPath": [
+      "Java",
+      "JVM"
+    ],
+    "primaryLanguage": "java",
+    "license": "Apache-2.0",
+    "stewardType": "company",
+    "steward": "Other",
+    "initialReleaseYear": 2003,
+    "openSource": true
+  },
+  {
+    "id": "laravel",
+    "name": "Laravel",
+    "kindPath": [
+      "Framework",
+      "Backend"
+    ],
+    "domains": [
+      "backend",
+      "cloud"
+    ],
+    "primaryUse": [
+      "api",
+      "auth"
+    ],
+    "platformTargets": [
+      "server",
+      "cloud"
+    ],
+    "runtimes": [
+      "native"
+    ],
+    "ecosystemPath": [
+      "PHP"
+    ],
+    "primaryLanguage": "php",
+    "license": "MIT",
+    "stewardType": "community",
+    "steward": "Community",
+    "initialReleaseYear": 2011,
+    "openSource": true
+  },
+  {
+    "id": "ruby-on-rails",
+    "name": "Ruby on Rails",
+    "kindPath": [
+      "Framework",
+      "Full-stack"
+    ],
+    "domains": [
+      "frontend",
+      "backend"
+    ],
+    "primaryUse": [
+      "ui",
+      "api",
+      "build"
+    ],
+    "platformTargets": [
+      "web",
+      "server"
+    ],
+    "runtimes": [
+      "native"
+    ],
+    "ecosystemPath": [
+      "Ruby"
+    ],
+    "primaryLanguage": "ruby",
+    "license": "MIT",
+    "stewardType": "community",
+    "steward": "Community",
+    "initialReleaseYear": 2004,
+    "openSource": true
+  },
+  {
+    "id": "aspnet-core",
+    "name": "ASP.NET Core",
+    "kindPath": [
+      "Framework",
+      "Backend"
+    ],
+    "domains": [
+      "backend",
+      "cloud"
+    ],
+    "primaryUse": [
+      "api",
+      "auth"
+    ],
+    "platformTargets": [
+      "server",
+      "cloud"
+    ],
+    "runtimes": [
+      "dotnet"
+    ],
+    "ecosystemPath": [
+      "DotNet"
+    ],
+    "primaryLanguage": "csharp",
+    "license": "Apache-2.0",
+    "stewardType": "company",
+    "steward": "Microsoft",
+    "initialReleaseYear": 2016,
+    "openSource": true
+  },
+  {
+    "id": "ionic",
+    "name": "Ionic",
+    "kindPath": [
+      "Framework",
+      "Mobile"
+    ],
+    "domains": [
+      "mobile",
+      "frontend"
+    ],
+    "primaryUse": [
+      "ui",
+      "build"
+    ],
+    "platformTargets": [
+      "mobile",
+      "web",
+      "multi"
+    ],
+    "runtimes": [
+      "browser",
+      "node"
+    ],
+    "ecosystemPath": [
+      "JavaScript",
+      "Node"
+    ],
+    "primaryLanguage": "js-ts",
+    "license": "MIT",
+    "stewardType": "company",
+    "steward": "Other",
+    "initialReleaseYear": 2013,
+    "openSource": true
+  },
+  {
+    "id": "react-native",
+    "name": "React Native",
+    "kindPath": [
+      "Framework",
+      "Mobile"
+    ],
+    "domains": [
+      "mobile",
+      "frontend"
+    ],
+    "primaryUse": [
+      "ui"
+    ],
+    "platformTargets": [
+      "mobile",
+      "multi"
+    ],
+    "runtimes": [
+      "native",
+      "node"
+    ],
+    "ecosystemPath": [
+      "JavaScript",
+      "Node"
+    ],
+    "primaryLanguage": "js-ts",
+    "license": "MIT",
+    "stewardType": "company",
+    "steward": "Meta",
+    "initialReleaseYear": 2015,
+    "openSource": true
+  },
+  {
+    "id": "astro",
+    "name": "Astro",
+    "kindPath": [
+      "Framework",
+      "Frontend"
+    ],
+    "domains": [
+      "frontend"
+    ],
+    "primaryUse": [
+      "ui",
+      "build"
+    ],
+    "platformTargets": [
+      "web",
+      "server"
+    ],
+    "runtimes": [
+      "browser",
+      "node"
+    ],
+    "ecosystemPath": [
+      "JavaScript",
+      "Node"
+    ],
+    "primaryLanguage": "js-ts",
+    "license": "MIT",
+    "stewardType": "company",
+    "steward": "Other",
+    "initialReleaseYear": 2021,
+    "openSource": true
+  },
+  {
+    "id": "solidjs",
+    "name": "SolidJS",
+    "kindPath": [
+      "Framework",
+      "Frontend"
+    ],
+    "domains": [
+      "frontend"
+    ],
+    "primaryUse": [
+      "ui"
+    ],
+    "platformTargets": [
+      "web",
+      "multi"
+    ],
+    "runtimes": [
+      "browser",
+      "node"
+    ],
+    "ecosystemPath": [
+      "JavaScript",
+      "Node"
+    ],
+    "primaryLanguage": "js-ts",
+    "license": "MIT",
+    "stewardType": "community",
+    "steward": "Community",
+    "initialReleaseYear": 2021,
+    "openSource": true
+  },
+  {
+    "id": "emberjs",
+    "name": "Ember.js",
+    "kindPath": [
+      "Framework",
+      "Frontend"
+    ],
+    "domains": [
+      "frontend"
+    ],
+    "primaryUse": [
+      "ui"
+    ],
+    "platformTargets": [
+      "web"
+    ],
+    "runtimes": [
+      "browser",
+      "node"
+    ],
+    "ecosystemPath": [
+      "JavaScript",
+      "Node"
+    ],
+    "primaryLanguage": "js-ts",
+    "license": "MIT",
+    "stewardType": "community",
+    "steward": "Community",
+    "initialReleaseYear": 2011,
+    "openSource": true
+  },
+  {
+    "id": "jquery",
+    "name": "jQuery",
+    "kindPath": [
+      "Library",
+      "UI"
+    ],
+    "domains": [
+      "frontend"
+    ],
+    "primaryUse": [
+      "ui"
+    ],
+    "platformTargets": [
+      "web"
+    ],
+    "runtimes": [
+      "browser"
+    ],
+    "ecosystemPath": [
+      "JavaScript"
+    ],
+    "primaryLanguage": "js-ts",
+    "license": "MIT",
+    "stewardType": "community",
+    "steward": "Community",
+    "initialReleaseYear": 2006,
+    "openSource": true
+  },
+  {
+    "id": "d3js",
+    "name": "D3.js",
+    "kindPath": [
+      "Library",
+      "Data"
+    ],
+    "domains": [
+      "frontend",
+      "data"
+    ],
+    "primaryUse": [
+      "ui",
+      "data-processing"
+    ],
+    "platformTargets": [
+      "web"
+    ],
+    "runtimes": [
+      "browser",
+      "node"
+    ],
+    "ecosystemPath": [
+      "JavaScript"
+    ],
+    "primaryLanguage": "js-ts",
+    "license": "BSD",
+    "stewardType": "community",
+    "steward": "Community",
+    "initialReleaseYear": 2011,
+    "openSource": true
+  },
+  {
+    "id": "lodash",
+    "name": "Lodash",
+    "kindPath": [
+      "Library",
+      "Data"
+    ],
+    "domains": [
+      "frontend",
+      "backend"
+    ],
+    "primaryUse": [
+      "data-processing",
+      "build"
+    ],
+    "platformTargets": [
+      "server",
+      "desktop",
+      "multi"
+    ],
+    "runtimes": [
+      "browser",
+      "node"
+    ],
+    "ecosystemPath": [
+      "JavaScript",
+      "Node"
+    ],
+    "primaryLanguage": "js-ts",
+    "license": "MIT",
+    "stewardType": "community",
+    "steward": "Community",
+    "initialReleaseYear": 2012,
+    "openSource": true
+  },
+  {
+    "id": "rxjs",
+    "name": "RxJS",
+    "kindPath": [
+      "Library",
+      "Data"
+    ],
+    "domains": [
+      "frontend",
+      "backend"
+    ],
+    "primaryUse": [
+      "data-processing",
+      "api"
+    ],
+    "platformTargets": [
+      "server",
+      "desktop",
+      "multi"
+    ],
+    "runtimes": [
+      "browser",
+      "node"
+    ],
+    "ecosystemPath": [
+      "JavaScript",
+      "Node"
+    ],
+    "primaryLanguage": "js-ts",
+    "license": "Apache-2.0",
+    "stewardType": "community",
+    "steward": "Community",
+    "initialReleaseYear": 2012,
+    "openSource": true
+  },
+  {
+    "id": "socketio",
+    "name": "Socket.IO",
+    "kindPath": [
+      "Library",
+      "Networking"
+    ],
+    "domains": [
+      "frontend",
+      "backend"
+    ],
+    "primaryUse": [
+      "networking",
+      "api",
+      "messaging"
+    ],
+    "platformTargets": [
+      "web",
+      "server",
+      "cloud"
+    ],
+    "runtimes": [
+      "browser",
+      "node"
+    ],
+    "ecosystemPath": [
+      "JavaScript",
+      "Node"
+    ],
+    "primaryLanguage": "js-ts",
+    "license": "MIT",
+    "stewardType": "community",
+    "steward": "Community",
+    "initialReleaseYear": 2010,
+    "openSource": true
+  },
+  {
+    "id": "redux",
+    "name": "Redux",
+    "kindPath": [
+      "Library",
+      "Data"
+    ],
+    "domains": [
+      "frontend",
+      "backend"
+    ],
+    "primaryUse": [
+      "data-processing",
+      "ui"
+    ],
+    "platformTargets": [
+      "server",
+      "desktop",
+      "multi"
+    ],
+    "runtimes": [
+      "browser",
+      "node"
+    ],
+    "ecosystemPath": [
+      "JavaScript",
+      "Node"
+    ],
+    "primaryLanguage": "js-ts",
+    "license": "MIT",
+    "stewardType": "community",
+    "steward": "Community",
+    "initialReleaseYear": 2015,
+    "openSource": true
+  },
+  {
+    "id": "tanstack-query",
+    "name": "TanStack Query",
+    "kindPath": [
+      "Library",
+      "Data"
+    ],
+    "domains": [
+      "frontend",
+      "backend"
+    ],
+    "primaryUse": [
+      "data-processing",
+      "api"
+    ],
+    "platformTargets": [
+      "server",
+      "desktop",
+      "multi"
+    ],
+    "runtimes": [
+      "browser",
+      "node"
+    ],
+    "ecosystemPath": [
+      "JavaScript",
+      "Node"
+    ],
+    "primaryLanguage": "js-ts",
+    "license": "MIT",
+    "stewardType": "community",
+    "steward": "Community",
+    "initialReleaseYear": 2020,
+    "openSource": true
+  },
+  {
+    "id": "numpy",
+    "name": "NumPy",
+    "kindPath": [
+      "Library",
+      "Data"
+    ],
+    "domains": [
+      "data",
+      "backend"
+    ],
+    "primaryUse": [
+      "data-processing"
+    ],
+    "platformTargets": [
+      "server",
+      "desktop",
+      "multi"
+    ],
+    "runtimes": [
+      "python"
+    ],
+    "ecosystemPath": [
+      "Python"
+    ],
+    "primaryLanguage": "python",
+    "license": "BSD",
+    "stewardType": "community",
+    "steward": "Community",
+    "initialReleaseYear": 2006,
+    "openSource": true
+  },
+  {
+    "id": "scipy",
+    "name": "SciPy",
+    "kindPath": [
+      "Library",
+      "Data"
+    ],
+    "domains": [
+      "data"
+    ],
+    "primaryUse": [
+      "data-processing"
+    ],
+    "platformTargets": [
+      "server",
+      "desktop",
+      "multi"
+    ],
+    "runtimes": [
+      "python"
+    ],
+    "ecosystemPath": [
+      "Python"
+    ],
+    "primaryLanguage": "python",
+    "license": "BSD",
+    "stewardType": "community",
+    "steward": "Community",
+    "initialReleaseYear": 2001,
+    "openSource": true
+  },
+  {
+    "id": "tensorflow",
+    "name": "TensorFlow",
+    "kindPath": [
+      "Library",
+      "Data"
+    ],
+    "domains": [
+      "data",
+      "backend"
+    ],
+    "primaryUse": [
+      "data-processing"
+    ],
+    "platformTargets": [
+      "server",
+      "cloud",
+      "mobile",
+      "multi"
+    ],
+    "runtimes": [
+      "python",
+      "native"
+    ],
+    "ecosystemPath": [
+      "Python"
+    ],
+    "primaryLanguage": "python",
+    "license": "Apache-2.0",
+    "stewardType": "company",
+    "steward": "Google",
+    "initialReleaseYear": 2015,
+    "openSource": true
+  },
+  {
+    "id": "pytorch",
+    "name": "PyTorch",
+    "kindPath": [
+      "Library",
+      "Data"
+    ],
+    "domains": [
+      "data",
+      "backend"
+    ],
+    "primaryUse": [
+      "data-processing"
+    ],
+    "platformTargets": [
+      "server",
+      "cloud",
+      "mobile",
+      "multi"
+    ],
+    "runtimes": [
+      "python",
+      "native"
+    ],
+    "ecosystemPath": [
+      "Python"
+    ],
+    "primaryLanguage": "python",
+    "license": "BSD",
+    "stewardType": "company",
+    "steward": "Meta",
+    "initialReleaseYear": 2016,
+    "openSource": true
+  },
+  {
+    "id": "scikit-learn",
+    "name": "scikit-learn",
+    "kindPath": [
+      "Library",
+      "Data"
+    ],
+    "domains": [
+      "data"
+    ],
+    "primaryUse": [
+      "data-processing"
+    ],
+    "platformTargets": [
+      "server",
+      "desktop",
+      "multi"
+    ],
+    "runtimes": [
+      "python"
+    ],
+    "ecosystemPath": [
+      "Python"
+    ],
+    "primaryLanguage": "python",
+    "license": "BSD",
+    "stewardType": "community",
+    "steward": "Community",
+    "initialReleaseYear": 2007,
+    "openSource": true
+  },
+  {
+    "id": "playwright",
+    "name": "Playwright",
+    "kindPath": [
+      "Library",
+      "Testing"
+    ],
+    "domains": [
+      "frontend",
+      "backend"
+    ],
+    "primaryUse": [
+      "testing"
+    ],
+    "platformTargets": [
+      "web",
+      "server",
+      "multi"
+    ],
+    "runtimes": [
+      "node"
+    ],
+    "ecosystemPath": [
+      "JavaScript",
+      "Node"
+    ],
+    "primaryLanguage": "js-ts",
+    "license": "Apache-2.0",
+    "stewardType": "company",
+    "steward": "Microsoft",
+    "initialReleaseYear": 2020,
+    "openSource": true
+  },
+  {
+    "id": "cypress",
+    "name": "Cypress",
+    "kindPath": [
+      "Library",
+      "Testing"
+    ],
+    "domains": [
+      "frontend",
+      "backend"
+    ],
+    "primaryUse": [
+      "testing"
+    ],
+    "platformTargets": [
+      "web",
+      "server"
+    ],
+    "runtimes": [
+      "browser",
+      "node"
+    ],
+    "ecosystemPath": [
+      "JavaScript",
+      "Node"
+    ],
+    "primaryLanguage": "js-ts",
+    "license": "MIT",
+    "stewardType": "company",
+    "steward": "Other",
+    "initialReleaseYear": 2017,
+    "openSource": true
+  },
+  {
+    "id": "mysql",
+    "name": "MySQL",
+    "kindPath": [
+      "Database",
+      "Relational"
+    ],
+    "domains": [
+      "data",
+      "backend"
+    ],
+    "primaryUse": [
+      "storage",
+      "api"
+    ],
+    "platformTargets": [
+      "server",
+      "cloud"
+    ],
+    "runtimes": [
+      "native",
+      "managed-cloud"
+    ],
+    "ecosystemPath": [
+      "Data",
+      "SQL"
+    ],
+    "primaryLanguage": "sql",
+    "license": "GPL",
+    "stewardType": "company",
+    "steward": "Other",
+    "initialReleaseYear": 1995,
+    "openSource": true
+  },
+  {
+    "id": "mariadb",
+    "name": "MariaDB",
+    "kindPath": [
+      "Database",
+      "Relational"
+    ],
+    "domains": [
+      "data",
+      "backend"
+    ],
+    "primaryUse": [
+      "storage",
+      "api"
+    ],
+    "platformTargets": [
+      "server",
+      "cloud"
+    ],
+    "runtimes": [
+      "native",
+      "managed-cloud"
+    ],
+    "ecosystemPath": [
+      "Data",
+      "SQL"
+    ],
+    "primaryLanguage": "sql",
+    "license": "GPL",
+    "stewardType": "foundation",
+    "steward": "Other",
+    "initialReleaseYear": 2009,
+    "openSource": true
+  },
+  {
+    "id": "sqlite",
+    "name": "SQLite",
+    "kindPath": [
+      "Database",
+      "Relational"
+    ],
+    "domains": [
+      "data",
+      "backend",
+      "mobile"
+    ],
+    "primaryUse": [
+      "storage",
+      "api"
+    ],
+    "platformTargets": [
+      "server",
+      "mobile",
+      "desktop",
+      "multi"
+    ],
+    "runtimes": [
+      "native"
+    ],
+    "ecosystemPath": [
+      "Data",
+      "SQL"
+    ],
+    "primaryLanguage": "c",
+    "license": "Public-Domain",
+    "stewardType": "community",
+    "steward": "Community",
+    "initialReleaseYear": 2000,
+    "openSource": true
+  },
+  {
+    "id": "microsoft-sql-server",
+    "name": "Microsoft SQL Server",
+    "kindPath": [
+      "Database",
+      "Relational"
+    ],
+    "domains": [
+      "data",
+      "backend"
+    ],
+    "primaryUse": [
+      "storage",
+      "api"
+    ],
+    "platformTargets": [
+      "server",
+      "cloud"
+    ],
+    "runtimes": [
+      "native",
+      "managed-cloud"
+    ],
+    "ecosystemPath": [
+      "Data",
+      "SQL"
+    ],
+    "primaryLanguage": "sql",
+    "license": "Proprietary",
+    "stewardType": "company",
+    "steward": "Microsoft",
+    "initialReleaseYear": 1989,
+    "openSource": false
+  },
+  {
+    "id": "oracle-database",
+    "name": "Oracle Database",
+    "kindPath": [
+      "Database",
+      "Relational"
+    ],
+    "domains": [
+      "data",
+      "backend"
+    ],
+    "primaryUse": [
+      "storage",
+      "api"
+    ],
+    "platformTargets": [
+      "server",
+      "cloud"
+    ],
+    "runtimes": [
+      "native",
+      "managed-cloud"
+    ],
+    "ecosystemPath": [
+      "Data",
+      "SQL"
+    ],
+    "primaryLanguage": "sql",
+    "license": "Proprietary",
+    "stewardType": "company",
+    "steward": "Other",
+    "initialReleaseYear": 1979,
+    "openSource": false
+  },
+  {
+    "id": "dynamodb",
+    "name": "DynamoDB",
+    "kindPath": [
+      "Database",
+      "Key-value"
+    ],
+    "domains": [
+      "data",
+      "backend",
+      "cloud"
+    ],
+    "primaryUse": [
+      "storage",
+      "api"
+    ],
+    "platformTargets": [
+      "server",
+      "cloud"
+    ],
+    "runtimes": [
+      "managed-cloud"
+    ],
+    "ecosystemPath": [
+      "Data",
+      "NoSQL"
+    ],
+    "primaryLanguage": "none",
+    "license": "Proprietary",
+    "stewardType": "company",
+    "steward": "Amazon",
+    "initialReleaseYear": 2012,
+    "openSource": false
+  },
+  {
+    "id": "couchdb",
+    "name": "CouchDB",
+    "kindPath": [
+      "Database",
+      "Document"
+    ],
+    "domains": [
+      "data",
+      "backend"
+    ],
+    "primaryUse": [
+      "storage",
+      "api"
+    ],
+    "platformTargets": [
+      "server",
+      "cloud"
+    ],
+    "runtimes": [
+      "native"
+    ],
+    "ecosystemPath": [
+      "Data",
+      "NoSQL"
+    ],
+    "primaryLanguage": "other",
+    "license": "Apache-2.0",
+    "stewardType": "foundation",
+    "steward": "Apache",
+    "initialReleaseYear": 2005,
+    "openSource": true
+  },
+  {
+    "id": "elasticsearch",
+    "name": "Elasticsearch",
+    "kindPath": [
+      "Database",
+      "Search"
+    ],
+    "domains": [
+      "data",
+      "backend",
+      "observability"
+    ],
+    "primaryUse": [
+      "storage",
+      "data-processing",
+      "api"
+    ],
+    "platformTargets": [
+      "server",
+      "cloud"
+    ],
+    "runtimes": [
+      "jvm"
+    ],
+    "ecosystemPath": [
+      "Data",
+      "Search"
+    ],
+    "primaryLanguage": "java",
+    "license": "Other",
+    "stewardType": "company",
+    "steward": "Other",
+    "initialReleaseYear": 2010,
+    "openSource": false
+  },
+  {
+    "id": "opensearch",
+    "name": "OpenSearch",
+    "kindPath": [
+      "Database",
+      "Search"
+    ],
+    "domains": [
+      "data",
+      "backend",
+      "observability"
+    ],
+    "primaryUse": [
+      "storage",
+      "data-processing",
+      "api"
+    ],
+    "platformTargets": [
+      "server",
+      "cloud"
+    ],
+    "runtimes": [
+      "jvm"
+    ],
+    "ecosystemPath": [
+      "Data",
+      "Search"
+    ],
+    "primaryLanguage": "java",
+    "license": "Apache-2.0",
+    "stewardType": "company",
+    "steward": "Amazon",
+    "initialReleaseYear": 2021,
+    "openSource": true
+  },
+  {
+    "id": "neo4j",
+    "name": "Neo4j",
+    "kindPath": [
+      "Database",
+      "Graph"
+    ],
+    "domains": [
+      "data",
+      "backend"
+    ],
+    "primaryUse": [
+      "storage",
+      "data-processing"
+    ],
+    "platformTargets": [
+      "server",
+      "cloud"
+    ],
+    "runtimes": [
+      "jvm"
+    ],
+    "ecosystemPath": [
+      "Data",
+      "NoSQL"
+    ],
+    "primaryLanguage": "java",
+    "license": "Mixed",
+    "stewardType": "company",
+    "steward": "Other",
+    "initialReleaseYear": 2007,
+    "openSource": false
+  },
+  {
+    "id": "influxdb",
+    "name": "InfluxDB",
+    "kindPath": [
+      "Database",
+      "Time-series"
+    ],
+    "domains": [
+      "data",
+      "observability"
+    ],
+    "primaryUse": [
+      "storage",
+      "monitoring",
+      "data-processing"
+    ],
+    "platformTargets": [
+      "server",
+      "cloud"
+    ],
+    "runtimes": [
+      "native",
+      "managed-cloud"
+    ],
+    "ecosystemPath": [
+      "Data",
+      "NoSQL"
+    ],
+    "primaryLanguage": "go",
+    "license": "MIT",
+    "stewardType": "company",
+    "steward": "Other",
+    "initialReleaseYear": 2013,
+    "openSource": true
+  },
+  {
+    "id": "timescaledb",
+    "name": "TimescaleDB",
+    "kindPath": [
+      "Database",
+      "Time-series"
+    ],
+    "domains": [
+      "data",
+      "observability"
+    ],
+    "primaryUse": [
+      "storage",
+      "monitoring",
+      "data-processing"
+    ],
+    "platformTargets": [
+      "server",
+      "cloud"
+    ],
+    "runtimes": [
+      "native",
+      "managed-cloud"
+    ],
+    "ecosystemPath": [
+      "Data",
+      "SQL"
+    ],
+    "primaryLanguage": "c",
+    "license": "Other",
+    "stewardType": "company",
+    "steward": "Other",
+    "initialReleaseYear": 2017,
+    "openSource": false
+  },
+  {
+    "id": "cockroachdb",
+    "name": "CockroachDB",
+    "kindPath": [
+      "Database",
+      "Relational"
+    ],
+    "domains": [
+      "data",
+      "backend"
+    ],
+    "primaryUse": [
+      "storage",
+      "api"
+    ],
+    "platformTargets": [
+      "server",
+      "cloud"
+    ],
+    "runtimes": [
+      "native"
+    ],
+    "ecosystemPath": [
+      "Data",
+      "SQL"
+    ],
+    "primaryLanguage": "go",
+    "license": "Other",
+    "stewardType": "company",
+    "steward": "Other",
+    "initialReleaseYear": 2017,
+    "openSource": false
+  },
+  {
+    "id": "webpack",
+    "name": "Webpack",
+    "kindPath": [
+      "Tool",
+      "Build"
+    ],
+    "domains": [
+      "frontend",
+      "backend"
+    ],
+    "primaryUse": [
+      "build"
+    ],
+    "platformTargets": [
+      "web",
+      "server",
+      "multi"
+    ],
+    "runtimes": [
+      "browser",
+      "node"
+    ],
+    "ecosystemPath": [
+      "JavaScript",
+      "Node"
+    ],
+    "primaryLanguage": "js-ts",
+    "license": "MIT",
+    "stewardType": "community",
+    "steward": "Community",
+    "initialReleaseYear": 2012,
+    "openSource": true
+  },
+  {
+    "id": "rollup",
+    "name": "Rollup",
+    "kindPath": [
+      "Tool",
+      "Build"
+    ],
+    "domains": [
+      "frontend",
+      "backend"
+    ],
+    "primaryUse": [
+      "build"
+    ],
+    "platformTargets": [
+      "web",
+      "server",
+      "multi"
+    ],
+    "runtimes": [
+      "browser",
+      "node"
+    ],
+    "ecosystemPath": [
+      "JavaScript",
+      "Node"
+    ],
+    "primaryLanguage": "js-ts",
+    "license": "MIT",
+    "stewardType": "community",
+    "steward": "Community",
+    "initialReleaseYear": 2015,
+    "openSource": true
+  },
+  {
+    "id": "babel",
+    "name": "Babel",
+    "kindPath": [
+      "Tool",
+      "Build"
+    ],
+    "domains": [
+      "frontend",
+      "backend"
+    ],
+    "primaryUse": [
+      "build"
+    ],
+    "platformTargets": [
+      "web",
+      "server",
+      "multi"
+    ],
+    "runtimes": [
+      "browser",
+      "node"
+    ],
+    "ecosystemPath": [
+      "JavaScript",
+      "Node"
+    ],
+    "primaryLanguage": "js-ts",
+    "license": "MIT",
+    "stewardType": "community",
+    "steward": "Community",
+    "initialReleaseYear": 2014,
+    "openSource": true
+  },
+  {
+    "id": "eslint",
+    "name": "ESLint",
+    "kindPath": [
+      "Tool",
+      "Build"
+    ],
+    "domains": [
+      "frontend",
+      "backend"
+    ],
+    "primaryUse": [
+      "build",
+      "testing"
+    ],
+    "platformTargets": [
+      "web",
+      "server",
+      "multi"
+    ],
+    "runtimes": [
+      "browser",
+      "node"
+    ],
+    "ecosystemPath": [
+      "JavaScript",
+      "Node"
+    ],
+    "primaryLanguage": "js-ts",
+    "license": "MIT",
+    "stewardType": "community",
+    "steward": "Community",
+    "initialReleaseYear": 2013,
+    "openSource": true
+  },
+  {
+    "id": "prettier",
+    "name": "Prettier",
+    "kindPath": [
+      "Tool",
+      "Build"
+    ],
+    "domains": [
+      "frontend",
+      "backend"
+    ],
+    "primaryUse": [
+      "build"
+    ],
+    "platformTargets": [
+      "web",
+      "server",
+      "multi"
+    ],
+    "runtimes": [
+      "browser",
+      "node"
+    ],
+    "ecosystemPath": [
+      "JavaScript",
+      "Node"
+    ],
+    "primaryLanguage": "js-ts",
+    "license": "MIT",
+    "stewardType": "community",
+    "steward": "Community",
+    "initialReleaseYear": 2017,
+    "openSource": true
+  },
+  {
+    "id": "npm",
+    "name": "npm",
+    "kindPath": [
+      "Tool",
+      "Package manager"
+    ],
+    "domains": [
+      "frontend",
+      "backend"
+    ],
+    "primaryUse": [
+      "build"
+    ],
+    "platformTargets": [
+      "web",
+      "server",
+      "multi"
+    ],
+    "runtimes": [
+      "browser",
+      "node"
+    ],
+    "ecosystemPath": [
+      "JavaScript",
+      "Node"
+    ],
+    "primaryLanguage": "js-ts",
+    "license": "Other",
+    "stewardType": "company",
+    "steward": "Other",
+    "initialReleaseYear": 2010,
+    "openSource": true
+  },
+  {
+    "id": "yarn",
+    "name": "Yarn",
+    "kindPath": [
+      "Tool",
+      "Package manager"
+    ],
+    "domains": [
+      "frontend",
+      "backend"
+    ],
+    "primaryUse": [
+      "build"
+    ],
+    "platformTargets": [
+      "web",
+      "server",
+      "multi"
+    ],
+    "runtimes": [
+      "browser",
+      "node"
+    ],
+    "ecosystemPath": [
+      "JavaScript",
+      "Node"
+    ],
+    "primaryLanguage": "js-ts",
+    "license": "BSD",
+    "stewardType": "community",
+    "steward": "Community",
+    "initialReleaseYear": 2016,
+    "openSource": true
+  },
+  {
+    "id": "jenkins",
+    "name": "Jenkins",
+    "kindPath": [
+      "Tool",
+      "CI/CD"
+    ],
+    "domains": [
+      "devops",
+      "backend",
+      "cloud"
+    ],
+    "primaryUse": [
+      "ci-cd",
+      "build",
+      "testing"
+    ],
+    "platformTargets": [
+      "server",
+      "cloud"
+    ],
+    "runtimes": [
+      "jvm"
+    ],
+    "ecosystemPath": [
+      "DevOps",
+      "CI"
+    ],
+    "primaryLanguage": "java",
+    "license": "MIT",
+    "stewardType": "community",
+    "steward": "Community",
+    "initialReleaseYear": 2011,
+    "openSource": true
+  },
+  {
+    "id": "ansible",
+    "name": "Ansible",
+    "kindPath": [
+      "Tool",
+      "IaC"
+    ],
+    "domains": [
+      "devops",
+      "cloud"
+    ],
+    "primaryUse": [
+      "iac",
+      "build"
+    ],
+    "platformTargets": [
+      "cloud",
+      "server",
+      "multi"
+    ],
+    "runtimes": [
+      "python"
+    ],
+    "ecosystemPath": [
+      "Cloud-native",
+      "Automation"
+    ],
+    "primaryLanguage": "python",
+    "license": "GPL",
+    "stewardType": "company",
+    "steward": "Other",
+    "initialReleaseYear": 2012,
+    "openSource": true
+  },
+  {
+    "id": "pulumi",
+    "name": "Pulumi",
+    "kindPath": [
+      "Tool",
+      "IaC"
+    ],
+    "domains": [
+      "devops",
+      "cloud"
+    ],
+    "primaryUse": [
+      "iac",
+      "build"
+    ],
+    "platformTargets": [
+      "cloud",
+      "server",
+      "multi"
+    ],
+    "runtimes": [
+      "node",
+      "python",
+      "native"
+    ],
+    "ecosystemPath": [
+      "Cloud-native",
+      "IaC"
+    ],
+    "primaryLanguage": "go",
+    "license": "Apache-2.0",
+    "stewardType": "company",
+    "steward": "Other",
+    "initialReleaseYear": 2017,
+    "openSource": true
+  },
+  {
+    "id": "kubernetes",
+    "name": "Kubernetes",
+    "kindPath": [
+      "Tool",
+      "Container"
+    ],
+    "domains": [
+      "devops",
+      "cloud",
+      "backend"
+    ],
+    "primaryUse": [
+      "build",
+      "networking",
+      "monitoring"
+    ],
+    "platformTargets": [
+      "cloud",
+      "server"
+    ],
+    "runtimes": [
+      "native",
+      "managed-cloud"
+    ],
+    "ecosystemPath": [
+      "Cloud-native",
+      "Kubernetes"
+    ],
+    "primaryLanguage": "go",
+    "license": "Apache-2.0",
+    "stewardType": "foundation",
+    "steward": "CNCF",
+    "initialReleaseYear": 2014,
+    "openSource": true
+  },
+  {
+    "id": "grafana",
+    "name": "Grafana",
+    "kindPath": [
+      "Tool",
+      "Observability"
+    ],
+    "domains": [
+      "observability",
+      "devops",
+      "backend"
+    ],
+    "primaryUse": [
+      "monitoring",
+      "data-processing"
+    ],
+    "platformTargets": [
+      "cloud",
+      "server"
+    ],
+    "runtimes": [
+      "native",
+      "managed-cloud"
+    ],
+    "ecosystemPath": [
+      "Cloud-native",
+      "Observability"
+    ],
+    "primaryLanguage": "go",
+    "license": "AGPL",
+    "stewardType": "company",
+    "steward": "Other",
+    "initialReleaseYear": 2014,
+    "openSource": true
+  },
+  {
+    "id": "helm",
+    "name": "Helm",
+    "kindPath": [
+      "Tool",
+      "Package manager"
+    ],
+    "domains": [
+      "frontend",
+      "backend"
+    ],
+    "primaryUse": [
+      "build"
+    ],
+    "platformTargets": [
+      "web",
+      "server",
+      "multi"
+    ],
+    "runtimes": [
+      "native",
+      "managed-cloud"
+    ],
+    "ecosystemPath": [
+      "Cloud-native",
+      "Kubernetes"
+    ],
+    "primaryLanguage": "go",
+    "license": "Apache-2.0",
+    "stewardType": "foundation",
+    "steward": "CNCF",
+    "initialReleaseYear": 2015,
+    "openSource": true
+  },
+  {
+    "id": "azure",
+    "name": "Microsoft Azure",
+    "kindPath": [
+      "Platform/Runtime",
+      "Cloud platform"
+    ],
+    "domains": [
+      "cloud",
+      "backend",
+      "devops"
+    ],
+    "primaryUse": [
+      "api",
+      "storage",
+      "messaging",
+      "monitoring"
+    ],
+    "platformTargets": [
+      "cloud"
+    ],
+    "runtimes": [
+      "managed-cloud"
+    ],
+    "ecosystemPath": [
+      "Cloud-native",
+      "Azure"
+    ],
+    "primaryLanguage": "none",
+    "license": "Proprietary",
+    "stewardType": "company",
+    "steward": "Microsoft",
+    "initialReleaseYear": 2010,
+    "openSource": false
+  },
+  {
+    "id": "google-cloud-platform",
+    "name": "Google Cloud Platform",
+    "kindPath": [
+      "Platform/Runtime",
+      "Cloud platform"
+    ],
+    "domains": [
+      "cloud",
+      "backend",
+      "devops"
+    ],
+    "primaryUse": [
+      "api",
+      "storage",
+      "messaging",
+      "monitoring"
+    ],
+    "platformTargets": [
+      "cloud"
+    ],
+    "runtimes": [
+      "managed-cloud"
+    ],
+    "ecosystemPath": [
+      "Cloud-native",
+      "GCP"
+    ],
+    "primaryLanguage": "none",
+    "license": "Proprietary",
+    "stewardType": "company",
+    "steward": "Google",
+    "initialReleaseYear": 2008,
+    "openSource": false
+  },
+  {
+    "id": "digitalocean",
+    "name": "DigitalOcean",
+    "kindPath": [
+      "Platform/Runtime",
+      "Cloud platform"
+    ],
+    "domains": [
+      "cloud",
+      "backend",
+      "devops"
+    ],
+    "primaryUse": [
+      "api",
+      "storage",
+      "messaging",
+      "monitoring"
+    ],
+    "platformTargets": [
+      "cloud"
+    ],
+    "runtimes": [
+      "managed-cloud"
+    ],
+    "ecosystemPath": [
+      "Cloud-native",
+      "DigitalOcean"
+    ],
+    "primaryLanguage": "none",
+    "license": "Proprietary",
+    "stewardType": "company",
+    "steward": "Other",
+    "initialReleaseYear": 2011,
+    "openSource": false
+  },
+  {
+    "id": "heroku",
+    "name": "Heroku",
+    "kindPath": [
+      "Platform/Runtime",
+      "Cloud platform"
+    ],
+    "domains": [
+      "cloud",
+      "backend",
+      "devops"
+    ],
+    "primaryUse": [
+      "api",
+      "build"
+    ],
+    "platformTargets": [
+      "cloud"
+    ],
+    "runtimes": [
+      "managed-cloud"
+    ],
+    "ecosystemPath": [
+      "Cloud-native",
+      "Heroku"
+    ],
+    "primaryLanguage": "none",
+    "license": "Proprietary",
+    "stewardType": "company",
+    "steward": "Other",
+    "initialReleaseYear": 2007,
+    "openSource": false
+  },
+  {
+    "id": "aws-lambda",
+    "name": "AWS Lambda",
+    "kindPath": [
+      "Platform/Runtime",
+      "Serverless runtime"
+    ],
+    "domains": [
+      "cloud",
+      "backend",
+      "devops"
+    ],
+    "primaryUse": [
+      "api",
+      "messaging",
+      "monitoring"
+    ],
+    "platformTargets": [
+      "cloud"
+    ],
+    "runtimes": [
+      "managed-cloud"
+    ],
+    "ecosystemPath": [
+      "Cloud-native",
+      "AWS"
+    ],
+    "primaryLanguage": "none",
+    "license": "Proprietary",
+    "stewardType": "company",
+    "steward": "Amazon",
+    "initialReleaseYear": 2014,
+    "openSource": false
+  },
+  {
+    "id": "vercel",
+    "name": "Vercel",
+    "kindPath": [
+      "Platform/Runtime",
+      "Cloud platform"
+    ],
+    "domains": [
+      "cloud",
+      "frontend",
+      "backend"
+    ],
+    "primaryUse": [
+      "build",
+      "api",
+      "monitoring"
+    ],
+    "platformTargets": [
+      "cloud"
+    ],
+    "runtimes": [
+      "managed-cloud"
+    ],
+    "ecosystemPath": [
+      "Cloud-native",
+      "Edge"
+    ],
+    "primaryLanguage": "none",
+    "license": "Proprietary",
+    "stewardType": "company",
+    "steward": "Other",
+    "initialReleaseYear": 2015,
+    "openSource": false
+  },
+  {
+    "id": "netlify",
+    "name": "Netlify",
+    "kindPath": [
+      "Platform/Runtime",
+      "Cloud platform"
+    ],
+    "domains": [
+      "cloud",
+      "frontend",
+      "backend"
+    ],
+    "primaryUse": [
+      "build",
+      "api",
+      "monitoring"
+    ],
+    "platformTargets": [
+      "cloud"
+    ],
+    "runtimes": [
+      "managed-cloud"
+    ],
+    "ecosystemPath": [
+      "Cloud-native",
+      "Edge"
+    ],
+    "primaryLanguage": "none",
+    "license": "Proprietary",
+    "stewardType": "company",
+    "steward": "Other",
+    "initialReleaseYear": 2015,
+    "openSource": false
+  },
+  {
+    "id": "containerd",
+    "name": "containerd",
+    "kindPath": [
+      "Platform/Runtime",
+      "Container runtime"
+    ],
+    "domains": [
+      "devops",
+      "cloud",
+      "backend"
+    ],
+    "primaryUse": [
+      "build",
+      "networking"
+    ],
+    "platformTargets": [
+      "cloud",
+      "server"
+    ],
+    "runtimes": [
+      "native",
+      "managed-cloud"
+    ],
+    "ecosystemPath": [
+      "Cloud-native",
+      "Container"
+    ],
+    "primaryLanguage": "go",
+    "license": "Apache-2.0",
+    "stewardType": "foundation",
+    "steward": "CNCF",
+    "initialReleaseYear": 2017,
+    "openSource": true
+  },
+  {
+    "id": "https",
+    "name": "HTTPS",
+    "kindPath": [
+      "Protocol/Standard",
+      "Network protocol"
+    ],
+    "domains": [
+      "frontend",
+      "backend",
+      "cloud",
+      "security"
+    ],
+    "primaryUse": [
+      "networking",
+      "api",
+      "auth"
+    ],
+    "platformTargets": [
+      "web",
+      "server",
+      "cloud",
+      "multi"
+    ],
+    "runtimes": [
+      "browser",
+      "node",
+      "native",
+      "managed-cloud"
+    ],
+    "ecosystemPath": [
+      "Network",
+      "HTTP"
+    ],
+    "primaryLanguage": "none",
+    "license": "Other",
+    "stewardType": "standards-body",
+    "steward": "IETF",
+    "initialReleaseYear": 1994,
+    "openSource": false
+  },
+  {
+    "id": "tls",
+    "name": "TLS",
+    "kindPath": [
+      "Protocol/Standard",
+      "Network protocol"
+    ],
+    "domains": [
+      "frontend",
+      "backend",
+      "cloud",
+      "security"
+    ],
+    "primaryUse": [
+      "networking",
+      "api",
+      "auth"
+    ],
+    "platformTargets": [
+      "web",
+      "server",
+      "cloud",
+      "multi"
+    ],
+    "runtimes": [
+      "browser",
+      "node",
+      "native",
+      "managed-cloud"
+    ],
+    "ecosystemPath": [
+      "Security",
+      "Auth"
+    ],
+    "primaryLanguage": "none",
+    "license": "Other",
+    "stewardType": "standards-body",
+    "steward": "IETF",
+    "initialReleaseYear": 1999,
+    "openSource": false
+  },
+  {
+    "id": "websocket",
+    "name": "WebSocket",
+    "kindPath": [
+      "Protocol/Standard",
+      "Web standard"
+    ],
+    "domains": [
+      "frontend",
+      "backend",
+      "data"
+    ],
+    "primaryUse": [
+      "data-processing",
+      "api",
+      "networking"
+    ],
+    "platformTargets": [
+      "web",
+      "server",
+      "cloud",
+      "multi"
+    ],
+    "runtimes": [
+      "browser",
+      "node",
+      "native",
+      "managed-cloud"
+    ],
+    "ecosystemPath": [
+      "Network",
+      "HTTP"
+    ],
+    "primaryLanguage": "none",
+    "license": "Other",
+    "stewardType": "standards-body",
+    "steward": "IETF",
+    "initialReleaseYear": 2011,
+    "openSource": false
+  },
+  {
+    "id": "json",
+    "name": "JSON",
+    "kindPath": [
+      "Protocol/Standard",
+      "Web standard"
+    ],
+    "domains": [
+      "frontend",
+      "backend",
+      "data"
+    ],
+    "primaryUse": [
+      "data-processing",
+      "api",
+      "networking"
+    ],
+    "platformTargets": [
+      "web",
+      "server",
+      "cloud",
+      "multi"
+    ],
+    "runtimes": [
+      "browser",
+      "node",
+      "native",
+      "managed-cloud"
+    ],
+    "ecosystemPath": [
+      "Network",
+      "HTTP"
+    ],
+    "primaryLanguage": "none",
+    "license": "Other",
+    "stewardType": "standards-body",
+    "steward": "IETF",
+    "initialReleaseYear": 2001,
+    "openSource": false
+  },
+  {
+    "id": "nodejs",
+    "name": "Node.js",
+    "kindPath": [
+      "Platform/Runtime",
+      "Language runtime"
+    ],
+    "domains": [
+      "backend",
+      "cloud",
+      "devops"
+    ],
+    "primaryUse": [
+      "api",
+      "networking",
+      "build"
+    ],
+    "platformTargets": [
+      "server",
+      "cloud",
+      "multi"
+    ],
+    "runtimes": [
+      "node"
+    ],
+    "ecosystemPath": [
+      "JavaScript",
+      "Node"
+    ],
+    "primaryLanguage": "js-ts",
+    "license": "MIT",
+    "stewardType": "foundation",
+    "steward": "Other",
+    "initialReleaseYear": 2009,
+    "openSource": true
+  },
+  {
+    "id": "deno",
+    "name": "Deno",
+    "kindPath": [
+      "Platform/Runtime",
+      "Language runtime"
+    ],
+    "domains": [
+      "backend",
+      "cloud",
+      "devops"
+    ],
+    "primaryUse": [
+      "api",
+      "networking",
+      "build"
+    ],
+    "platformTargets": [
+      "server",
+      "cloud",
+      "multi"
+    ],
+    "runtimes": [
+      "native"
+    ],
+    "ecosystemPath": [
+      "JavaScript",
+      "Deno"
+    ],
+    "primaryLanguage": "js-ts",
+    "license": "MIT",
+    "stewardType": "company",
+    "steward": "Other",
+    "initialReleaseYear": 2018,
+    "openSource": true
+  },
+  {
+    "id": "bun",
+    "name": "Bun",
+    "kindPath": [
+      "Platform/Runtime",
+      "Language runtime"
+    ],
+    "domains": [
+      "backend",
+      "cloud",
+      "devops"
+    ],
+    "primaryUse": [
+      "api",
+      "networking",
+      "build"
+    ],
+    "platformTargets": [
+      "server",
+      "cloud",
+      "multi"
+    ],
+    "runtimes": [
+      "native"
+    ],
+    "ecosystemPath": [
+      "JavaScript",
+      "Bun"
+    ],
+    "primaryLanguage": "js-ts",
+    "license": "MIT",
+    "stewardType": "company",
+    "steward": "Other",
+    "initialReleaseYear": 2022,
+    "openSource": true
+  },
+  {
+    "id": "rest",
+    "name": "REST",
+    "kindPath": [
+      "Protocol/Standard",
+      "Network protocol"
+    ],
+    "domains": [
+      "frontend",
+      "backend",
+      "cloud",
+      "security"
+    ],
+    "primaryUse": [
+      "networking",
+      "api",
+      "auth"
+    ],
+    "platformTargets": [
+      "web",
+      "server",
+      "cloud",
+      "multi"
+    ],
+    "runtimes": [
+      "browser",
+      "node",
+      "native",
+      "managed-cloud"
+    ],
+    "ecosystemPath": [
+      "Network",
+      "HTTP"
+    ],
+    "primaryLanguage": "none",
+    "license": "Other",
+    "stewardType": "standards-body",
+    "steward": "Other",
+    "initialReleaseYear": 2000,
+    "openSource": false
+  },
+  {
+    "id": "graphql",
+    "name": "GraphQL",
+    "kindPath": [
+      "Protocol/Standard",
+      "Network protocol"
+    ],
+    "domains": [
+      "frontend",
+      "backend",
+      "cloud",
+      "security"
+    ],
+    "primaryUse": [
+      "networking",
+      "api",
+      "auth"
+    ],
+    "platformTargets": [
+      "web",
+      "server",
+      "cloud",
+      "multi"
+    ],
+    "runtimes": [
+      "browser",
+      "node",
+      "native",
+      "managed-cloud"
+    ],
+    "ecosystemPath": [
+      "Network",
+      "HTTP"
+    ],
+    "primaryLanguage": "none",
+    "license": "Other",
+    "stewardType": "foundation",
+    "steward": "Other",
+    "initialReleaseYear": 2015,
+    "openSource": false
+  },
+  {
+    "id": "grpc",
+    "name": "gRPC",
+    "kindPath": [
+      "Protocol/Standard",
+      "Network protocol"
+    ],
+    "domains": [
+      "frontend",
+      "backend",
+      "cloud",
+      "security"
+    ],
+    "primaryUse": [
+      "networking",
+      "api",
+      "auth"
+    ],
+    "platformTargets": [
+      "web",
+      "server",
+      "cloud",
+      "multi"
+    ],
+    "runtimes": [
+      "browser",
+      "node",
+      "native",
+      "managed-cloud"
+    ],
+    "ecosystemPath": [
+      "Network",
+      "RPC"
+    ],
+    "primaryLanguage": "none",
+    "license": "Apache-2.0",
+    "stewardType": "company",
+    "steward": "Google",
+    "initialReleaseYear": 2016,
+    "openSource": true
+  },
+  {
+    "id": "openapi-swagger",
+    "name": "OpenAPI (Swagger)",
+    "kindPath": [
+      "Protocol/Standard",
+      "Web standard"
+    ],
+    "domains": [
+      "frontend",
+      "backend",
+      "cloud"
+    ],
+    "primaryUse": [
+      "networking",
+      "api",
+      "data-processing"
+    ],
+    "platformTargets": [
+      "web",
+      "server",
+      "cloud",
+      "multi"
+    ],
+    "runtimes": [
+      "browser",
+      "node",
+      "native",
+      "managed-cloud"
+    ],
+    "ecosystemPath": [
+      "Network",
+      "HTTP"
+    ],
+    "primaryLanguage": "none",
+    "license": "Other",
+    "stewardType": "foundation",
+    "steward": "Other",
+    "initialReleaseYear": 2016,
+    "openSource": false
+  },
+  {
+    "id": "protocol-buffers",
+    "name": "Protocol Buffers",
+    "kindPath": [
+      "Protocol/Standard",
+      "Data format"
+    ],
+    "domains": [
+      "frontend",
+      "backend",
+      "data"
+    ],
+    "primaryUse": [
+      "data-processing",
+      "api",
+      "storage"
+    ],
+    "platformTargets": [
+      "web",
+      "server",
+      "cloud",
+      "multi"
+    ],
+    "runtimes": [
+      "browser",
+      "node",
+      "native",
+      "managed-cloud"
+    ],
+    "ecosystemPath": [
+      "Network",
+      "RPC"
+    ],
+    "primaryLanguage": "none",
+    "license": "BSD",
+    "stewardType": "company",
+    "steward": "Google",
+    "initialReleaseYear": 2008,
+    "openSource": true
+  },
+  {
+    "id": "jwt",
+    "name": "JWT",
+    "kindPath": [
+      "Protocol/Standard",
+      "Network protocol"
+    ],
+    "domains": [
+      "frontend",
+      "backend",
+      "cloud",
+      "security"
+    ],
+    "primaryUse": [
+      "networking",
+      "api",
+      "auth"
+    ],
+    "platformTargets": [
+      "web",
+      "server",
+      "cloud",
+      "multi"
+    ],
+    "runtimes": [
+      "browser",
+      "node",
+      "native",
+      "managed-cloud"
+    ],
+    "ecosystemPath": [
+      "Security",
+      "Auth"
+    ],
+    "primaryLanguage": "none",
+    "license": "Other",
+    "stewardType": "standards-body",
+    "steward": "IETF",
+    "initialReleaseYear": 2015,
+    "openSource": false
+  },
+  {
+    "id": "openid-connect",
+    "name": "OpenID Connect (OIDC)",
+    "kindPath": [
+      "Protocol/Standard",
+      "Network protocol"
+    ],
+    "domains": [
+      "frontend",
+      "backend",
+      "cloud",
+      "security"
+    ],
+    "primaryUse": [
+      "networking",
+      "api",
+      "auth"
+    ],
+    "platformTargets": [
+      "web",
+      "server",
+      "cloud",
+      "multi"
+    ],
+    "runtimes": [
+      "browser",
+      "node",
+      "native",
+      "managed-cloud"
+    ],
+    "ecosystemPath": [
+      "Security",
+      "Auth"
+    ],
+    "primaryLanguage": "none",
+    "license": "Other",
+    "stewardType": "foundation",
+    "steward": "Other",
+    "initialReleaseYear": 2014,
+    "openSource": false
+  },
+  {
+    "id": "saml",
+    "name": "SAML",
+    "kindPath": [
+      "Protocol/Standard",
+      "Network protocol"
+    ],
+    "domains": [
+      "frontend",
+      "backend",
+      "cloud",
+      "security"
+    ],
+    "primaryUse": [
+      "networking",
+      "api",
+      "auth"
+    ],
+    "platformTargets": [
+      "web",
+      "server",
+      "cloud",
+      "multi"
+    ],
+    "runtimes": [
+      "browser",
+      "node",
+      "native",
+      "managed-cloud"
+    ],
+    "ecosystemPath": [
+      "Security",
+      "Auth"
+    ],
+    "primaryLanguage": "none",
+    "license": "Other",
+    "stewardType": "standards-body",
+    "steward": "Other",
+    "initialReleaseYear": 2005,
+    "openSource": false
+  },
+  {
+    "id": "apache-kafka",
+    "name": "Apache Kafka",
+    "kindPath": [
+      "Tool",
+      "Messaging"
+    ],
+    "domains": [
+      "backend",
+      "cloud",
+      "devops"
+    ],
+    "primaryUse": [
+      "messaging",
+      "networking",
+      "api"
+    ],
+    "platformTargets": [
+      "server",
+      "cloud",
+      "multi"
+    ],
+    "runtimes": [
+      "native",
+      "managed-cloud"
+    ],
+    "ecosystemPath": [
+      "Data",
+      "Streaming"
+    ],
+    "primaryLanguage": "java",
+    "license": "Apache-2.0",
+    "stewardType": "foundation",
+    "steward": "Apache",
+    "initialReleaseYear": 2011,
+    "openSource": true
+  },
+  {
+    "id": "rabbitmq",
+    "name": "RabbitMQ",
+    "kindPath": [
+      "Tool",
+      "Messaging"
+    ],
+    "domains": [
+      "backend",
+      "cloud",
+      "devops"
+    ],
+    "primaryUse": [
+      "messaging",
+      "networking",
+      "api"
+    ],
+    "platformTargets": [
+      "server",
+      "cloud",
+      "multi"
+    ],
+    "runtimes": [
+      "native",
+      "managed-cloud"
+    ],
+    "ecosystemPath": [
+      "Data",
+      "Messaging"
+    ],
+    "primaryLanguage": "other",
+    "license": "MPL",
+    "stewardType": "company",
+    "steward": "Other",
+    "initialReleaseYear": 2007,
+    "openSource": true
+  },
+  {
+    "id": "nats",
+    "name": "NATS",
+    "kindPath": [
+      "Tool",
+      "Messaging"
+    ],
+    "domains": [
+      "backend",
+      "cloud",
+      "devops"
+    ],
+    "primaryUse": [
+      "messaging",
+      "networking",
+      "api"
+    ],
+    "platformTargets": [
+      "server",
+      "cloud",
+      "multi"
+    ],
+    "runtimes": [
+      "native",
+      "managed-cloud"
+    ],
+    "ecosystemPath": [
+      "Data",
+      "Messaging"
+    ],
+    "primaryLanguage": "go",
+    "license": "Apache-2.0",
+    "stewardType": "company",
+    "steward": "Other",
+    "initialReleaseYear": 2011,
+    "openSource": true
+  },
+  {
+    "id": "nginx",
+    "name": "Nginx",
+    "kindPath": [
+      "Tool",
+      "Server"
+    ],
+    "domains": [
+      "backend",
+      "cloud",
+      "security"
+    ],
+    "primaryUse": [
+      "networking",
+      "api",
+      "monitoring"
+    ],
+    "platformTargets": [
+      "server",
+      "cloud",
+      "multi"
+    ],
+    "runtimes": [
+      "native",
+      "managed-cloud"
+    ],
+    "ecosystemPath": [
+      "Network",
+      "HTTP"
+    ],
+    "primaryLanguage": "c",
+    "license": "BSD",
+    "stewardType": "company",
+    "steward": "Other",
+    "initialReleaseYear": 2004,
+    "openSource": true
+  },
+  {
+    "id": "caddy",
+    "name": "Caddy",
+    "kindPath": [
+      "Tool",
+      "Server"
+    ],
+    "domains": [
+      "backend",
+      "cloud",
+      "security"
+    ],
+    "primaryUse": [
+      "networking",
+      "api",
+      "monitoring"
+    ],
+    "platformTargets": [
+      "server",
+      "cloud",
+      "multi"
+    ],
+    "runtimes": [
+      "native",
+      "managed-cloud"
+    ],
+    "ecosystemPath": [
+      "Network",
+      "HTTP"
+    ],
+    "primaryLanguage": "go",
+    "license": "Apache-2.0",
+    "stewardType": "community",
+    "steward": "Community",
+    "initialReleaseYear": 2015,
+    "openSource": true
+  },
+  {
+    "id": "gitlab-ci",
+    "name": "GitLab CI",
+    "kindPath": [
+      "Tool",
+      "CI/CD"
+    ],
+    "domains": [
+      "devops",
+      "backend",
+      "cloud"
+    ],
+    "primaryUse": [
+      "ci-cd",
+      "build",
+      "testing"
+    ],
+    "platformTargets": [
+      "server",
+      "cloud",
+      "multi"
+    ],
+    "runtimes": [
+      "native",
+      "managed-cloud"
+    ],
+    "ecosystemPath": [
+      "DevOps",
+      "CI"
+    ],
+    "primaryLanguage": "none",
+    "license": "Mixed",
+    "stewardType": "company",
+    "steward": "Other",
+    "initialReleaseYear": 2012,
+    "openSource": true
+  },
+  {
+    "id": "circleci",
+    "name": "CircleCI",
+    "kindPath": [
+      "Tool",
+      "CI/CD"
+    ],
+    "domains": [
+      "devops",
+      "backend",
+      "cloud"
+    ],
+    "primaryUse": [
+      "ci-cd",
+      "build",
+      "testing"
+    ],
+    "platformTargets": [
+      "server",
+      "cloud",
+      "multi"
+    ],
+    "runtimes": [
+      "native",
+      "managed-cloud"
+    ],
+    "ecosystemPath": [
+      "DevOps",
+      "CI"
+    ],
+    "primaryLanguage": "none",
+    "license": "Proprietary",
+    "stewardType": "company",
+    "steward": "Other",
+    "initialReleaseYear": 2011,
+    "openSource": false
+  },
+  {
+    "id": "argo-cd",
+    "name": "Argo CD",
+    "kindPath": [
+      "Tool",
+      "CI/CD"
+    ],
+    "domains": [
+      "devops",
+      "backend",
+      "cloud"
+    ],
+    "primaryUse": [
+      "ci-cd",
+      "build",
+      "testing"
+    ],
+    "platformTargets": [
+      "server",
+      "cloud",
+      "multi"
+    ],
+    "runtimes": [
+      "native",
+      "managed-cloud"
+    ],
+    "ecosystemPath": [
+      "Cloud-native",
+      "Kubernetes"
+    ],
+    "primaryLanguage": "go",
+    "license": "Apache-2.0",
+    "stewardType": "foundation",
+    "steward": "CNCF",
+    "initialReleaseYear": 2018,
+    "openSource": true
+  },
+  {
+    "id": "fluxcd",
+    "name": "FluxCD",
+    "kindPath": [
+      "Tool",
+      "CI/CD"
+    ],
+    "domains": [
+      "devops",
+      "backend",
+      "cloud"
+    ],
+    "primaryUse": [
+      "ci-cd",
+      "build",
+      "testing"
+    ],
+    "platformTargets": [
+      "server",
+      "cloud",
+      "multi"
+    ],
+    "runtimes": [
+      "native",
+      "managed-cloud"
+    ],
+    "ecosystemPath": [
+      "Cloud-native",
+      "Kubernetes"
+    ],
+    "primaryLanguage": "go",
+    "license": "Apache-2.0",
+    "stewardType": "foundation",
+    "steward": "CNCF",
+    "initialReleaseYear": 2017,
+    "openSource": true
+  },
+  {
+    "id": "apache-spark",
+    "name": "Apache Spark",
+    "kindPath": [
+      "Library",
+      "Data"
+    ],
+    "domains": [
+      "data",
+      "backend"
+    ],
+    "primaryUse": [
+      "data-processing"
+    ],
+    "platformTargets": [
+      "server",
+      "desktop",
+      "multi"
+    ],
+    "runtimes": [
+      "native",
+      "managed-cloud"
+    ],
+    "ecosystemPath": [
+      "Data",
+      "Processing"
+    ],
+    "primaryLanguage": "other",
+    "license": "Apache-2.0",
+    "stewardType": "foundation",
+    "steward": "Apache",
+    "initialReleaseYear": 2014,
+    "openSource": true
+  },
+  {
+    "id": "airflow",
+    "name": "Airflow",
+    "kindPath": [
+      "Tool",
+      "Data pipeline"
+    ],
+    "domains": [
+      "data",
+      "backend",
+      "cloud"
+    ],
+    "primaryUse": [
+      "data-processing",
+      "build",
+      "ci-cd"
+    ],
+    "platformTargets": [
+      "server",
+      "cloud",
+      "multi"
+    ],
+    "runtimes": [
+      "python"
+    ],
+    "ecosystemPath": [
+      "Data",
+      "Orchestration"
+    ],
+    "primaryLanguage": "python",
+    "license": "Apache-2.0",
+    "stewardType": "foundation",
+    "steward": "Apache",
+    "initialReleaseYear": 2015,
+    "openSource": true
+  },
+  {
+    "id": "dbt",
+    "name": "dbt",
+    "kindPath": [
+      "Tool",
+      "Data pipeline"
+    ],
+    "domains": [
+      "data",
+      "backend",
+      "cloud"
+    ],
+    "primaryUse": [
+      "data-processing",
+      "build",
+      "ci-cd"
+    ],
+    "platformTargets": [
+      "server",
+      "cloud",
+      "multi"
+    ],
+    "runtimes": [
+      "python"
+    ],
+    "ecosystemPath": [
+      "Data",
+      "Analytics"
+    ],
+    "primaryLanguage": "sql",
+    "license": "Apache-2.0",
+    "stewardType": "company",
+    "steward": "Other",
+    "initialReleaseYear": 2016,
+    "openSource": true
+  },
+  {
+    "id": "snowflake",
+    "name": "Snowflake",
+    "kindPath": [
+      "Database",
+      "Relational"
+    ],
+    "domains": [
+      "data",
+      "backend"
+    ],
+    "primaryUse": [
+      "storage",
+      "api"
+    ],
+    "platformTargets": [
+      "server",
+      "cloud"
+    ],
+    "runtimes": [
+      "managed-cloud"
+    ],
+    "ecosystemPath": [
+      "Data",
+      "SQL"
+    ],
+    "primaryLanguage": "sql",
+    "license": "Proprietary",
+    "stewardType": "company",
+    "steward": "Other",
+    "initialReleaseYear": 2014,
+    "openSource": false
+  },
+  {
+    "id": "bigquery",
+    "name": "BigQuery",
+    "kindPath": [
+      "Database",
+      "Relational"
+    ],
+    "domains": [
+      "data",
+      "backend"
+    ],
+    "primaryUse": [
+      "storage",
+      "api"
+    ],
+    "platformTargets": [
+      "server",
+      "cloud"
+    ],
+    "runtimes": [
+      "managed-cloud"
+    ],
+    "ecosystemPath": [
+      "Data",
+      "SQL"
+    ],
+    "primaryLanguage": "sql",
+    "license": "Proprietary",
+    "stewardType": "company",
+    "steward": "Google",
+    "initialReleaseYear": 2011,
+    "openSource": false
+  },
+  {
+    "id": "redshift",
+    "name": "Redshift",
+    "kindPath": [
+      "Database",
+      "Relational"
+    ],
+    "domains": [
+      "data",
+      "backend"
+    ],
+    "primaryUse": [
+      "storage",
+      "api"
+    ],
+    "platformTargets": [
+      "server",
+      "cloud"
+    ],
+    "runtimes": [
+      "managed-cloud"
+    ],
+    "ecosystemPath": [
+      "Data",
+      "SQL"
+    ],
+    "primaryLanguage": "sql",
+    "license": "Proprietary",
+    "stewardType": "company",
+    "steward": "Amazon",
+    "initialReleaseYear": 2013,
+    "openSource": false
+  },
+  {
+    "id": "opentelemetry",
+    "name": "OpenTelemetry",
+    "kindPath": [
+      "Tool",
+      "Observability"
+    ],
+    "domains": [
+      "observability",
+      "devops",
+      "backend"
+    ],
+    "primaryUse": [
+      "monitoring",
+      "data-processing"
+    ],
+    "platformTargets": [
+      "server",
+      "cloud"
+    ],
+    "runtimes": [
+      "native",
+      "managed-cloud"
+    ],
+    "ecosystemPath": [
+      "Cloud-native",
+      "Observability"
+    ],
+    "primaryLanguage": "none",
+    "license": "Apache-2.0",
+    "stewardType": "foundation",
+    "steward": "CNCF",
+    "initialReleaseYear": 2019,
+    "openSource": true
+  },
+  {
+    "id": "jaeger",
+    "name": "Jaeger",
+    "kindPath": [
+      "Tool",
+      "Observability"
+    ],
+    "domains": [
+      "observability",
+      "devops",
+      "backend"
+    ],
+    "primaryUse": [
+      "monitoring",
+      "data-processing"
+    ],
+    "platformTargets": [
+      "server",
+      "cloud"
+    ],
+    "runtimes": [
+      "native",
+      "managed-cloud"
+    ],
+    "ecosystemPath": [
+      "Cloud-native",
+      "Observability"
+    ],
+    "primaryLanguage": "go",
+    "license": "Apache-2.0",
+    "stewardType": "foundation",
+    "steward": "CNCF",
+    "initialReleaseYear": 2017,
+    "openSource": true
+  },
+  {
+    "id": "loki",
+    "name": "Loki",
+    "kindPath": [
+      "Tool",
+      "Observability"
+    ],
+    "domains": [
+      "observability",
+      "devops",
+      "backend"
+    ],
+    "primaryUse": [
+      "monitoring",
+      "data-processing"
+    ],
+    "platformTargets": [
+      "server",
+      "cloud"
+    ],
+    "runtimes": [
+      "native",
+      "managed-cloud"
+    ],
+    "ecosystemPath": [
+      "Cloud-native",
+      "Observability"
+    ],
+    "primaryLanguage": "go",
+    "license": "AGPL",
+    "stewardType": "company",
+    "steward": "Other",
+    "initialReleaseYear": 2018,
+    "openSource": true
+  },
+  {
+    "id": "yaml",
+    "name": "YAML",
+    "kindPath": [
+      "Protocol/Standard",
+      "Data format"
+    ],
+    "domains": [
+      "frontend",
+      "backend",
+      "data"
+    ],
+    "primaryUse": [
+      "data-processing",
+      "api",
+      "storage"
+    ],
+    "platformTargets": [
+      "web",
+      "server",
+      "cloud",
+      "multi"
+    ],
+    "runtimes": [
+      "browser",
+      "node",
+      "native",
+      "managed-cloud"
+    ],
+    "ecosystemPath": [
+      "Data",
+      "Format"
+    ],
+    "primaryLanguage": "none",
+    "license": "Other",
+    "stewardType": "standards-body",
+    "steward": "Other",
+    "initialReleaseYear": 2001,
+    "openSource": false
+  },
+  {
+    "id": "xml",
+    "name": "XML",
+    "kindPath": [
+      "Protocol/Standard",
+      "Data format"
+    ],
+    "domains": [
+      "frontend",
+      "backend",
+      "data"
+    ],
+    "primaryUse": [
+      "data-processing",
+      "api",
+      "storage"
+    ],
+    "platformTargets": [
+      "web",
+      "server",
+      "cloud",
+      "multi"
+    ],
+    "runtimes": [
+      "browser",
+      "node",
+      "native",
+      "managed-cloud"
+    ],
+    "ecosystemPath": [
+      "Data",
+      "Format"
+    ],
+    "primaryLanguage": "none",
+    "license": "Other",
+    "stewardType": "standards-body",
+    "steward": "W3C",
+    "initialReleaseYear": 1998,
+    "openSource": false
+  },
+  {
+    "id": "parquet",
+    "name": "Parquet",
+    "kindPath": [
+      "Protocol/Standard",
+      "Data format"
+    ],
+    "domains": [
+      "frontend",
+      "backend",
+      "data"
+    ],
+    "primaryUse": [
+      "data-processing",
+      "api",
+      "storage"
+    ],
+    "platformTargets": [
+      "web",
+      "server",
+      "cloud",
+      "multi"
+    ],
+    "runtimes": [
+      "browser",
+      "node",
+      "native",
+      "managed-cloud"
+    ],
+    "ecosystemPath": [
+      "Data",
+      "Format"
+    ],
+    "primaryLanguage": "none",
+    "license": "Apache-2.0",
+    "stewardType": "foundation",
+    "steward": "Apache",
+    "initialReleaseYear": 2013,
+    "openSource": true
+  },
+  {
+    "id": "avro",
+    "name": "Avro",
+    "kindPath": [
+      "Protocol/Standard",
+      "Data format"
+    ],
+    "domains": [
+      "frontend",
+      "backend",
+      "data"
+    ],
+    "primaryUse": [
+      "data-processing",
+      "api",
+      "storage"
+    ],
+    "platformTargets": [
+      "web",
+      "server",
+      "cloud",
+      "multi"
+    ],
+    "runtimes": [
+      "browser",
+      "node",
+      "native",
+      "managed-cloud"
+    ],
+    "ecosystemPath": [
+      "Data",
+      "Format"
+    ],
+    "primaryLanguage": "java",
+    "license": "Apache-2.0",
+    "stewardType": "foundation",
+    "steward": "Apache",
+    "initialReleaseYear": 2009,
+    "openSource": true
+  },
+  {
+    "id": "cmake",
+    "name": "CMake",
+    "kindPath": [
+      "Tool",
+      "Build"
+    ],
+    "domains": [
+      "frontend",
+      "backend"
+    ],
+    "primaryUse": [
+      "build"
+    ],
+    "platformTargets": [
+      "web",
+      "server",
+      "multi"
+    ],
+    "runtimes": [
+      "native",
+      "node"
+    ],
+    "ecosystemPath": [
+      "Developer Tools",
+      "Build"
+    ],
+    "primaryLanguage": "cpp",
+    "license": "BSD",
+    "stewardType": "company",
+    "steward": "Other",
+    "initialReleaseYear": 2000,
+    "openSource": true
+  },
+  {
+    "id": "gradle",
+    "name": "Gradle",
+    "kindPath": [
+      "Tool",
+      "Build"
+    ],
+    "domains": [
+      "frontend",
+      "backend"
+    ],
+    "primaryUse": [
+      "build"
+    ],
+    "platformTargets": [
+      "web",
+      "server",
+      "multi"
+    ],
+    "runtimes": [
+      "native",
+      "node"
+    ],
+    "ecosystemPath": [
+      "Developer Tools",
+      "Build"
+    ],
+    "primaryLanguage": "kotlin",
+    "license": "Apache-2.0",
+    "stewardType": "company",
+    "steward": "Other",
+    "initialReleaseYear": 2007,
+    "openSource": true
+  },
+  {
+    "id": "maven",
+    "name": "Maven",
+    "kindPath": [
+      "Tool",
+      "Build"
+    ],
+    "domains": [
+      "frontend",
+      "backend"
+    ],
+    "primaryUse": [
+      "build"
+    ],
+    "platformTargets": [
+      "web",
+      "server",
+      "multi"
+    ],
+    "runtimes": [
+      "native",
+      "node"
+    ],
+    "ecosystemPath": [
+      "Developer Tools",
+      "Build"
+    ],
+    "primaryLanguage": "java",
+    "license": "Apache-2.0",
+    "stewardType": "foundation",
+    "steward": "Apache",
+    "initialReleaseYear": 2004,
+    "openSource": true
+  },
+  {
+    "id": "storybook",
+    "name": "Storybook",
+    "kindPath": [
+      "Tool",
+      "Build"
+    ],
+    "domains": [
+      "frontend",
+      "backend"
+    ],
+    "primaryUse": [
+      "build"
+    ],
+    "platformTargets": [
+      "web",
+      "server",
+      "multi"
+    ],
+    "runtimes": [
+      "native",
+      "node"
+    ],
+    "ecosystemPath": [
+      "JavaScript",
+      "Node"
+    ],
+    "primaryLanguage": "js-ts",
+    "license": "MIT",
+    "stewardType": "community",
+    "steward": "Community",
+    "initialReleaseYear": 2016,
+    "openSource": true
+  },
+  {
+    "id": "vitest",
+    "name": "Vitest",
+    "kindPath": [
+      "Library",
+      "Testing"
+    ],
+    "domains": [
+      "frontend",
+      "backend"
+    ],
+    "primaryUse": [
+      "testing"
+    ],
+    "platformTargets": [
+      "web",
+      "server",
+      "multi"
+    ],
+    "runtimes": [
+      "node",
+      "browser"
+    ],
+    "ecosystemPath": [
+      "JavaScript",
+      "Node"
+    ],
+    "primaryLanguage": "js-ts",
+    "license": "MIT",
+    "stewardType": "community",
+    "steward": "Community",
+    "initialReleaseYear": 2022,
+    "openSource": true
+  },
+  {
+    "id": "sass-scss",
+    "name": "Sass (SCSS)",
+    "kindPath": [
+      "Language",
+      "Query/DSL"
+    ],
+    "domains": [
+      "data",
+      "backend",
+      "security"
+    ],
+    "primaryUse": [
+      "data-processing",
+      "auth",
+      "networking"
+    ],
+    "platformTargets": [
+      "server",
+      "cloud",
+      "multi"
+    ],
+    "runtimes": [
+      "native",
+      "managed-cloud"
+    ],
+    "ecosystemPath": [
+      "Web",
+      "CSS"
+    ],
+    "primaryLanguage": "other",
+    "license": "MIT",
+    "stewardType": "community",
+    "steward": "Community",
+    "initialReleaseYear": 2006,
+    "openSource": true
+  },
+  {
+    "id": "material-ui",
+    "name": "Material UI",
+    "kindPath": [
+      "Library",
+      "UI"
+    ],
+    "domains": [
+      "frontend"
+    ],
+    "primaryUse": [
+      "ui"
+    ],
+    "platformTargets": [
+      "web",
+      "multi"
+    ],
+    "runtimes": [
+      "browser",
+      "node"
+    ],
+    "ecosystemPath": [
+      "JavaScript",
+      "Node"
+    ],
+    "primaryLanguage": "js-ts",
+    "license": "MIT",
+    "stewardType": "company",
+    "steward": "Other",
+    "initialReleaseYear": 2014,
+    "openSource": true
+  },
+  {
+    "id": "shadcn-ui",
+    "name": "shadcn/ui",
+    "kindPath": [
+      "Library",
+      "UI"
+    ],
+    "domains": [
+      "frontend"
+    ],
+    "primaryUse": [
+      "ui"
+    ],
+    "platformTargets": [
+      "web",
+      "multi"
+    ],
+    "runtimes": [
+      "browser",
+      "node"
+    ],
+    "ecosystemPath": [
+      "JavaScript",
+      "Node"
+    ],
+    "primaryLanguage": "js-ts",
+    "license": "MIT",
+    "stewardType": "community",
+    "steward": "Community",
+    "initialReleaseYear": 2023,
+    "openSource": true
+  },
+  {
+    "id": "linux",
+    "name": "Linux",
+    "kindPath": [
+      "Platform/Runtime",
+      "Operating system"
+    ],
+    "domains": [
+      "backend",
+      "devops",
+      "embedded"
+    ],
+    "primaryUse": [
+      "build",
+      "networking",
+      "data-processing"
+    ],
+    "platformTargets": [
+      "server",
+      "desktop",
+      "embedded",
+      "multi"
+    ],
+    "runtimes": [
+      "native"
+    ],
+    "ecosystemPath": [
+      "Systems",
+      "Linux"
+    ],
+    "primaryLanguage": "c",
+    "license": "GPL",
+    "stewardType": "community",
+    "steward": "Community",
+    "initialReleaseYear": 1991,
+    "openSource": true
+  },
+  {
+    "id": "solidity",
+    "name": "Solidity",
+    "kindPath": [
+      "Language",
+      "Query/DSL"
+    ],
+    "domains": [
+      "backend",
+      "security"
+    ],
+    "primaryUse": [
+      "auth",
+      "data-processing",
+      "api"
+    ],
+    "platformTargets": [
+      "server",
+      "cloud",
+      "multi"
+    ],
+    "runtimes": [
+      "native"
+    ],
+    "ecosystemPath": [
+      "Blockchain",
+      "EVM"
+    ],
+    "primaryLanguage": "other",
+    "license": "GPL",
+    "stewardType": "company",
+    "steward": "Other",
+    "initialReleaseYear": 2014,
+    "openSource": true
+  },
+  {
+    "id": "unity",
+    "name": "Unity",
+    "kindPath": [
+      "Framework",
+      "Game"
+    ],
+    "domains": [
+      "gamedev",
+      "mobile",
+      "frontend"
+    ],
+    "primaryUse": [
+      "ui",
+      "build",
+      "data-processing"
+    ],
+    "platformTargets": [
+      "desktop",
+      "mobile",
+      "web",
+      "multi"
+    ],
+    "runtimes": [
+      "native",
+      "wasm"
+    ],
+    "ecosystemPath": [
+      "GameDev",
+      "Unity"
+    ],
+    "primaryLanguage": "csharp",
+    "license": "Proprietary",
+    "stewardType": "company",
+    "steward": "Other",
+    "initialReleaseYear": 2005,
+    "openSource": false
+  },
+  {
+    "id": "godot",
+    "name": "Godot",
+    "kindPath": [
+      "Framework",
+      "Game"
+    ],
+    "domains": [
+      "gamedev",
+      "mobile",
+      "frontend"
+    ],
+    "primaryUse": [
+      "ui",
+      "build",
+      "data-processing"
+    ],
+    "platformTargets": [
+      "desktop",
+      "mobile",
+      "web",
+      "multi"
+    ],
+    "runtimes": [
+      "native",
+      "wasm"
+    ],
+    "ecosystemPath": [
+      "GameDev",
+      "Godot"
+    ],
+    "primaryLanguage": "cpp",
+    "license": "MIT",
+    "stewardType": "foundation",
+    "steward": "Other",
+    "initialReleaseYear": 2014,
+    "openSource": true
   }
 ]

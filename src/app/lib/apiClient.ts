@@ -1,4 +1,4 @@
-import type { GuessResponse, MetaResponse, SearchResponse, StartResponse } from "./types";
+import type { CatalogResponse, GuessResponse, MetaResponse, SearchResponse, StartResponse } from "./types";
 
 async function requestJson<T>(url: string, init?: RequestInit): Promise<T> {
   const response = await fetch(url, init);
@@ -21,15 +21,15 @@ export async function searchGuesses(query: string): Promise<SearchResponse> {
   });
 }
 
-export async function startPuzzle(puzzleId: string): Promise<StartResponse> {
+export async function startPuzzle(): Promise<StartResponse> {
   return requestJson<StartResponse>("/api/start", {
     method: "POST",
     headers: { "content-type": "application/json" },
-    body: JSON.stringify({ puzzleId })
+    body: JSON.stringify({})
   });
 }
 
-export async function submitGuess(payload: { puzzleId: string; guessId: string; token: string }): Promise<GuessResponse> {
+export async function submitGuess(payload: { roundId: string; guessId: string; token: string }): Promise<GuessResponse> {
   return requestJson<GuessResponse>("/api/guess", {
     method: "POST",
     headers: { "content-type": "application/json" },
@@ -37,3 +37,6 @@ export async function submitGuess(payload: { puzzleId: string; guessId: string; 
   });
 }
 
+export async function fetchCatalog(): Promise<CatalogResponse> {
+  return requestJson<CatalogResponse>("/api/catalog");
+}

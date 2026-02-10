@@ -14,6 +14,7 @@ export type Cell = {
 export type GridRow = {
   guess: { id: string; name: string };
   cells: Record<string, Cell>;
+  values?: Record<string, string>;
 };
 
 export type PuzzleAttribute = {
@@ -22,8 +23,8 @@ export type PuzzleAttribute = {
 };
 
 export type MetaResponse = {
-  puzzleId: string;
-  puzzleNo: number;
+  mode: "random";
+  keywordPoolSize: number;
   maxGuesses: number;
   attributes: PuzzleAttribute[];
 };
@@ -39,8 +40,10 @@ export type SearchResponse = {
 };
 
 export type StartResponse = {
+  roundId: string;
   token: string;
   maxGuesses: number;
+  hint: string;
 };
 
 export type GuessResponse = {
@@ -54,9 +57,12 @@ export type GuessResponse = {
 };
 
 export type StoredGame = {
-  puzzleId: string;
+  roundId: string;
+  hint: string;
   token: string;
   rows: GridRow[];
+  timerStartedAtMs?: number | null;
+  timerEndedAtMs?: number | null;
   state: {
     remaining: number;
     isSolved: boolean;
@@ -65,3 +71,34 @@ export type StoredGame = {
   maxGuesses: number;
 };
 
+export type CatalogItem = {
+  id: string;
+  name: string;
+  kindPath: string[];
+  domains: string[];
+  primaryUse: string[];
+  platformTargets: string[];
+  runtimes: string[];
+  ecosystemPath: string[];
+  primaryLanguage: string;
+  license: string;
+  stewardType: string;
+  steward: string;
+  initialReleaseYear: number;
+  openSource: boolean;
+};
+
+export type CatalogResponse = {
+  taxonomy: {
+    kindTree: Record<string, string[]>;
+    domains: string[];
+    primaryUse: string[];
+    platformTargets: string[];
+    runtimes: string[];
+    primaryLanguage: string[];
+    licenses: string[];
+    stewardType: string[];
+    stewards: string[];
+  };
+  items: CatalogItem[];
+};

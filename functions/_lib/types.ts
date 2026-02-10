@@ -16,6 +16,7 @@ export type Cell = {
 export type GridRow = {
   guess: Pick<TechItem, "id" | "name">;
   cells: Record<string, Cell>;
+  values: Record<string, string>;
 };
 
 export type GuessState = {

@@ -105,12 +105,12 @@ export const stewardValues = [
 
 export const kindTree = {
   Language: ["General-purpose", "Systems", "Scripting", "Query/DSL"],
-  Framework: ["Frontend", "Backend", "Full-stack", "Mobile"],
+  Framework: ["Frontend", "Backend", "Full-stack", "Mobile", "Game"],
   Library: ["UI", "Data", "Networking", "Testing"],
   Database: ["Relational", "Document", "Key-value", "Graph", "Search", "Time-series"],
-  Tool: ["Build", "Package manager", "CI/CD", "IaC", "Observability", "VCS", "Container"],
-  "Platform/Runtime": ["Cloud platform", "Container runtime", "Serverless runtime"],
-  "Protocol/Standard": ["Web standard", "Network protocol"]
+  Tool: ["Build", "Package manager", "CI/CD", "IaC", "Observability", "VCS", "Container", "Server", "Messaging", "Data pipeline"],
+  "Platform/Runtime": ["Cloud platform", "Container runtime", "Serverless runtime", "Language runtime", "Operating system"],
+  "Protocol/Standard": ["Web standard", "Network protocol", "Data format"]
 } as const;
 
 export const topLevelKindValues = Object.keys(kindTree) as Array<keyof typeof kindTree>;
@@ -204,4 +204,3 @@ export type PrimaryLanguage = (typeof primaryLanguageValues)[number];
 export type License = (typeof licenseValues)[number];
 export type StewardType = (typeof stewardTypeValues)[number];
 export type Steward = (typeof stewardValues)[number];
-

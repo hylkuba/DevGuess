@@ -1,13 +1,13 @@
 import { base64UrlToBytes, bytesToBase64Url, bytesToUtf8, constantTimeEqual, hmacSha256, utf8ToBytes } from "./crypto";
 
 export type ProgressTokenPayload = {
-  puzzleId: string;
+  roundId: string;
   remaining: number;
   guessed: string[];
   issuedAt: number;
 };
 
-const TOKEN_VERSION = "v1";
+const TOKEN_VERSION = "v2";
 
 export async function signProgressToken(payload: ProgressTokenPayload, secret: string): Promise<string> {
   const encodedPayload = bytesToBase64Url(utf8ToBytes(JSON.stringify(payload)));
@@ -39,7 +39,7 @@ export async function verifyProgressToken(token: string, secret: string): Promis
   const payload = JSON.parse(bytesToUtf8(payloadBytes)) as ProgressTokenPayload;
 
   if (
-    typeof payload.puzzleId !== "string" ||
+    typeof payload.roundId !== "string" ||
     typeof payload.remaining !== "number" ||
     !Array.isArray(payload.guessed) ||
     typeof payload.issuedAt !== "number"
@@ -49,4 +49,3 @@ export async function verifyProgressToken(token: string, secret: string): Promis
 
   return payload;
 }
-

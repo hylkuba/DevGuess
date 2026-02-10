@@ -1,6 +1,6 @@
 import type { StoredGame } from "./types";
 
-const STORAGE_KEY = "devguess.state.v1";
+const STORAGE_KEY = "devguess.state.v2";
 
 export function loadStoredGame(): StoredGame | null {
   try {
@@ -19,4 +19,3 @@ export function saveStoredGame(value: StoredGame): void {
 export function clearStoredGame(): void {
   localStorage.removeItem(STORAGE_KEY);
 }
-

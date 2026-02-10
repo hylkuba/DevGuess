@@ -1,39 +1,77 @@
+﻿import type { CSSProperties, FocusEvent, MouseEvent } from "react";
 import type { Cell as CellData } from "../lib/types";
 
 type Props = {
   cell?: CellData;
+  value?: string;
   attributeKey: string;
   attributeLabel: string;
+  isHoverable?: boolean;
+  onGroupHover?: (target: HTMLElement) => void;
+  onGroupLeave?: () => void;
+  revealDelayMs?: number;
 };
 
-function getIcon(status: CellData["status"]): string {
-  if (status === "green") return "✓";
-  if (status === "yellow") return "•";
-  return "×";
+function getStatusAria(status: CellData["status"]): string {
+  if (status === "green") return "exact match";
+  if (status === "yellow") return "partial match";
+  return "no match";
 }
 
-export function Cell({ cell, attributeKey, attributeLabel }: Props) {
+function getYearArrow(cell: CellData): "up" | "down" | null {
+  const rawArrow = String(cell.hint?.arrow ?? "").trim().toLowerCase();
+  if (!rawArrow) return null;
+  if (rawArrow === "^" || rawArrow === "\u2191" || rawArrow === "â†‘" || rawArrow === "up") return "up";
+  if (rawArrow === "v" || rawArrow === "\u2193" || rawArrow === "â†“" || rawArrow === "\u02c7" || rawArrow === "down") return "down";
+  return null;
+}
+
+export function Cell({ cell, value, attributeKey, attributeLabel, isHoverable, onGroupHover, onGroupLeave, revealDelayMs }: Props) {
   if (!cell) {
     return <td className="cell cell-empty">-</td>;
   }
 
-  const statusLabel = cell.status === "green" ? "match" : cell.status === "yellow" ? "partial match" : "no match";
-  const yearLabel =
-    attributeKey === "initialReleaseYear" && cell.hint?.arrow
-      ? `, year ${cell.hint.arrow === "↑" ? "higher" : "lower"} ${cell.hint.bucket ?? ""}`.trim()
-      : "";
+  const yearArrow = attributeKey === "initialReleaseYear" ? getYearArrow(cell) : null;
+  const yearArrowGlyph = yearArrow === "up" ? "\u2191" : yearArrow === "down" ? "\u2193" : "";
+  const displayValue = value ?? "Unknown";
+  const ariaHintPart = yearArrow ? `, year hint ${yearArrow === "up" ? "up arrow" : "down arrow"}` : "";
+  const revealStyle = revealDelayMs == null ? undefined : ({ animationDelay: `${revealDelayMs}ms` } as CSSProperties);
+  const finalSurfaceClass = `cell-surface cell-surface-${cell.status}`;
+  const hasHoverGuide = Boolean(isHoverable);
+  const contentProps = hasHoverGuide
+    ? {
+        onMouseEnter: (event: MouseEvent<HTMLDivElement>) => onGroupHover?.(event.currentTarget),
+        onMouseLeave: onGroupLeave,
+        onFocus: (event: FocusEvent<HTMLDivElement>) => onGroupHover?.(event.currentTarget),
+        onBlur: onGroupLeave,
+        tabIndex: 0
+      }
+    : undefined;
+
+  if (revealDelayMs != null) {
+    return (
+      <td className={`cell cell-${cell.status}`.trim()} aria-label={`${attributeLabel}: ${displayValue}, ${getStatusAria(cell.status)}${ariaHintPart}`}>
+        <div className="cell-flip-card cell-flip-reveal" style={revealStyle}>
+          <div className="cell-flip-face cell-flip-front" aria-hidden="true" />
+          <div className={`cell-flip-face cell-flip-back ${finalSurfaceClass}`.trim()}>
+            <div className={`cell-content ${hasHoverGuide ? "cell-content-hoverable" : ""}`.trim()} {...contentProps}>
+              <span className="cell-value">{displayValue}</span>
+              {yearArrow ? <span className="cell-note">{yearArrowGlyph}</span> : null}
+            </div>
+          </div>
+        </div>
+      </td>
+    );
+  }
 
   return (
-    <td className={`cell cell-${cell.status}`} aria-label={`${attributeLabel}: ${statusLabel}${yearLabel}`}>
-      {attributeKey === "initialReleaseYear" ? (
-        <span className="cell-year">
-          <span>{cell.hint?.arrow ?? "•"}</span>
-          <span>{cell.hint?.bucket ?? ""}</span>
-        </span>
-      ) : (
-        <span className="cell-icon">{getIcon(cell.status)}</span>
-      )}
+    <td className={`cell cell-${cell.status}`.trim()} aria-label={`${attributeLabel}: ${displayValue}, ${getStatusAria(cell.status)}${ariaHintPart}`}>
+      <div className={finalSurfaceClass}>
+        <div className={`cell-content ${hasHoverGuide ? "cell-content-hoverable" : ""}`.trim()} {...contentProps}>
+          <span className="cell-value">{displayValue}</span>
+          {yearArrow ? <span className="cell-note">{yearArrowGlyph}</span> : null}
+        </div>
+      </div>
     </td>
   );
 }
-
