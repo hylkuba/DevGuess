@@ -4,6 +4,8 @@ import type { CatalogItem, CatalogResponse } from "../lib/types";
 
 type Props = {
   onBack: () => void;
+  theme: "light" | "dark";
+  onToggleTheme: () => void;
 };
 
 const tokenLabels: Record<string, string> = {
@@ -58,6 +60,23 @@ function formatToken(value: string): string {
 
 function formatPath(values: string[]): string {
   return values.map((value) => formatToken(value)).join(" > ");
+}
+
+function ThemeSunIcon() {
+  return (
+    <svg viewBox="0 0 20 20" aria-hidden="true" focusable="false">
+      <circle cx="10" cy="10" r="3.2" />
+      <path d="M10 2.2v2.1M10 15.7v2.1M2.2 10h2.1M15.7 10h2.1M4.5 4.5l1.5 1.5M14 14l1.5 1.5M15.5 4.5L14 6M6 14l-1.5 1.5" />
+    </svg>
+  );
+}
+
+function ThemeMoonIcon() {
+  return (
+    <svg viewBox="0 0 20 20" aria-hidden="true" focusable="false">
+      <path d="M12.8 2.8a7 7 0 1 0 4.4 12.7A7.2 7.2 0 0 1 12.8 2.8z" />
+    </svg>
+  );
 }
 
 function formatEcosystemPath(values: string[]): string {
@@ -171,7 +190,7 @@ function getFilterHaystack(item: CatalogItem, key: FilterKey): string {
   }
 }
 
-export function ReferenceGuide({ onBack }: Props) {
+export function ReferenceGuide({ onBack, theme, onToggleTheme }: Props) {
   const [catalog, setCatalog] = useState<CatalogResponse | null>(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
@@ -570,9 +589,20 @@ export function ReferenceGuide({ onBack }: Props) {
           <h1>Reference DB</h1>
           <p>Category values and searchable terms.</p>
         </div>
-        <button type="button" className="ghost-btn" onClick={onBack}>
-          Back to Game
-        </button>
+        <div className="header-actions">
+          <button type="button" className="ghost-btn" onClick={onBack}>
+            Back to Game
+          </button>
+          <button
+            type="button"
+            className="icon-btn"
+            onClick={onToggleTheme}
+            aria-label={theme === "dark" ? "Switch to light theme" : "Switch to dark theme"}
+            title={theme === "dark" ? "Light theme" : "Dark theme"}
+          >
+            <span className={theme === "dark" ? "theme-sun" : "theme-moon"}>{theme === "dark" ? <ThemeSunIcon /> : <ThemeMoonIcon />}</span>
+          </button>
+        </div>
       </header>
 
       {loading ? <p className="hint">Loading reference data...</p> : null}

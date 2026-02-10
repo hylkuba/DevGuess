@@ -675,20 +675,25 @@ a {
   gap: 1rem;
 }
 
-.footer-actions {
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-  position: relative;
-  top: 2px;
+.footer-text-block {
+  flex: 1;
+  min-width: 0;
 }
 
-.footer-row p {
+.footer-lead {
   margin: 0;
   min-height: 40px;
   display: flex;
   align-items: center;
   line-height: 1.1;
+}
+
+.footer-actions {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  position: relative;
+  top: 0;
 }
 
 .footer-actions .ghost-btn,
@@ -709,6 +714,12 @@ a {
 
 .footer-credit {
   margin-top: 0.45rem;
+  font-size: 0.88rem;
+  color: var(--fg-soft);
+}
+
+.footer-support {
+  margin: 0.3rem 0 0;
   font-size: 0.88rem;
   color: var(--fg-soft);
 }
@@ -1374,5 +1385,15 @@ a {
 
   .victory-modal-actions .ghost-btn {
     width: 100%;
+  }
+
+  .footer-row {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .footer-actions {
+    width: 100%;
+    justify-content: flex-start;
   }
 }

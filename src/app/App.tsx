@@ -171,7 +171,7 @@ export function App() {
 
   const body = useMemo(() => {
     if (view === "reference") {
-      return <ReferenceGuide onBack={() => setView("game")} />;
+      return <ReferenceGuide onBack={() => setView("game")} theme={theme} onToggleTheme={() => setTheme((current) => (current === "light" ? "dark" : "light"))} />;
     }
 
     if (!meta || !game) return null;

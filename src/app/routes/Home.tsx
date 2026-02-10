@@ -28,6 +28,7 @@ type Props = {
 
 const GITHUB_REPO_URL = "https://github.com/hylkuba/DevGuess";
 const GITHUB_ISSUE_URL = "https://github.com/hylkuba/DevGuess/issues/new";
+const GITHUB_SPONSORS_URL = "https://github.com/sponsors/hylkuba";
 
 export function Home({
   meta,
@@ -100,7 +101,24 @@ export function Home({
 
       <footer className="site-footer">
         <div className="footer-row">
-          <p>Keep guessing...</p>
+          <div className="footer-text-block">
+            <p className="footer-lead">Keep guessing...</p>
+            <p className="footer-credit">
+              This project has been made open source by @hylkuba. Feel free to contribute to the project, I&apos;ll appreciate your
+              help.{" "}
+              <a href={GITHUB_REPO_URL} target="_blank" rel="noreferrer" aria-label="Open GitHub repository">
+                GitHub Repository
+              </a>
+            </p>
+            <p className="footer-support">
+              Future plans include adding login and leaderboard features, AI-powered explanations, and educational tools. If you
+              want to help maintain the site and support future projects, you can{" "}
+              <a href={GITHUB_SPONSORS_URL} target="_blank" rel="noreferrer" aria-label="Support via GitHub Sponsors">
+                support the project
+              </a>
+              .
+            </p>
+          </div>
           <div className="footer-actions">
             <button
               type="button"
@@ -124,13 +142,6 @@ export function Home({
             />
           </div>
         </div>
-        <p className="footer-credit">
-          This project has been made open source by @hylkuba. Feel free to contribute to the project, I&apos;ll appreciate your
-          help.{" "}
-          <a href={GITHUB_REPO_URL} target="_blank" rel="noreferrer" aria-label="Open GitHub repository">
-            GitHub Repository
-          </a>
-        </p>
       </footer>
 
       {showLimitNotice ? (
