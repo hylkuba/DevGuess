@@ -61,6 +61,8 @@ export type StoredGame = {
   hint: string;
   token: string;
   rows: GridRow[];
+  timerStartedAtMs?: number | null;
+  timerEndedAtMs?: number | null;
   state: {
     remaining: number;
     isSolved: boolean;

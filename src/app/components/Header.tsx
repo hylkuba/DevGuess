@@ -1,8 +1,8 @@
-import { useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 
 type Props = {
-  roundId: string;
-  keywordPoolSize: number;
+  timerStartedAtMs: number | null;
+  timerEndedAtMs: number | null;
   pending: boolean;
   theme: "light" | "dark";
   onToggleTheme: () => void;
@@ -10,9 +10,21 @@ type Props = {
   onGenerateKeyword: () => void;
 };
 
-function formatRoundLabel(roundId: string): string {
-  const shortId = roundId.slice(0, 8).toUpperCase();
-  return `Round ${shortId}`;
+function formatLocalTime(timestampMs: number): string {
+  return new Intl.DateTimeFormat(undefined, {
+    hour: "2-digit",
+    minute: "2-digit",
+    second: "2-digit"
+  }).format(timestampMs);
+}
+
+function formatTimer(elapsedMs: number): string {
+  const totalSeconds = Math.max(0, Math.floor(elapsedMs / 1000));
+  const hours = Math.floor(totalSeconds / 3600);
+  const minutes = Math.floor((totalSeconds % 3600) / 60);
+  const seconds = totalSeconds % 60;
+  const hoursPart = hours > 0 ? `${String(hours).padStart(2, "0")}:` : "";
+  return `${hoursPart}${String(minutes).padStart(2, "0")}:${String(seconds).padStart(2, "0")}`;
 }
 
 function ThemeSunIcon() {
@@ -32,16 +44,40 @@ function ThemeMoonIcon() {
   );
 }
 
-export function Header({ roundId, keywordPoolSize, pending, theme, onToggleTheme, onOpenReference, onGenerateKeyword }: Props) {
+export function Header({
+  timerStartedAtMs,
+  timerEndedAtMs,
+  pending,
+  theme,
+  onToggleTheme,
+  onOpenReference,
+  onGenerateKeyword
+}: Props) {
   const [showGuide, setShowGuide] = useState(false);
+  const [nowMs, setNowMs] = useState(() => Date.now());
+
+  useEffect(() => {
+    const intervalId = window.setInterval(() => {
+      setNowMs(Date.now());
+    }, 1000);
+    return () => window.clearInterval(intervalId);
+  }, []);
+
+  const localTimeLabel = useMemo(() => formatLocalTime(nowMs), [nowMs]);
+  const timerElapsedMs = useMemo(() => {
+    if (timerStartedAtMs == null) return 0;
+    const endMs = timerEndedAtMs ?? nowMs;
+    return Math.max(0, endMs - timerStartedAtMs);
+  }, [nowMs, timerEndedAtMs, timerStartedAtMs]);
+  const timerLabel = useMemo(() => formatTimer(timerElapsedMs), [timerElapsedMs]);
 
   return (
     <header className="page-header">
       <div className="header-top">
         <div>
           <h1>DevGuess</h1>
-          <p>
-            {formatRoundLabel(roundId)} | {keywordPoolSize} registered keywords
+          <p className="header-status-line">
+            Local time: {localTimeLabel} | Timer: {timerLabel}
           </p>
         </div>
         <div className="header-actions">

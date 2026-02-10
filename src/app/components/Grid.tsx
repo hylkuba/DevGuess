@@ -5,6 +5,9 @@ import type { CatalogResponse, Cell as CellData, CellStatus, GridRow, PuzzleAttr
 import { Cell } from "./Cell";
 
 const REVEAL_STEP_MS = 160;
+const CELL_FLIP_DURATION_MS = 900;
+const ROW_CELEBRATION_DURATION_MS = 820;
+const ROW_CELEBRATION_DELAY_BUFFER_MS = 80;
 const GUESS_COLUMN_MIN_WIDTH_PX = 132;
 const ATTRIBUTE_COLUMN_MIN_WIDTH_PX = 120;
 
@@ -484,10 +487,12 @@ type Props = {
   attributes: PuzzleAttribute[];
   rows: GridRow[];
   pending: boolean;
+  celebratingRowKey?: string | null;
 };
 
-export function Grid({ attributes, rows, pending }: Props) {
+export function Grid({ attributes, rows, pending, celebratingRowKey = null }: Props) {
   const [revealingRowKey, setRevealingRowKey] = useState<string | null>(null);
+  const [activeCelebrationRowKey, setActiveCelebrationRowKey] = useState<string | null>(null);
   const [hoverData, setHoverData] = useState<HoverGuideData>({
     kindFamilies: {},
     licenseFamilies: {},
@@ -547,6 +552,23 @@ export function Grid({ attributes, rows, pending }: Props) {
     };
   }, [hoverPopup]);
 
+  useEffect(() => {
+    if (!celebratingRowKey) {
+      setActiveCelebrationRowKey(null);
+      return;
+    }
+
+    setActiveCelebrationRowKey(celebratingRowKey);
+    const revealTailMs =
+      Math.max(0, attributes.length - 1) * REVEAL_STEP_MS + CELL_FLIP_DURATION_MS + ROW_CELEBRATION_DELAY_BUFFER_MS;
+    const clearTimerMs = revealTailMs + ROW_CELEBRATION_DURATION_MS;
+    const timerId = window.setTimeout(() => {
+      setActiveCelebrationRowKey((current) => (current === celebratingRowKey ? null : current));
+    }, clearTimerMs);
+
+    return () => window.clearTimeout(timerId);
+  }, [attributes.length, celebratingRowKey]);
+
   const displayRows = rows.slice().reverse();
   const tableMinWidth = GUESS_COLUMN_MIN_WIDTH_PX + attributes.length * ATTRIBUTE_COLUMN_MIN_WIDTH_PX;
   const tableStyle = { "--grid-table-min-width": `${tableMinWidth}px` } as CSSProperties;
@@ -588,9 +610,15 @@ export function Grid({ attributes, rows, pending }: Props) {
             {displayRows.map((row) => {
               const rowKey = row.guess.id;
               const isRevealingRow = rowKey === revealingRowKey;
+              const isCelebrationRow = rowKey === activeCelebrationRowKey;
+              const rowCelebrationDelayMs =
+                Math.max(0, attributes.length - 1) * REVEAL_STEP_MS + CELL_FLIP_DURATION_MS + ROW_CELEBRATION_DELAY_BUFFER_MS;
+              const rowStyle = isCelebrationRow
+                ? ({ "--row-win-delay-ms": `${rowCelebrationDelayMs}ms` } as CSSProperties)
+                : undefined;
 
               return (
-                <tr key={rowKey}>
+                <tr key={rowKey} className={isCelebrationRow ? "grid-row-celebrate" : undefined} style={rowStyle}>
                   <th className="guess-col guess-cell">
                     <div className="guess-cell-content">{row.guess.name}</div>
                   </th>

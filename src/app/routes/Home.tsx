@@ -1,7 +1,8 @@
-﻿import { Grid } from "../components/Grid";
+import { Grid } from "../components/Grid";
 import { GuessInput } from "../components/GuessInput";
 import { Header } from "../components/Header";
 import { ShareButton } from "../components/ShareButton";
+import { VictoryModal } from "../components/VictoryModal";
 import type { GridRow, MetaResponse, SearchResult } from "../lib/types";
 
 type Props = {
@@ -9,16 +10,20 @@ type Props = {
   roundId: string;
   keywordHint: string;
   rows: GridRow[];
+  timerStartedAtMs: number | null;
+  timerEndedAtMs: number | null;
   pending: boolean;
   isOver: boolean;
   isSolved: boolean;
   showLimitNotice: boolean;
+  showWinNotice: boolean;
   theme: "light" | "dark";
   onToggleTheme: () => void;
   onOpenReference: () => void;
   onGuess: (guess: SearchResult) => void;
   onGenerateKeyword: () => void;
   onDismissLimitNotice: () => void;
+  onDismissWinNotice: () => void;
 };
 
 const GITHUB_REPO_URL = "https://github.com/hylkuba/DevGuess";
@@ -29,26 +34,31 @@ export function Home({
   roundId,
   keywordHint,
   rows,
+  timerStartedAtMs,
+  timerEndedAtMs,
   pending,
   isOver,
   isSolved,
   showLimitNotice,
+  showWinNotice,
   theme,
   onToggleTheme,
   onOpenReference,
   onGuess,
   onGenerateKeyword,
-  onDismissLimitNotice
+  onDismissLimitNotice,
+  onDismissWinNotice
 }: Props) {
   const guessedIds = new Set(rows.map((row) => row.guess.id));
   const showWelcomeBlock = rows.length === 0 && !pending;
+  const celebratingRowKey = isSolved ? (rows.at(-1)?.guess.id ?? null) : null;
 
   return (
     <main className="page-shell">
       <Header
-        roundId={roundId}
-        keywordPoolSize={meta.keywordPoolSize}
         pending={pending}
+        timerStartedAtMs={timerStartedAtMs}
+        timerEndedAtMs={timerEndedAtMs}
         theme={theme}
         onToggleTheme={onToggleTheme}
         onOpenReference={onOpenReference}
@@ -61,7 +71,7 @@ export function Home({
         hintKey={roundId}
         onSubmit={onGuess}
       />
-      <Grid attributes={meta.attributes} rows={rows} pending={pending} />
+      <Grid attributes={meta.attributes} rows={rows} pending={pending} celebratingRowKey={celebratingRowKey} />
       {showWelcomeBlock ? (
         <section className="welcome-inline-slot" aria-label="Welcome to DevGuess">
           <div className="welcome-inline">
@@ -102,7 +112,16 @@ export function Home({
             >
               Report Issue
             </button>
-            <ShareButton disabled={false} rows={rows} attributes={meta.attributes} roundId={roundId} theme={theme} />
+            <ShareButton
+              disabled={false}
+              rows={rows}
+              attributes={meta.attributes}
+              isSolved={isSolved}
+              isOver={isOver}
+              timerStartedAtMs={timerStartedAtMs}
+              timerEndedAtMs={timerEndedAtMs}
+              theme={theme}
+            />
           </div>
         </div>
         <p className="footer-credit">
@@ -131,6 +150,19 @@ export function Home({
         </div>
       ) : null}
 
+      <VictoryModal
+        open={showWinNotice && isSolved}
+        roundId={roundId}
+        rows={rows}
+        attributes={meta.attributes}
+        isSolved={isSolved}
+        isOver={isOver}
+        timerStartedAtMs={timerStartedAtMs}
+        timerEndedAtMs={timerEndedAtMs}
+        theme={theme}
+        onGenerateKeyword={onGenerateKeyword}
+        onClose={onDismissWinNotice}
+      />
     </main>
   );
 }
