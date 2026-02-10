@@ -1,4 +1,4 @@
-﻿import type { CSSProperties } from "react";
+﻿import type { CSSProperties, FocusEvent, MouseEvent } from "react";
 import type { Cell as CellData } from "../lib/types";
 
 type Props = {
@@ -6,8 +6,8 @@ type Props = {
   value?: string;
   attributeKey: string;
   attributeLabel: string;
-  groupItems?: string[];
-  onGroupHover?: () => void;
+  isHoverable?: boolean;
+  onGroupHover?: (target: HTMLElement) => void;
   onGroupLeave?: () => void;
   revealDelayMs?: number;
 };
@@ -21,12 +21,12 @@ function getStatusAria(status: CellData["status"]): string {
 function getYearArrow(cell: CellData): "up" | "down" | null {
   const rawArrow = String(cell.hint?.arrow ?? "").trim().toLowerCase();
   if (!rawArrow) return null;
-  if (rawArrow === "^" || rawArrow === "↑" || rawArrow === "â†‘" || rawArrow === "up") return "up";
-  if (rawArrow === "v" || rawArrow === "↓" || rawArrow === "â†“" || rawArrow === "ˇ" || rawArrow === "down") return "down";
+  if (rawArrow === "^" || rawArrow === "\u2191" || rawArrow === "â†‘" || rawArrow === "up") return "up";
+  if (rawArrow === "v" || rawArrow === "\u2193" || rawArrow === "â†“" || rawArrow === "\u02c7" || rawArrow === "down") return "down";
   return null;
 }
 
-export function Cell({ cell, value, attributeKey, attributeLabel, groupItems, onGroupHover, onGroupLeave, revealDelayMs }: Props) {
+export function Cell({ cell, value, attributeKey, attributeLabel, isHoverable, onGroupHover, onGroupLeave, revealDelayMs }: Props) {
   if (!cell) {
     return <td className="cell cell-empty">-</td>;
   }
@@ -37,12 +37,12 @@ export function Cell({ cell, value, attributeKey, attributeLabel, groupItems, on
   const ariaHintPart = yearArrow ? `, year hint ${yearArrow === "up" ? "up arrow" : "down arrow"}` : "";
   const revealStyle = revealDelayMs == null ? undefined : ({ animationDelay: `${revealDelayMs}ms` } as CSSProperties);
   const finalSurfaceClass = `cell-surface cell-surface-${cell.status}`;
-  const hasGroupGuide = (groupItems?.length ?? 0) > 0;
-  const contentProps = hasGroupGuide
+  const hasHoverGuide = Boolean(isHoverable);
+  const contentProps = hasHoverGuide
     ? {
-        onMouseEnter: onGroupHover,
+        onMouseEnter: (event: MouseEvent<HTMLDivElement>) => onGroupHover?.(event.currentTarget),
         onMouseLeave: onGroupLeave,
-        onFocus: onGroupHover,
+        onFocus: (event: FocusEvent<HTMLDivElement>) => onGroupHover?.(event.currentTarget),
         onBlur: onGroupLeave,
         tabIndex: 0
       }
@@ -54,7 +54,7 @@ export function Cell({ cell, value, attributeKey, attributeLabel, groupItems, on
         <div className="cell-flip-card cell-flip-reveal" style={revealStyle}>
           <div className="cell-flip-face cell-flip-front" aria-hidden="true" />
           <div className={`cell-flip-face cell-flip-back ${finalSurfaceClass}`.trim()}>
-            <div className={`cell-content ${hasGroupGuide ? "cell-content-hoverable" : ""}`.trim()} {...contentProps}>
+            <div className={`cell-content ${hasHoverGuide ? "cell-content-hoverable" : ""}`.trim()} {...contentProps}>
               <span className="cell-value">{displayValue}</span>
               {yearArrow ? <span className="cell-note">{yearArrowGlyph}</span> : null}
             </div>
@@ -67,7 +67,7 @@ export function Cell({ cell, value, attributeKey, attributeLabel, groupItems, on
   return (
     <td className={`cell cell-${cell.status}`.trim()} aria-label={`${attributeLabel}: ${displayValue}, ${getStatusAria(cell.status)}${ariaHintPart}`}>
       <div className={finalSurfaceClass}>
-        <div className={`cell-content ${hasGroupGuide ? "cell-content-hoverable" : ""}`.trim()} {...contentProps}>
+        <div className={`cell-content ${hasHoverGuide ? "cell-content-hoverable" : ""}`.trim()} {...contentProps}>
           <span className="cell-value">{displayValue}</span>
           {yearArrow ? <span className="cell-note">{yearArrowGlyph}</span> : null}
         </div>

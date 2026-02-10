@@ -36,5 +36,10 @@ describe("evaluateGuess", () => {
     expect(row.values.primaryLanguage).toBe("SQL");
     expect(row.values.licenseGroup).toBe("BSD");
   });
-});
 
+  it("does not award yellow for partial domain overlap", () => {
+    const row = evaluateGuess(requireItem("react"), requireItem("react-native"));
+
+    expect(row.cells.domains.status).toBe("gray");
+  });
+});

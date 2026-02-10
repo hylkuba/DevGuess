@@ -4,6 +4,8 @@ import type { CatalogItem, CatalogResponse } from "../lib/types";
 
 type Props = {
   onBack: () => void;
+  theme: "light" | "dark";
+  onToggleTheme: () => void;
 };
 
 const tokenLabels: Record<string, string> = {
@@ -17,6 +19,13 @@ const tokenLabels: Record<string, string> = {
   cpp: "C++",
   csharp: "C#"
 };
+
+const LICENSE_FAMILY_TEMPLATE: Array<{ family: string; values: string[] }> = [
+  { family: "Permissive", values: ["MIT", "Apache-2.0", "BSD"] },
+  { family: "Copyleft", values: ["MPL", "GPL", "AGPL"] },
+  { family: "Proprietary", values: ["Proprietary"] },
+  { family: "Other", values: ["Public-Domain", "Mixed", "Other"] }
+];
 
 const filterColumns = [
   { key: "name", label: "Name" },
@@ -53,6 +62,32 @@ function formatPath(values: string[]): string {
   return values.map((value) => formatToken(value)).join(" > ");
 }
 
+function ThemeSunIcon() {
+  return (
+    <svg viewBox="0 0 20 20" aria-hidden="true" focusable="false">
+      <circle cx="10" cy="10" r="3.2" />
+      <path d="M10 2.2v2.1M10 15.7v2.1M2.2 10h2.1M15.7 10h2.1M4.5 4.5l1.5 1.5M14 14l1.5 1.5M15.5 4.5L14 6M6 14l-1.5 1.5" />
+    </svg>
+  );
+}
+
+function ThemeMoonIcon() {
+  return (
+    <svg viewBox="0 0 20 20" aria-hidden="true" focusable="false">
+      <path d="M12.8 2.8a7 7 0 1 0 4.4 12.7A7.2 7.2 0 0 1 12.8 2.8z" />
+    </svg>
+  );
+}
+
+function formatEcosystemPath(values: string[]): string {
+  const normalized = values.map((value) => formatToken(value)).filter(Boolean);
+  if (normalized.length === 0) return "";
+
+  const [parent, ...rest] = normalized;
+  if (rest.length === 0) return `${parent}: Core`;
+  return `${parent}: ${rest.join(" / ")}`;
+}
+
 function formatSet(values: string[]): string {
   return values.map((value) => formatToken(value)).join(", ");
 }
@@ -65,6 +100,49 @@ function sortedUnique(values: string[]): string[] {
   return Array.from(new Set(values.filter(Boolean))).sort((a, b) =>
     a.localeCompare(b, undefined, { sensitivity: "base", numeric: true })
   );
+}
+
+function buildLicenseFamilyData(licenses: string[]): Record<string, string[]> {
+  const available = new Set(licenses);
+  const grouped: Record<string, string[]> = {};
+
+  for (const family of LICENSE_FAMILY_TEMPLATE) {
+    const members = family.values.filter((value) => available.has(value));
+    if (members.length === 0) continue;
+    grouped[family.family] = members;
+  }
+
+  const known = new Set(Object.values(grouped).flat());
+  const extras = sortedUnique(licenses.filter((value) => !known.has(value)));
+  if (extras.length > 0) {
+    grouped.Other = sortedUnique([...(grouped.Other ?? []), ...extras]);
+  }
+
+  return grouped;
+}
+
+function buildEcosystemFamilyData(items: CatalogItem[]): Record<string, string[]> {
+  const grouped = new Map<string, Set<string>>();
+
+  for (const item of items) {
+    const normalized = item.ecosystemPath.map((value) => formatToken(value)).filter(Boolean);
+    if (normalized.length === 0) continue;
+
+    const [parent, ...rest] = normalized;
+    const child = rest.length > 0 ? rest.join(" / ") : "Core";
+    const children = grouped.get(parent) ?? new Set<string>();
+    children.add(child);
+    grouped.set(parent, children);
+  }
+
+  const entries = Array.from(grouped.entries())
+    .sort(([left], [right]) => left.localeCompare(right, undefined, { sensitivity: "base", numeric: true }))
+    .map(([parent, children]) => [
+      parent,
+      Array.from(children).sort((left, right) => left.localeCompare(right, undefined, { sensitivity: "base", numeric: true }))
+    ]);
+
+  return Object.fromEntries(entries);
 }
 
 function estimateCardWeight(value: string): number {
@@ -94,7 +172,7 @@ function getFilterHaystack(item: CatalogItem, key: FilterKey): string {
     case "runtimes":
       return [item.runtimes.join(" "), formatSet(item.runtimes)].join(" ").toLowerCase();
     case "ecosystemPath":
-      return [item.ecosystemPath.join(" > "), formatPath(item.ecosystemPath)].join(" ").toLowerCase();
+      return [item.ecosystemPath.join(" > "), formatPath(item.ecosystemPath), formatEcosystemPath(item.ecosystemPath)].join(" ").toLowerCase();
     case "primaryLanguage":
       return [item.primaryLanguage, formatToken(item.primaryLanguage)].join(" ").toLowerCase();
     case "license":
@@ -112,7 +190,7 @@ function getFilterHaystack(item: CatalogItem, key: FilterKey): string {
   }
 }
 
-export function ReferenceGuide({ onBack }: Props) {
+export function ReferenceGuide({ onBack, theme, onToggleTheme }: Props) {
   const [catalog, setCatalog] = useState<CatalogResponse | null>(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
@@ -169,7 +247,7 @@ export function ReferenceGuide({ onBack }: Props) {
       primaryUse: sortedUnique(catalog.taxonomy.primaryUse.map((value) => formatToken(value))),
       platformTargets: sortedUnique(catalog.taxonomy.platformTargets.map((value) => formatToken(value))),
       runtimes: sortedUnique(catalog.taxonomy.runtimes.map((value) => formatToken(value))),
-      ecosystemPath: sortedUnique(catalog.items.map((item) => formatPath(item.ecosystemPath))),
+      ecosystemPath: sortedUnique(catalog.items.map((item) => formatEcosystemPath(item.ecosystemPath))),
       primaryLanguage: sortedUnique(catalog.taxonomy.primaryLanguage.map((value) => formatToken(value))),
       license: sortedUnique(catalog.taxonomy.licenses),
       stewardType: sortedUnique(catalog.taxonomy.stewardType.map((value) => formatToken(value))),
@@ -203,12 +281,19 @@ export function ReferenceGuide({ onBack }: Props) {
       .map(([topLevel, children]) => `${topLevel}: ${children.join(", ")}`)
       .join(" ");
     const domainsText = catalog.taxonomy.domains.map((value) => formatToken(value)).join(", ");
+    const domainsGuideText = `${domainsText} none flat taxonomy exact set no partial domain yellow`;
     const useText = catalog.taxonomy.primaryUse.map((value) => formatToken(value)).join(", ");
     const platformText = catalog.taxonomy.platformTargets.map((value) => formatToken(value)).join(", ");
     const runtimeText = catalog.taxonomy.runtimes.map((value) => formatToken(value)).join(", ");
-    const ecosystemText = sortedUnique(catalog.items.map((item) => formatPath(item.ecosystemPath))).join(", ");
+    const ecosystemFamilies = buildEcosystemFamilyData(catalog.items);
+    const ecosystemText = Object.entries(ecosystemFamilies)
+      .map(([parent, groups]) => `${parent}: ${groups.join(", ")}`)
+      .join(" ");
     const languageText = catalog.taxonomy.primaryLanguage.map((value) => formatToken(value)).join(", ");
-    const licenseText = catalog.taxonomy.licenses.join(", ");
+    const licenseFamilies = buildLicenseFamilyData(catalog.taxonomy.licenses);
+    const licenseText = Object.entries(licenseFamilies)
+      .map(([family, members]) => `${family}: ${members.join(", ")}`)
+      .join(" ");
     const stewardTypeText = catalog.taxonomy.stewardType.map((value) => formatToken(value)).join(", ");
     const stewardText = catalog.taxonomy.stewards.join(", ");
     const yearText = `${Math.min(...catalog.items.map((item) => item.initialReleaseYear))} - ${Math.max(...catalog.items.map((item) => item.initialReleaseYear))}`;
@@ -233,9 +318,21 @@ export function ReferenceGuide({ onBack }: Props) {
       {
         key: "domains",
         title: "Domains",
-        description: "Problem spaces where this technology is commonly used.",
-        content: <p>{domainsText}</p>,
-        weight: estimateCardWeight(domainsText)
+        description: "Problem spaces where this technology is commonly used. Domains are flat values (no subgroups).",
+        content: (
+          <ul>
+            <li>
+              <strong>Values:</strong> {domainsText}
+            </li>
+            <li>
+              <strong>Subgroups:</strong> None (flat taxonomy)
+            </li>
+            <li>
+              <strong>Guessing:</strong> Green = exact domain set, gray = anything else.
+            </li>
+          </ul>
+        ),
+        weight: estimateCardWeight(domainsGuideText)
       },
       {
         key: "use",
@@ -261,8 +358,16 @@ export function ReferenceGuide({ onBack }: Props) {
       {
         key: "ecosystem",
         title: "Ecosystem",
-        description: "Language and stack lineage this technology belongs to.",
-        content: <p>{ecosystemText}</p>,
+        description: "Language and stack lineage this technology belongs to, grouped by parent branch.",
+        content: (
+          <ul>
+            {Object.entries(ecosystemFamilies).map(([parent, groups]) => (
+              <li key={parent}>
+                <strong>{parent}:</strong> {groups.join(", ")}
+              </li>
+            ))}
+          </ul>
+        ),
         weight: estimateCardWeight(ecosystemText)
       },
       {
@@ -275,8 +380,16 @@ export function ReferenceGuide({ onBack }: Props) {
       {
         key: "license",
         title: "License",
-        description: "Software license family and terms.",
-        content: <p>{licenseText}</p>,
+        description: "Software license families. Guessing uses family matching for yellow and exact matching for green.",
+        content: (
+          <ul>
+            {Object.entries(licenseFamilies).map(([family, members]) => (
+              <li key={family}>
+                <strong>{family}:</strong> {members.join(", ")}
+              </li>
+            ))}
+          </ul>
+        ),
         weight: estimateCardWeight(licenseText)
       },
       {
@@ -476,9 +589,20 @@ export function ReferenceGuide({ onBack }: Props) {
           <h1>Reference DB</h1>
           <p>Category values and searchable terms.</p>
         </div>
-        <button type="button" className="ghost-btn" onClick={onBack}>
-          Back to Game
-        </button>
+        <div className="header-actions">
+          <button type="button" className="ghost-btn" onClick={onBack}>
+            Back to Game
+          </button>
+          <button
+            type="button"
+            className="icon-btn"
+            onClick={onToggleTheme}
+            aria-label={theme === "dark" ? "Switch to light theme" : "Switch to dark theme"}
+            title={theme === "dark" ? "Light theme" : "Dark theme"}
+          >
+            <span className={theme === "dark" ? "theme-sun" : "theme-moon"}>{theme === "dark" ? <ThemeSunIcon /> : <ThemeMoonIcon />}</span>
+          </button>
+        </div>
       </header>
 
       {loading ? <p className="hint">Loading reference data...</p> : null}
@@ -602,7 +726,7 @@ export function ReferenceGuide({ onBack }: Props) {
                       <td>{formatSet(item.primaryUse)}</td>
                       <td>{formatSet(item.platformTargets)}</td>
                       <td>{formatSet(item.runtimes)}</td>
-                      <td>{formatPath(item.ecosystemPath)}</td>
+                      <td>{formatEcosystemPath(item.ecosystemPath)}</td>
                       <td>{formatToken(item.primaryLanguage)}</td>
                       <td>{item.license}</td>
                       <td>{formatToken(item.stewardType)}</td>
