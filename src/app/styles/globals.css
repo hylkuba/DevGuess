@@ -880,6 +880,46 @@ a {
   min-height: 34vh;
 }
 
+.welcome-inline-layout {
+  width: min(100%, 1320px);
+  display: grid;
+  grid-template-columns: minmax(120px, 220px) minmax(0, 860px) minmax(120px, 220px);
+  align-items: center;
+  justify-content: center;
+  justify-items: center;
+  gap: 1rem;
+}
+
+.welcome-inline-visual {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 220px;
+}
+
+.welcome-inline-icon {
+  width: min(26vw, 210px);
+  aspect-ratio: 1 / 1;
+  background-image: url("/DevGuess-icon.png");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: contain;
+  filter: drop-shadow(0 10px 22px rgba(6, 14, 28, 0.42));
+  animation: welcomeIconFloat 3s ease-in-out infinite;
+}
+
+@keyframes welcomeIconFloat {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+
+  50% {
+    transform: translateY(-8px);
+  }
+}
+
 .welcome-inline h2 {
   margin: 0;
   font-size: 1.45rem;
@@ -1406,5 +1446,15 @@ a {
   .footer-actions {
     width: 100%;
     justify-content: flex-start;
+  }
+
+  .welcome-inline-layout {
+    width: min(100%, 860px);
+    grid-template-columns: 1fr;
+    justify-items: center;
+  }
+
+  .welcome-inline-visual {
+    display: none;
   }
 }
