@@ -520,6 +520,17 @@ export function Grid({ attributes, rows, pending, celebratingRowKey = null }: Pr
   }, [rows]);
 
   useEffect(() => {
+    if (!revealingRowKey) return;
+
+    const revealTailMs = Math.max(0, attributes.length - 1) * REVEAL_STEP_MS + CELL_FLIP_DURATION_MS;
+    const timerId = window.setTimeout(() => {
+      setRevealingRowKey((current) => (current === revealingRowKey ? null : current));
+    }, revealTailMs);
+
+    return () => window.clearTimeout(timerId);
+  }, [attributes.length, revealingRowKey]);
+
+  useEffect(() => {
     let mounted = true;
 
     const run = async () => {
